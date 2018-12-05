@@ -1,0 +1,20 @@
+language: node_js
+
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
+
+before_install:
+  # set up awscli packages
+  - pip install --user awscli
+
+node_js:
+  - '8'
+branches:
+  only:
+    - master
+cache:
+  yarn: true
+script:
+  - cd website && yarn install && yarn run build 

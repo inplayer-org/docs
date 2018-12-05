@@ -1,0 +1,92 @@
+@font-face { font-family: Oxigen; src: url('../fonts/Oxygen-Regular.ttf'); } 
+@font-face { font-family: Roboto; src: url('../fonts/Roboto-Regular.ttf'); } 
+
+/* your custom css */
+.feature {
+    background: #fcf3c0;
+    padding-top:30px;
+}
+
+.headerTitleWithLogo {
+    display:none!important;
+}
+
+.tool-buttons {
+    max-width:600px;
+}
+
+.navGroups {
+    background:#f0f0f0;
+    padding:10px!important;
+}
+
+.navGroupCategoryTitle {
+    color: #000!important;
+    font-weight:500;
+    
+}
+
+.feature-block {
+    padding:30px 30px;
+    background:#ffffff;
+    margin-right:20px;
+    margin-left:20px;
+    width:300px;
+    box-shadow: 1px 2px 22px #e4e4e4;
+    color:#333;
+    font-family: Roboto;
+    box-sizing: border-box;
+    border-radius: 3px;
+    top: 0px;
+    position: relative;
+    transition: ease 300ms all;
+    border: 1px solid #d7dde5;
+    text-align: center;
+    margin-bottom:40px;
+
+}
+
+.feature-block:hover {
+    background: #fff;
+    border: 1px solid #fff;
+    top: -5px;
+    -webkit-box-shadow: 0px 4px 16px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 16px 1px rgba(0,0,0,0.2)
+}
+
+h1, h2, h3, h4 {
+    font-family: Oxigen;
+}
+
+body {
+    font-family: Roboto;
+}
+
+.small {
+    font-family: Roboto;
+}
+
+.blockImage {
+    max-width:140px!important;
+}
+
+@media only screen and (min-width: 1024px)
+{.onPageNav > .toc-headings {
+    border-left: 2px solid #205482;
+}}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+   
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}

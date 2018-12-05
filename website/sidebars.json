@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "Libraries": ["libraries", "paywall2", "paywall1", "jssdk"],
+    "API": ["api"],
+    "Dashboard": ["dashboard"],
+    "Web-Hooks": ["webhooks"]
+    }
+}
