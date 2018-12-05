@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Paywall 1.0 · Inplayer docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;The InPlayer Paywall application is fast and easy way of selling your content online.  For each digital asset that you create in the InPlayer platform, you are granted with corresponding embed code that will create the whole end-user experience once placed on some website. The Paywall app is only web-based solution. For more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides. You can easily find the embed code of any asset  in the InPlayer Dashboard in the single asset section, as its shown in the screenshot.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Paywall 1.0 · Inplayer docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://inplayer.com/index.html"/><meta property="og:description" content="&lt;p&gt;The InPlayer Paywall application is fast and easy way of selling your content online.  For each digital asset that you create in the InPlayer platform, you are granted with corresponding embed code that will create the whole end-user experience once placed on some website. The Paywall app is only web-based solution. For more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides. You can easily find the embed code of any asset  in the InPlayer Dashboard in the single asset section, as its shown in the screenshot.&lt;/p&gt;
+"/><meta property="og:image" content="https://inplayer.com/img/inplayer-logo-1.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://inplayer.com/img/inplayer-logo-1.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dark.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/inplayer-logo-new-white-hex.svg" alt="Inplayer docs"/><h2 class="headerTitleWithLogo">Inplayer docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/libraries" target="_self">Docs</a></li><li class=""><a href="https://github.com/inplayer-org" target="_self">GitHub</a></li><li class=""><a href="/docs/security" target="_self">Security</a></li><li class=""><a href="/docs/contact" target="_self">Contact</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Libraries</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Libraries</h3><ul><li class="navListItem"><a class="navItem" href="/docs/libraries">Libraries Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/paywall2">Paywall 2.0</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/paywall1">Paywall 1.0</a></li><li class="navListItem"><a class="navItem" href="/docs/jssdk">SDK for JavaScript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api">InPlayer API documentation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Dashboard</h3><ul><li class="navListItem"><a class="navItem" href="/docs/dashboard">Dashboard Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Web-Hooks</h3><ul><li class="navListItem"><a class="navItem" href="/docs/webhooks">InPlayer Webhooks</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Paywall 1.0</h1></header><article><div><span><p>The InPlayer Paywall application is fast and easy way of selling your content online.  For each digital asset that you create in the InPlayer platform, you are granted with corresponding embed code that will create the whole end-user experience once placed on some website. The Paywall app is only web-based solution. For more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides. You can easily find the embed code of any asset  in the InPlayer Dashboard in the single asset section, as its shown in the screenshot.</p>
+<p><img src="https://inplayer.com/wp-content/uploads/2018/07/embed_code.png" alt="alt text" title="Logo Title Text 1"></p>
+<h2><a class="anchor" aria-hidden="true" id="standard-embed-code"></a><a href="#standard-embed-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Standard embed code</h2>
+<p>The Paywall embed code includes two parts. The InPlayer Paywall application scripts:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://assets.inplayer.com/injector/staging/injector.js'</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'https://assets.inplayer.com/injector/staging/css/app.min.css'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'all'</span>&gt;</span>
+</code></pre>
+<p>And the Asset embed code where the video should be embeded:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"inplayer-42095"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="actionscript">
+inplayer.inject(<span class="hljs-string">'42095'</span>, <span class="hljs-string">'528b1b80-5868-4abc-a9b6-4d3455d719c8'</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>The Asset embed code is constructed from two parts as well. HTML code, that will create a DIV element with the Asset ID passed as the element ID in the following format: “inplayer-ASSET_ID”. In the previous example the asset id is 42095.</p>
+<p>The second part of the Asset embed code is JavaScript code that should invoke the inject method of our JavaScript APP. That method will create the complete UI flow of a premium content. If no active account is logged in the browser the Inject method will render a preview template of the embedded Asset with a purchase button that will invoke widget overlay functionality for registering/login account, price selector and payment details page. After the visitor creates account, completes the flow and makes successful payment, the InPlayer application will replace the preview template with the Premium Asset(mostly video players) .</p>
+<p>The InPlayer inject method receives 3 parameters, although in the standard embed code there is no 3rd parameter.</p>
+<pre><code class="hljs css language-js">inplayer.inject(ASSET_ID, MERCHANT_UUID, OPTIONS);
+</code></pre>
+<p>The first parameter is ASSET_ID, the same value from the DIV element ID of the HTML part of the embed code. The second parameter is MERCHANT_UUID, the unique identifier of the Merchant Account. The third, optional parameter can be Array of many additional options that are described in the following section.</p>
+<h2><a class="anchor" aria-hidden="true" id="embed-code-options"></a><a href="#embed-code-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Embed code Options</h2>
+<p>All embed code Options should be passed as Array in the last parameter of the embed code. Here is an example of an embed code containing all possible options:</p>
+<pre><code class="hljs css language-js">inplayer.inject(assetID, merchantUUID, {
+    <span class="hljs-attr">global</span>: {
+        <span class="hljs-attr">hideUserMenu</span>: <span class="hljs-literal">true</span>, 
+        <span class="hljs-attr">freeAccess</span>: <span class="hljs-number">555</span> 
+    },
+    <span class="hljs-attr">noPreview</span>: <span class="hljs-literal">true</span>, 
+    <span class="hljs-attr">noContent</span>: <span class="hljs-literal">true</span>, 
+    <span class="hljs-attr">language</span>: {
+        <span class="hljs-attr">initial</span>: <span class="hljs-string">"en"</span> 
+    },
+    <span class="hljs-attr">oauthAppKey</span>: <span class="hljs-string">"b60220e1d5dd0226c73634f667a69b4c"</span>, 
+    <span class="hljs-attr">registerFirst</span>: <span class="hljs-literal">true</span>, 
+    <span class="hljs-attr">ssoDomain</span>: <span class="hljs-string">"https://subdomainname.accounts.staging-v2.inplayer.com"</span>, 
+    <span class="hljs-attr">brandingId</span>: <span class="hljs-number">455</span>, 
+    <span class="hljs-attr">codeAccess</span>: { 
+        <span class="hljs-attr">inputs</span>: [{ 
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"access_code"</span>, 
+            <span class="hljs-attr">placeholder</span>: <span class="hljs-string">"Please enter your access code"</span>, 
+            <span class="hljs-attr">dataPlaceholder</span>: <span class="hljs-string">"access_code"</span> 
+        }, {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">placeholder</span>: <span class="hljs-string">"Your first name here"</span>
+        }, {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">placeholder</span>: <span class="hljs-string">"Your last name here"</span>,
+        }],
+        <span class="hljs-attr">codePattern</span>: <span class="hljs-string">"{{first_name}}-{{last_name}}-{{access_code}}"</span> 
+    },
+    <span class="hljs-attr">player_scripts</span>: { 
+        <span class="hljs-attr">brightcove</span>: [
+            <span class="hljs-string">"//some.url.of.some.script//script.js"</span>,
+            <span class="hljs-string">"//some.url.of.some.stylesheet//style.css"</span>
+        ],
+        <span class="hljs-attr">jwplayer</span>: [
+            <span class="hljs-string">"https://my.custom.script/jwplayer.js"</span>
+        ]
+    },
+    <span class="hljs-attr">player_params</span>: { 
+        <span class="hljs-attr">brightcove</span>: {
+            <span class="hljs-attr">some_custom_option</span>: <span class="hljs-number">555</span>,
+            <span class="hljs-attr">some_value_to_override</span>: <span class="hljs-string">"1234567890"</span>
+        }
+    },
+    <span class="hljs-comment">// event callbacks</span>
+    onAny: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data  </span>
+    },
+    <span class="hljs-attr">onInit</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onAccess</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onLogin</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onRegister</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onInject</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onPayment</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onLogout</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-comment">// do something with data</span>
+    },
+    <span class="hljs-attr">onLanguage</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{ 
+    <span class="hljs-comment">// do something with data</span>
+    }
+}
+</code></pre>
+<p>There are two types of embed code options. Optional settings and events. With the optional settings you can add, remove or change certain functionalities of the paywall. With the optional events, you can have additional functionality that can be triggered after some action in the paywall.</p>
+<h2><a class="anchor" aria-hidden="true" id="optional-settings"></a><a href="#optional-settings" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optional Settings</h2>
+<p>|Setting|Type|Description|
+|noPreview|Boolean|Hides the preview template, in case custom preview is needed. |</p>
+<h2><a class="anchor" aria-hidden="true" id="optional-events"></a><a href="#optional-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optional Events</h2>
+<p>The Paywall application is capable of firing multiple events based on certain action. You can use the Paywall events to have additional custom functionalities that will be executed only after the event type. Here is a list of all supported Event types.</p>
+<p>Here are few examples and guides for solving different problems with events:
+How to manage Facebook pixel conversions with InPlayer Paywall Events
+How to use Google Analytics with InPlayer Paywall Events</p>
+<p>In the following section you can find some examples of how to solve different scenarios with the paywall options.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-custom-preview"></a><a href="#using-custom-preview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Custom Preview</h2>
+<p>The following example illustrates how using the noPreview option in the Paywall removes the default preview template and allows creating a custom preview, for example a video trailer. Additionally, it shows how to create a Call-to-Action button that invokes the paywall experience.</p>
+<p>Once our CSS and JS scripts are included in a website, the first part of the embed code is a div element for the place where the preview content is going to be created. After successful payment, the paywall embeds the premium video overwriting the custom preview content.</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"inplayer-ASSET_ID"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>The next part of the embed code serves to create a Call-to-Action button, which invokes the paywall for the desired premium ASSET. In this example, the action button is the html button element. However, this functionality can be added on any other element type. To do so, use a class in the following format: inplayer-paywall-ASSET_ID</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"inplayer-ASSET_ID"</span>&gt;</span>
+// Your preview template code
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inplayer-paywall-ASSET_ID"</span>&gt;</span>purchase video<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>In order for the button to disappear when the premium content is loaded, the button has to be placed inside the preview content div element. The user should not be able to click the purchase button for assets they have already purchased. The Paywall overwrites everything inside the preview div element, so once successful payment has been made, the button disappears.</p>
+<p>The following is JavaScript code which adds the paywall functionalities to the html elements. It’s standard inject code with the noPreview setting included.</p>
+<pre><code class="hljs css language-js">inplayer.inject(ASSET_ID, MERCHANT_UUID, {
+ <span class="hljs-attr">noPreview</span>: <span class="hljs-literal">true</span>, 
+ <span class="hljs-attr">onLogout</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+  location.reload();
+ }
+});
+</code></pre>
+<p>Our paywall cannot know what the preview content of the video in question was, so location.reload in the onLogout event is used. After logging out, our Paywall removes the premium video, but since the paywall does not know what was on the page before the video was injected, a page reload brings that preview up after logging out.</p>
+<p>Here is the full embed code for custom preview functionality:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/javascript'</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://assets.inplayer.com/injector/staging/injector.js'</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">'stylesheet'</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'https://assets.inplayer.com/injector/staging/css/app.min.css'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text/css'</span> <span class="hljs-attr">media</span>=<span class="hljs-string">'all'</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"inplayer-ASSET_ID"</span>&gt;</span>
+// Your preview template code
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inplayer-paywall-ASSET_ID"</span>&gt;</span>purchase video<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="actionscript">
+inplayer.inject(ASSET_ID, MERCHANT_UUID, {
+ noPreview: <span class="hljs-literal">true</span>, 
+ onLogout: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span></span>{
+  location.reload();
+ }
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/paywall2"><span class="arrow-prev">← </span><span>Paywall 2.0</span></a><a class="docs-next button" href="/docs/jssdk"><span class="function-name-prevnext">SDK for JavaScript</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#standard-embed-code">Standard embed code</a></li><li><a href="#embed-code-options">Embed code Options</a></li><li><a href="#optional-settings">Optional Settings</a></li><li><a href="#optional-events">Optional Events</a></li><li><a href="#using-custom-preview">Using Custom Preview</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/inplayer-logo.png" alt="Inplayer docs" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/paywall2.html">Paywall 2.0</a><a href="/docs/paywall1.html">Paywall 1.0</a><a href="/docs/api.html">API Reference</a><a href="/docs/webhooks.html">Webhooks</a><a href="/docs/jssdk.html">JS SDK</a></div><div><h5>Social</h5><a href="https://www.instagram.com/inplayer.team">Instagram</a><a href="https://www.facebook.com/inplayer" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://twitter.com/inplayer" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/inplayer-org">GitHub</a></div></section><section class="copyright">Copyright © 2018 InPlayer Limited</section></footer></div></body></html>

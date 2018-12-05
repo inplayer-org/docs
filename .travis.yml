@@ -18,3 +18,5 @@ cache:
   yarn: true
 script:
   - cd website && yarn install && yarn run build 
+  - aws s3 sync ./build/docs s3://developers.inplayer.com --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+  - aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths /*
