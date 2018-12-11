@@ -17,6 +17,9 @@
       "doc5": {
         "title": "Fifth Document"
       },
+      "guides": {
+        "title": "In-app Purchases"
+      },
       "jssdk": {
         "title": "SDK for JavaScript"
       },
@@ -40,13 +43,14 @@
       "Docs": "Docs",
       "GitHub": "GitHub",
       "Security": "Security",
-      "Contact": "Contact"
+      "Contact": "Contact",
+      "Guides": "Guides"
     },
     "categories": {
       "Libraries": "Libraries",
       "API": "API",
-      "Dashboard": "Dashboard",
-      "Web-Hooks": "Web-Hooks"
+      "Web-Hooks": "Web-Hooks",
+      "Tutorials and Guides": "Tutorials and Guides"
     }
   },
   "pages-strings": {

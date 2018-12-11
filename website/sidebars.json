@@ -2,7 +2,10 @@
   "docs": {
     "Libraries": ["libraries", "paywall2", "paywall1", "jssdk"],
     "API": ["api"],
-    "Dashboard": ["dashboard"],
-    "Web-Hooks": ["webhooks"]
-    }
+    "Web-Hooks": ["webhooks"],
+    "Tutorials and Guides": ["guides"]
+    },
+  "guides": {
+      "Tutorials and Guides": ["guides"]
+  }
 }
