@@ -83,28 +83,28 @@ class HomeSplash extends React.Component {
             </a>
             <a href={docUrl('paywall2.html', language)}>
             <div className="feature-block">
-            <img src={'img/plat-paywall.svg'} alt={'api'} title={'api'} /> 
+            <img src={'img/plat-paywall.svg'} alt={'paywall'} title={'paywall'} /> 
             Paywall
             </div>
             </a>
 
-            <a href={docUrl('jssdk.html', language)}>
+            <a href={docUrl('webhooks.html', language)}>
             <div className="feature-block">
-            <img src={'img/plat-partners.svg'} alt={'api'} title={'api'} /> 
+            <img src={'img/plat-partners.svg'} alt={'webhooks'} title={'webhooks'} /> 
             Webhooks
             </div>
             </a>
 
-            <a href={docUrl('jssdk.html', language)}>
+            <a href={''}>
             <div className="feature-block">
-            <img src={'img/plat-dashboard.svg'} alt={'api'} title={'api'} /> 
+            <img src={'img/plat-dashboard.svg'} alt={'dashboard'} title={'dashboard'} /> 
             Dashboard
             </div>
             </a>
 
             <a href={docUrl('jssdk.html', language)}>
             <div className="feature-block">
-            <img src={'img/plat-docs.svg'} alt={'api'} title={'api'} /> 
+            <img src={'img/plat-docs.svg'} alt={'jssdk'} title={'jssdk'} /> 
             JavaScript SDK
             </div>
             </a>
