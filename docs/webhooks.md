@@ -18,7 +18,7 @@ Webhooks can be installed on a merchant account by setting up Web-hook URL and s
 When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events.
 
 | Name        | Description           |
-| ------------- |:-------------:|
+| ------------- |-------------|
 | *     | Any time any event is triggered (Wildcard Event). |
 | external.payment.success	      | External payment sale operation succeeded |
 | external.payment.failed	 | External payment sale operation failed |
@@ -53,7 +53,7 @@ Each event type has a specific payload format with the relevant event informatio
 HTTP Post requests that are sent to your Webhook URL will have several headers. Among the standard HTTP headers you can find the custom inplayer signature header. You will use signature to validate the event as described in the validating events section.
 
 | Header        | Description           |
-| ------------- |:-------------:|
+| ------------- |-------------|
 | X-InPlayer-Signature	| Inplayer signature hash. Using the signature you can validate the event request |
 
 ### Payload data
@@ -61,7 +61,7 @@ HTTP Post requests that are sent to your Webhook URL will have several headers. 
 You can find all relevant info about the event inside the Payload data. In the data of all events you can find the following structure:
 
 | Data        | Description           |
-| ------------- |:-------------:|
+| ------------- |-------------|
 | id	| Unique alpha-numeric string that is generated for each sent event. |
 | created | Unix timestamp of the event |
 | type | The actual event type |

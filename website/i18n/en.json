@@ -26,6 +26,9 @@
       "libraries": {
         "title": "Libraries Overview"
       },
+      "notifications": {
+        "title": "Notifications Overview"
+      },
       "paywall1": {
         "title": "Paywall 1.0"
       },
@@ -41,15 +44,16 @@
     },
     "links": {
       "Docs": "Docs",
+      "Guides": "Guides",
       "GitHub": "GitHub",
       "Security": "Security",
-      "Contact": "Contact",
-      "Guides": "Guides"
+      "Contact": "Contact"
     },
     "categories": {
       "Libraries": "Libraries",
       "API": "API",
       "Web-Hooks": "Web-Hooks",
+      "Client Notifications": "Client Notifications",
       "Tutorials and Guides": "Tutorials and Guides"
     }
   },

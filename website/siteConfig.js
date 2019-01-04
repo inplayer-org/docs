@@ -43,7 +43,6 @@ const siteConfig = {
     {href: 'https://github.com/inplayer-org', label: 'GitHub'},
     {page: 'docs/security', label: 'Security'},
     {page: 'docs/contact', label: 'Contact'}
-
   ],
 
   // If you have users set above, you add it here:

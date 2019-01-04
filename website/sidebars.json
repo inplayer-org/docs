@@ -3,7 +3,7 @@
     "Libraries": ["libraries", "paywall2", "paywall1", "jssdk"],
     "API": ["api"],
     "Web-Hooks": ["webhooks"],
-    "Tutorials and Guides": ["guides"]
+    "Client Notifications": ["notifications"]
     },
   "guides": {
       "Tutorials and Guides": ["guides"]
