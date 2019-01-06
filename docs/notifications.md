@@ -104,6 +104,7 @@ Example Structure:
         code: 422,
         explain: {422: "Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."},
         message: "Failed to create a subscription"
+    }
 }
 ```
 
