@@ -70,17 +70,17 @@ You can find all relevant info about the event inside the Payload data. In the d
 
 ```json
 {
-“id”: “WHE-Vfl9Pcrm6PEA7fjq”,
-“created”: 1478972478,
-“type”: “subscribe.success”,
-“version”: “1.8.0”,
-“resource”: {
-“subscription”: “SUB-kZAxmHoUHcHlz3DdYJDYyXI3”,
-“description”: “Subscription for asset (1 month subscription)”,
-“email”: “customer@example.com”,
-“code”: “200”,
-“status”: “success”,
-“timestamp”: “1478972478”
+    "id": "WHE-Vfl9Pcrm6PEA7fjq",
+    "created": 1478972478,
+    "type": "subscribe.success",
+    "version": "1.8.0",
+    "resource": {
+    "subscription": "SUB-kZAxmHoUHcHlz3DdYJDYyXI3",
+    "description": "Subscription for asset (1 month subscription)",
+    "email": "customer@example.com",
+    "code": "200",
+    "status": "success",
+    "timestamp": "1478972478"
 }
 ```
 
@@ -104,17 +104,17 @@ Here is a PHP example of validating an event using signature comparison method.
 $entityBody = file_get_contents(‘php://input’);
 function verifySignature($body, $token)
 {
-$sig = “sha256=” . hash_hmac(“sha256”, $body, $token);
-return hash_equals($_SERVER[“HTTP_X_INPLAYER_SIGNATURE”], $sig);
+$sig = "sha256=" . hash_hmac("sha256", $body, $token);
+return hash_equals($_SERVER["HTTP_X_INPLAYER_SIGNATURE"], $sig);
 }
-var_dump(verifySignature($entityBody, “secret”));
+var_dump(verifySignature($entityBody, "secret"));
 ```
 
 You can implement the validation in any backend programming language. However, all implementations should have the following two things in common:
 
 1. No matter which implementation you use, the hash signature starts with sha256=, using the key of your secret token and your payload body.
 
-2. Using a plain == operator is not advised. A method like hash_equals performs a “constant time” string comparison, which renders it safe from certain timing attacks against regular equality operators.
+2. Using a plain == operator is not advised. A method like hash_equals performs a "constant time" string comparison, which renders it safe from certain timing attacks against regular equality operators.
 
 
 

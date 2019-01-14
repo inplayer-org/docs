@@ -19,9 +19,11 @@ The following notification types can be sent and recieved in the InPlayer platfo
 
 ### Payments 
 
+The Payments notifications are fired on single payment events. They can serve to notify the client application of successful or not successful one time payment.
+
 |Event Type| Event Description|
 | ------------- |-------------|
-|**payment.card.success**| This event is fired each time successful one time payment is made|
+|``payment.card.success``| This event is fired each time successful one time payment is made|
 
 Example Structure:
 ```javascript 
@@ -46,7 +48,7 @@ Example Structure:
 <br >
 |Event Type| Event Description|
 | ------------- |-------------|
-|**payment.card.failed**| This event is fired when one time payment is not successful|
+|``payment.card.failed``| This event is fired when one time payment is not successful|
 
 Example Structure:
 ```javascript
@@ -63,9 +65,11 @@ Example Structure:
 
 ### Subscriptions
 
+The Subscription notifications are similar to the Payment ones, but they are only fired when recurring subscription payment happens. It servers to notify the application about the outcome of subscription payments.  
+
 |Event Type| Event Description|
 | ------------- |-------------|
-|**subscribe.success**| This event is fired when successful recurring subscription is made|
+|``subscribe.success``| This event is fired when successful recurring subscription is made|
 
 Example Structure:
 ```javascript 
@@ -92,7 +96,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**subscribe.failed**| This event is fired when recuring subscription is not successful|
+|``subscribe.failed``| This event is fired when recuring subscription is not successful|
 
 Example Structure:
 ```javascript
@@ -112,7 +116,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**access.granted**| This event is fired when it is granted access to a customer for some asset. This happens always after successful payment as well|
+|``access.granted``| This event is fired when it is granted access to a customer for some asset. This happens always after successful payment as well|
 
 Example Structure:
 ```javascript 
@@ -160,7 +164,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**access.revoked**| This event is fired when customer loses access for some Asset. It can be either naturaly expired or manualy revoked|
+|``access.revoked``| This event is fired when customer loses access for some Asset. It can be either naturaly expired or manualy revoked|
 
 Example Structure:
 ```javascript
@@ -177,7 +181,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**account.logout**| This event is fired when the customer is logged out due to some reason. Mostly it is used when max concurent sessions are reached so the first session has to be logged out|
+|``account.logout``| This event is fired when the customer is logged out due to some reason. Mostly it is used when max concurent sessions are reached so the first session has to be logged out|
 
 Example Structure:
 ```javascript
@@ -191,7 +195,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**account.erased**| This event is fired when the customer has erased his account or InPlayer Admin has invoked that operation|
+|``account.erased``| This event is fired when the customer has erased his account or InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript
@@ -205,7 +209,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|**account.deactivated**| This event is fired when the customer has deactivated his account or InPlayer Admin has invoked that operation|
+|``account.deactivated``| This event is fired when the customer has deactivated his account or InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript

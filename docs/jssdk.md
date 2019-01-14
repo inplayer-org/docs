@@ -21,7 +21,7 @@ https://www.npmjs.com/package/@inplayer-org/inplayer.js
 
 To use the SDK you can instal the package direcly from NPM
 
-```js
+```bash
 npm install –save @inplayer-org/inplayer.js
 ```
 
@@ -31,8 +31,8 @@ Once the SDK is installed, all the methods will be abailable for you in the InPl
 
 All the calls return a promise with some relevant data. Meaning after any call you will have to resolve the promise:
 
-```js
-.then(data=>{//do something with data})
+```javascript
+.then(data=>{ /* do something with data */ })
 ```
 
 Curently there are two different environments for the SDK, development and production. You can swap between these environments using the setConfig method:
@@ -50,7 +50,7 @@ In the following section you can find multiple how to examples about doing speci
 
 The registration can be done using the InPlayer.Account.signUp() method.
 
-```js
+```javascript
 InPlayer.Account.signUp({
     fullName: 'test',
     email:  'test32@test.com',
@@ -79,7 +79,7 @@ Lastly, the referrer parameter can be passed manualy for every register request.
 
 The authentication can be done using the InPlayer.Account.authenticate() method.
 
-```js
+```javascript
 InPlayer.Account.authenticate({
     email: 'test32@test.com',
     password: '12345678',
@@ -93,8 +93,8 @@ If you need to make additional calls in the name of the authenticated Account yo
 
 For the Account sign out operation use the following call
 
-```js
-InPlayer.Account.signOut() .then(data => console.log(data));
+```javascript
+InPlayer.Account.signOut().then(data => console.log(data));
 ```
 
 ## Websockets
@@ -111,11 +111,11 @@ You need to register for a Web-Socket in the following cases:
 
 Here is a sample code that will let you subscribe to a Web Socket and listen for messages.
 
-```js
+```javascript
 InPlayer.subscribe(InPlayer.Account.token(),{
-onMessage: function(message) { /* do something with the message result */ },
-onOpen: function(e) { /* do something on connection open },
-onClose: function(e) { /* do something on connection close*/ }
+    onMessage: function(message) { /* do something with the message result */ },
+    onOpen: function(e) { /* do something on connection open */ },
+    onClose: function(e) { /* do something on connection close */ }
 });
 ```
 
@@ -125,14 +125,13 @@ Basic use case is to have 'redirect to premium section' handler after successful
 
 For example:
 
-```js
-InPlayer.subscribe(InPlayer.Account.token(),
-{
-onMessage: function(message) {
-if(message.type==='payment.success') {
-window.location.href='http://mywebsite.com/premium-section' /*
-}
-}
+```javascript
+InPlayer.subscribe(InPlayer.Account.token(), {
+    onMessage: function(message) {
+        if(message.type==='payment.success') {
+            window.location.href='http://mywebsite.com/premium-section' 
+        }
+    }
 });
 ```
 
@@ -140,10 +139,8 @@ window.location.href='http://mywebsite.com/premium-section' /*
 
 If you need to make a payment first you will need to find and fetch the prefered payment method from the Account input. In order to do that you need to call getPaymentMethods with the merchant_uuid identifier for the merchant account.
 
-```js
-InPlayer.Payment
-.getPaymentMethods(MERCHANT_UUID)
-.then(data => console.log(data));
+```javascript
+InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
 ```
 
 Once you fetch the ID of the prefered method you can use it to create payments or subscriptions. If you use only one payment method this step is not needed but you should find your method ID once.
@@ -160,10 +157,9 @@ After you fetch all AccessFees for your digital Asset(One asset id can represent
 
 ## Creating one time card payments
 
-```js
+```javascript
 InPlayer.Payment
-.Create(MERCHANT_UUID,
-{
+.Create(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -179,10 +175,9 @@ InPlayer.Payment
 
 ## Creating card recuring subscriptions
 
-```js
+```javascript
 InPlayer.Subscription
-.Create(MERCHANT_UUID,
-{
+.Create(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -200,13 +195,13 @@ InPlayer.Subscription
 
 To make PayPal payments you will need additional call to fetch the payment details.
 
-```js
+```javascript
 InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
     origin: window.location.href,
     accessFee: ACCESS_FEE_ID,
     paymentMethod: 2,
     voucherCode: 'some voucher code here' (not mandatory)
-}).then(data => { // handle paypal data here }
+}).then(data => { /* handle paypal data here */ }
 ```
 
 After the call is successful you will get the nessesary PayPal data for the external payment. In the response you will have the endpoint url, which will be either sandbox paypal for development, or standard paypal url for production mode. Use the data.endpoint value to make a redurect link to PayPal and create your PayPal button.
@@ -215,10 +210,11 @@ After the call is successful you will get the nessesary PayPal data for the exte
 
 When you need to check if some Account has access to watch some Asset you will need to fetch the Authorisation token of the logged in Account and call the checkAccessForAsset method with your asset ID.
 
-```js
+```javascript
 InPlayer.Asset
 .checkAccessForAsset(InPlayer.Account.token(),ASSET_ID)
-.then(data => console.log(data));
+.then(data => console.log(data))
+.catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
 As a response you will recieve an object with full info about the Asset Access. This way you can keep the non premium viewers away from the premium content.
@@ -234,7 +230,8 @@ By passing the authorisation token you can fetch all Account details using the g
 ```js
 InPlayer.Account
 .getAccountInfo(InPlayer.Account.token())
-.then(data => console.log(data));
+.then(data => console.log(data))
+.catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
 ## Update Account details
@@ -242,7 +239,8 @@ InPlayer.Account
 ```js
 InPlayer.Account
 .updateAccount({fullName: 'John Doe', metadata: {country: 'Example Country'}},InPlayer.Account.token())
-.then(data => console.log(data));
+.then(data => console.log(data))
+.catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
 
