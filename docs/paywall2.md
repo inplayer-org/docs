@@ -102,7 +102,7 @@ var paywall = new InplayerPaywall(MERCHANT_UUID,
 </script>
 ```
 
-Here is a list of all Paywall options, per asset and global ones:
+Here is a list of all the Paywall options, per asset and global ones:
 
 ## Custom player options
 
