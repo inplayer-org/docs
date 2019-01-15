@@ -43,7 +43,7 @@ var paywall = new InplayerPaywall(MERCHANT_UUID,
 
 ## Multiple assets embed code
 
-The Paywall 2.0 support multiple assets embed code. In case multiple assets are needed, they just need to be included in the JavaScript code as an array. The position of the html elements where the assets will be rendered is not important. In addition there is full html example of multiple assets embed code in action.
+The Paywall 2.0 supports multiple assets embed code. In case multiple assets are needed, they just need to be included in the JavaScript code as an array. The position of the html elements where the assets will be rendered is not important. In addition there is full html example of multiple assets embed code in action.
 
 ```html
 <script type='text/javascript' src='https://assets.inplayer.com/paywall/staging/paywall.min.js'></script>
