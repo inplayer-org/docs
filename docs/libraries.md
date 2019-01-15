@@ -19,7 +19,7 @@ The Paywall 1.0 is the first version of the InPlayer embedable UI Library. It is
 
 ## SDK for Javascript
 
-The Javascript SDK is lower level library that can be used to develop custom web based premium content solutions. While the Paywall is embedabele UI library and has its own restrictions, the SDK is more flexible way for development. It covers each Paywall functionality in user frienly methods. 
+The Javascript SDK is lower level library that can be used to develop custom web based premium content solutions. While the Paywall is embedabele UI library and has its own restrictions, the SDK is more flexible way for development. It covers each Paywall functionality in user friendly methods. 
 
 [SDK for JavaScript](jssdk.md)
 
