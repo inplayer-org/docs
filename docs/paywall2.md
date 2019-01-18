@@ -27,7 +27,7 @@ var paywall = new InplayerPaywall(MERCHANT_UUID, [{ id: ASSET_ID}]);
 If dealing with an OVP asset type, the embed code can be constructed having provided the original Video ID from the external OVP source. The format for embedded external asset ID is the following:
 
 ```html
-<div id="inplayer-OVP_VIDEO_ID"></div>
+<div id="inplayer-OVP_NAME-OVP_VIDEO_ID"></div>
 <script type="text/javascript">
 var paywall = new InplayerPaywall(MERCHANT_UUID,
      [
