@@ -3,7 +3,7 @@ id: paywall2
 title: Paywall 2.0
 ---
 
-The Paywall 2.0 is the latest InPlayer's content monetization application, featuring multiple changes and improvements over its preceding version. The paywall retains its purpose of providing you with an embed code for each asset created on our platform, can be found at the same place of the first paywall application, so you can insert them to your website and ease the accessibility for your end-users. 
+Paywall 2.0 is the latest InPlayer’s content monetization application, featuring multiple changes and improvements over its preceding version. The paywall retains its purpose of providing you with an embed code for each asset created on our platform, so you can insert them to your website and ease the accessibility for your end-users. 
 The Paywall 2.0 embed code can be found at the same place where it used to reside at Paywall 1.0, i.e. at the asset section. In addition, there are two different tabs that enable the embed code generator to switch between both Paywall versions.
 
 ## Standard Embed Code
@@ -44,7 +44,7 @@ var paywall = new InplayerPaywall(MERCHANT_UUID,
 
 ## Multiple Assets Embed Code
 
-The Paywall 2.0 also supports multiple assets embed code. To embed multiple assets, you should include them in the JavaScript code as an array. The position of the html elements where the assets would be rendered is not important. Bellow, you can find an example of multiple assets embed code in action.
+The Paywall 2.0 also supports multiple assets embed code. To embed multiple assets, you should include them in the JavaScript code as an array. The order of the html elements where the assets would be rendered is not important. Bellow, you can find an example of multiple assets embed code in action.
 
 ```html
 <script type='text/javascript' src='https://assets.inplayer.com/paywall/staging/paywall.min.js'></script>
@@ -241,16 +241,17 @@ Usage example:
 
 ## Standalone Functionalities
 
-The InPlayer Paywall supports standalone functionalities for several purposes: login/logout button functionality, as well as accessing the 'my account' section of the paywall application.
+The InPlayer paywall also supports standalone functionalities involving the login/logout button functionality, as well as accessing the ‘my account’ section of the paywall application.
 
-Although you may use the paywall JavaScipt methods to invoke some functionality or certain paywall screens, there is an implementation with adding HTML classes to elements on the page. Here is the list of HTML classes that can be used to create each standalone functionality.
+Although you may use the paywall's JavaScript methods to invoke some of the functionalities or certain paywall screens, you can achieve the same functionalities by adding HTML classes to the elements on the page. 
+Here is the list of HTML classes that can be used For creating each of the standalone functionalities: 
 
 | HTML class	|   Description |
 | inplayer-paywall-login	| Invokes the login screen of the paywall |
 | inplayer-paywall-logout	| Invokes the logout action  |
-| inplayer-paywall-account	 | Invokes the my account screen of the logged in user |
+| inplayer-paywall-account	 | Invokes the 'my account' screen of the logged in user |
 
-The advantage of using these classes is that they come with built in logic for displaying and hiding the elements depending on whether the user is authenticated or not. For example, the HTML element with the inplayer-paywall-logout class, will be shown only when the user is authenticated.
+The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the inplayer-paywall-logout class, will only be shown when the user is authenticated.
 
 ## Custom Asset Preview
 
