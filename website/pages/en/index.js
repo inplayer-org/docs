@@ -95,13 +95,6 @@ class HomeSplash extends React.Component {
             </div>
             </a>
 
-            <a href={''}>
-            <div className="feature-block">
-            <img src={'img/plat-dashboard.svg'} alt={'dashboard'} title={'dashboard'} /> 
-            Dashboard
-            </div>
-            </a>
-
             <a href={docUrl('jssdk.html', language)}>
             <div className="feature-block">
             <img src={'img/plat-docs.svg'} alt={'jssdk'} title={'jssdk'} /> 

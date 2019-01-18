@@ -11,39 +11,6 @@ Web hooks are usually used to update or create platform action/operation tracker
 
 Webhooks can be installed on a merchant account by setting up Web-hook URL and select specific events that you will like to receive. The Webhooks options and setup details are located in InPlayer dashboard under API Settings in the top right corner menu.
 
-![alt text](https://inplayer.com/wp-content/uploads/2018/05/api-settings-1024x452.jpg "Logo Title Text 1")
-
-## Events
-
-When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events.
-
-| Name        | Description           |
-| ------------- |-------------|
-| *     | Any time any event is triggered (Wildcard Event). |
-| external.payment.success	      | External payment sale operation succeeded |
-| external.payment.failed	 | External payment sale operation failed |
-| external.subscribe.success    |  External subscription succeeded  |
-| external.subscribe.failed	|External subscription failed |
-| external.subscribe.update.success	| External subscription update succeeded |
-| external.subscribe.update.failed	 |  External subscription update failed | 
-| external.subscribe.cancel.success	 | External subscription cancellation succeeded |
-| external.subscribe.cancel.failed	 | External subscription cancellation failed |
-| external.payment.refund.success | External payment refund operation succeeded | 
-| external.payment.refund.failed | External payment refund operation failed |
-| subscribe.success	| Billing subscription created | 
-| subscribe.cancelled.success | Billing subscription cancelled |
-| subscribe.failed	| Billing subscription failed |
-| subscribe.cancelled.failed | Billing subscription cancellation failed |
-| subscribe.expired	| Billing subscription expired |
-| subscribe.updated	| Billing subscription updated |
-| freemium.grant.success | Free asset access was given |
-| freemium.grant.failed	 | Free asset access failed |
-| payment.card.success	 | Payment sale with card succeeded |
-| payment.card.failed | Payment sale with card failed |
-| payment.refund.success | Payment asset refunded | 
-| payment.refund.failed	| Payment asset refund failed |
-
-
 ## Payloads
 
 Each event type has a specific payload format with the relevant event information. InPlayer Webhooks payload has 2 main parts different by context: payload headers and payload data.
@@ -52,9 +19,24 @@ Each event type has a specific payload format with the relevant event informatio
 
 HTTP Post requests that are sent to your Webhook URL will have several headers. Among the standard HTTP headers you can find the custom inplayer signature header. You will use signature to validate the event as described in the validating events section.
 
-| Header        | Description           |
+| Header        | Value           |
 | ------------- |-------------|
-| X-InPlayer-Signature	| Inplayer signature hash. Using the signature you can validate the event request |
+| X-InPlayer-Signature	| Signature hash created from your secret key and the request payload, using the sha256 algorithm |
+|Content-Type |application/x-www-form-urlencoded |
+
+Another header we sent in the POST requests is `Content-Type: application/x-www-form-urlencoded` , which indicates the media type of the resource that we send to your server. The keys and values are encoded in key-value tuples separated by '&', with a '=' between the key and the value. Non-alphanumeric characters in both keys and values are percent encoded. Here is an example request:
+
+```
+POST / HTTP/1.1
+Host: foo.com
+User-Agent: InPlayer/WHS-2.0
+Content-Length: 460
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+X-Inplayer-Signature: sha256=93d44e3e8bddac4e1a4acd5e76108cfe564b62a29cf0224867c92204adae5147
+
+created=15475835&id=2333&resource%5Bfoo%5D=bar&type=payment.success
+```
 
 ### Payload data
 
@@ -62,26 +44,76 @@ You can find all relevant info about the event inside the Payload data. In the d
 
 | Data        | Description           |
 | ------------- |-------------|
-| id	| Unique alpha-numeric string that is generated for each sent event. |
+| id	| Unique alpha-numeric string that is generated for each sent event |
 | created | Unix timestamp of the event |
 | type | The actual event type |
-| version | The Webhooks service version |
-| resource | Array of all information connected to the resource/operation that you receive for each event. |
+| resource | Array of all information connected to the resource/operation that you receive for each event |
 
-```json
-{
-    "id": "WHE-Vfl9Pcrm6PEA7fjq",
-    "created": 1478972478,
-    "type": "subscribe.success",
-    "version": "1.8.0",
-    "resource": {
-    "subscription": "SUB-kZAxmHoUHcHlz3DdYJDYyXI3",
-    "description": "Subscription for asset (1 month subscription)",
-    "email": "customer@example.com",
-    "code": "200",
-    "status": "success",
-    "timestamp": "1478972478"
-}
+
+## Events
+
+When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events. In the following section you can find more details about each webhook event in the InPlayer platform along with example data.
+
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``customer.registered``| Fired each time new customer is registered |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[active]=false
+resource[completed]=true
+resource[created_at]=1547543324
+resource[email]="customer@inplayer.com"
+resource[full_name]="Customer Name"
+resource[id]=29237
+resource[merchant_id]=68
+resource[merchant_uuid]="c6f4002f-7415-4eb6-ab03-72b0f7aff0e8"
+resource[referrer]="https://event.inplayer.com/staging?asset=43861"
+resource[updated_at]=1547543324
+resource[username]="customer@inplayer.com"
+resource[uuid]="5948829d-15da-426b-ab91-6cc586953de2"
+type="customer.registered"
+```
+
+<br>
+| Type        | Description           |
+| ------------- |-------------|
+| ``asset.access.granted``| Fired each time new customer is registered |
+
+Example Payload Data:
+
+```javascript
+created=1547556321
+id="cdcbec0c-06b7-40ed-aefb-9da08c43ba92"
+resource[access_fee_id]=5146
+resource[consumer_email]="customer@inplayer.com"
+resource[consumer_id]=29238
+resource[created_at]=1547556321
+resource[date]="2019-01-15T12:45:21Z"
+resource[expires_at]=1547642721
+resource[extended]=0
+resource[is_trial]=false
+resource[item_access_id]=47487
+resource[item_id]=43861
+resource[item_title]="Sample Title"
+resource[merchant_id]=68
+resource[original_expires_at]=1547642721
+resource[parent_resource_id]="C-m8StiUz3XBZnDRPORWwqIkTfF-ST"
+resource[payment_method]="Card"
+resource[payment_tool]="Visa+1111"
+resource[purchased_access_fee_description]="sample price description"
+resource[purchased_access_fee_id]=5146
+resource[purchased_access_fee_type]="ppv"
+resource[purchased_amount]=3
+resource[purchased_currency_iso]="EUR"
+resource[revoked]=false
+resource[starts_at]=1545231639
+resource[type]="purchased"
+type="asset.access.granted"
 ```
 
 ## Securing Webhooks
@@ -102,11 +134,12 @@ Here is a PHP example of validating an event using signature comparison method.
 
 ```php
 $entityBody = file_get_contents(‘php://input’);
-function verifySignature($body, $token)
-{
-$sig = "sha256=" . hash_hmac("sha256", $body, $token);
-return hash_equals($_SERVER["HTTP_X_INPLAYER_SIGNATURE"], $sig);
+
+function verifySignature($body, $token) {
+    $sig = "sha256=" . hash_hmac("sha256", $body, $token);
+    return hash_equals($_SERVER["HTTP_X_INPLAYER_SIGNATURE"], $sig);
 }
+
 var_dump(verifySignature($entityBody, "secret"));
 ```
 
