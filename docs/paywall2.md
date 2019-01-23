@@ -157,7 +157,7 @@ The paywall instance has methods that can be used for accomplishing different fu
 Below follows a description of all the paywall methods:
 
 **'Set Language Method'**: 
-This method sets the language of the paywall interface. It is especially useful when there is a multilingual page for combining the language picker on the page to change the language of the paywall as well. In that way, the experience is much smoother for the end-user.
+This method sets the language of the paywall interface. It is especially useful when you have a page that supports multiple languages and by combining the language picker on the page, you can change the language of the paywall, as well. That way, the experience is much smoother for the end-user.
 
 For instance, to set the paywall language to Danish, the following implementation is needed:
 
@@ -247,6 +247,7 @@ Although you may use the Paywall's JavaScript methods to invoke some of the func
 Here is the list of HTML classes that can be used for creating each of the standalone functionalities: 
 
 | HTML class	|   Description |
+|--------------|---------------|
 | inplayer-paywall-login	| Invokes Paywall's login screen |
 | inplayer-paywall-logout	| Invokes the logout action  |
 | inplayer-paywall-account	 | Invokes the 'My Account' screen of the logged in user |
