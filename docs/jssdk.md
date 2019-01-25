@@ -5,17 +5,14 @@ title: SDK for JavaScript
 
 ## Full Technical Reference
 
-The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer Platform services. The JS SDK can be used for any frontend project.
+The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer Platform services. The JS SDK applies to  any frontend project.
 
-You can find the full technical reference of all the SDK methods, [here.](https://inplayer-org.github.io/inplayer.js/)
-
-However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
+You can find the full technical reference of all the SDK methods, [here.](https://inplayer-org.github.io/inplayer.js/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
 
 ## Installing the SDK
 
-You can find the InPlayer JS SDK on this [NPM url.](https://www.npmjs.com/package/@inplayer-org/inplayer.js)
+To find the InPlayer JS SDK refer to [NPM,](https://www.npmjs.com/package/@inplayer-org/inplayer.js) from where you can install the package, directly.
 
-To use the SDK, you can install the package directly from NPM:
 
 ```bash
 npm install –save @inplayer-org/inplayer.js
@@ -23,15 +20,13 @@ npm install –save @inplayer-org/inplayer.js
 
 ## Setting up the SDK
 
-Once the SDK is installed, all the methods will be available for you in the **InPlayer global object**.
-
-All the calls return a promise with some relevant data, which means that after each call, you will have to resolve the promise:
+Once the SDK is installed, you will find available all the methods in the **InPlayer global object**. All of the calls return a promise with relevant data, so after each call, you will have to resolve that promise: 
 
 ```javascript
 .then(data=>{ /* do something with data */ })
 ```
 
-Currently, there are two different environments for the SDK, **development** and **production**. You can swap between these environments using the **'setConfig'** method:
+Currently, there are two different environments for the SDK - **development** and **production**. You can switch between these environments using the **'setConfig'** method:
 
 ```js
 InPlayer.setConfig('develop'); // the default one
@@ -40,7 +35,7 @@ InPlayer.setConfig('prod'); // the production
 
 ## 'How to' Examples
 
-In the following section, you can find multiple 'how to' examples about doing specific functionalities within the InPlayer monetization platform.
+The following section enumerates multiple 'how to' examples about doing specific operations within the InPlayer Monetization Platform.
 
 ## How to Register an Account
 
@@ -61,19 +56,19 @@ InPlayer.Account.signUp({
 }).then(data => console.log(data));
 ```
 
-The **'fullName',** **'email',** **'password',** **'passwordConfirmation',** **'type',** and **'clientId'** parameters are always required.
+Among the parameters, **'fullName',** **'email',** **'password',** **'passwordConfirmation',** **'type',** and **'clientId'**  are always **required**.
 
-Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you don't have an OAUTH application, you can use your account **UUID** as 'clientId'. You can find your UUID in the account details section in the InPlayer Dashboard, in the top right-hand corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as **'clientId'**. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
-The type parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts over the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
+The **type** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
 
-There is also a **metadata** parameter, which can be additional dynamic fields that merchants can choose to ask from their end-accounts upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
+There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-accounts upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
 
-Lastly, the referrer parameter can be passed in manually for every register request. It represents the URL from which the request is invoked, or the place from where the account is created.
+Lastly, the referrer parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
 ## How to Authenticate an Account
 
-The authentication can be done using the **InPlayer.Account.authenticate()** method.
+Authentication can be achieved using the **InPlayer.Account.authenticate()** method.
 
 ```javascript
 InPlayer.Account.authenticate({
@@ -99,7 +94,7 @@ Once the customer is authenticated on our system, our SDK enables you to subscri
 
 ## How to Subscribe 
 
-Here is a sample code that will let you subscribe and listen for messages:
+Here is a sample code that enables you to subscribe and listen for messages:
 
 ```javascript
 InPlayer.subscribe(InPlayer.Account.token(),{
@@ -109,7 +104,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It is important to know that you will need to have a code that will process every different notification type when you receive notification message inside **OnMessage** callback.
+It is important to know that you will need a code that will process every different notification type when you receive notification message inside **OnMessage** callback.
 
 Basic use-case is to have **'redirect to premium section'** handler after successful payment notification message.
 
@@ -195,7 +190,7 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
 }).then(data => { /* handle paypal data here */ }
 ```
 
-After the call is successful, you will get the neccessary PayPal data for the external payment. In the response, you will have the endpoint url, which will be either a Sandbox PayPal for development, or a standard PayPal URL for production mode. Use the 'data.endpoint' value to make a redirect link to PayPal and create your PayPal button.
+After the call is successful, you will get the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for production mode. In order to make a redirect link to PayPal and create your PayPal button use the 'data.endpoint' value.
 
 ## How to Validate Content Access
 
@@ -212,7 +207,7 @@ As a response, you will recieve an object with full info about the asset access.
 
 ## How to Create the 'My Account' Menu
 
-When you need to create the account menu of the logged in person, you will need the following segments: account details, ability to update account details, account purchase history, account subscriptions and ability to cancel subscriptions.
+To create the 'My Account' menu for a logged in customer, you will need the following segments: account details, ability to update account details, account purchase history, account subscriptions and ability to cancel subscriptions.
 
 ## Fetching Account Details
 
