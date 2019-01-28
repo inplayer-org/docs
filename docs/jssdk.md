@@ -3,23 +3,16 @@ id: jssdk
 title: SDK for JavaScript
 ---
 
-## Full technical reference
+## Full Technical Reference
 
-You can have the full technical reference of all SDK methods at the following link.
+The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer Platform services. The JS SDK applies to  any frontend project.
 
-https://inplayer-org.github.io/inplayer.js/
-
-However we advice to read this tutorial before jumping into exploring the SDK.
-
-The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer Platform services. You can use the JS SDK for any frontend project.
+You can find the full technical reference of all the SDK methods, [here.](https://inplayer-org.github.io/inplayer.js/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
 
 ## Installing the SDK
 
-You can find the InPlayer JS SDK on the following NPM url:
+To find the InPlayer JS SDK refer to [NPM,](https://www.npmjs.com/package/@inplayer-org/inplayer.js) from where you can install the package, directly.
 
-https://www.npmjs.com/package/@inplayer-org/inplayer.js
-
-To use the SDK you can instal the package direcly from NPM
 
 ```bash
 npm install –save @inplayer-org/inplayer.js
@@ -27,28 +20,26 @@ npm install –save @inplayer-org/inplayer.js
 
 ## Setting up the SDK
 
-Once the SDK is installed, all the methods will be abailable for you in the InPlayer global object.
-
-All the calls return a promise with some relevant data. Meaning after any call you will have to resolve the promise:
+Once the SDK is installed, you will find available all the methods in the **InPlayer global object**. All of the calls return a promise with relevant data, so after each call, you will have to resolve that promise: 
 
 ```javascript
 .then(data=>{ /* do something with data */ })
 ```
 
-Curently there are two different environments for the SDK, development and production. You can swap between these environments using the setConfig method:
+Currently, there are two different environments for the SDK - **development** and **production**. You can switch between these environments using the **'setConfig'** method:
 
 ```js
 InPlayer.setConfig('develop'); // the default one
 InPlayer.setConfig('prod'); // the production
 ```
 
-## How to Examples
+## 'How to' Examples
 
-In the following section you can find multiple how to examples about doing specific functionalities with InPlayer monetization platform.
+The following section enumerates multiple 'how to' examples about doing specific operations within the InPlayer Monetization Platform.
 
-## How to register Account
+## How to Register an Account
 
-The registration can be done using the InPlayer.Account.signUp() method.
+The registration process can be carried out using the **'InPlayer.Account.signUp()'** method.
 
 ```javascript
 InPlayer.Account.signUp({
@@ -65,19 +56,19 @@ InPlayer.Account.signUp({
 }).then(data => console.log(data));
 ```
 
-The fullName, email, password, passwordConfirmation, type and clientId parameters are always required.
+Among the parameters, **'fullName',** **'email',** **'password',** **'passwordConfirmation',** **'type',** and **'clientId'**  are always **required**.
 
-Before you start using the inplayer SDK we sugest that you create new OAUTH application from our Dashboard as described in this guide LINK_FROM_GUIDE and obtain your clinetId. In case you dont have OAUTH application, you can use your account UUID as clientId. You can find your UUID in the account details section in the InPlayer Dashboard from the right top corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as **'clientId'**. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
-The type parametar can be either 'consumer' or 'merchant'. In case you want to create merchant accounts over the API you will have to use InPlayers public UUID for the clientId parameter.
+The **type** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
 
-There is also a metadata parametar, which can be aditional dynamic fields that Merchants can chose to ask from their end-Accounts upon registration. If there are required custom registration fields defined for your Merchant account, you will have to send those details as well. By default metadata is optional.
+There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-accounts upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
 
-Lastly, the referrer parameter can be passed manualy for every register request. It represents the URL from which the request is invoked, or the place from where the account is created.
+Lastly, the referrer parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
-## How to authenticate Account
+## How to Authenticate an Account
 
-The authentication can be done using the InPlayer.Account.authenticate() method.
+Authentication can be achieved using the **InPlayer.Account.authenticate()** method.
 
 ```javascript
 InPlayer.Account.authenticate({
@@ -87,29 +78,23 @@ InPlayer.Account.authenticate({
 }).then(data => console.log(data));
 ```
 
-After the account is logged in, you should be able to see an object containing InPlayer Auth token inside localStogare.
+After the account is logged in, you should be able to see an object containing **InPlayer auth token** inside **'localStogare'**.
 
-If you need to make additional calls in the name of the authenticated Account you can fetch the token with the InPlayer.Account.token() call. Additionally you may call InPlayer.Account.isSignedIn() to check if someone is logged in or not.
+If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the **'InPlayer.Account.token()'** call. Additionally, you may call **'InPlayer.Account.isSignedIn()'** to check if someone is logged in or not.
 
-For the Account sign out operation use the following call
+For the account sign out operation use the following call:
 
 ```javascript
 InPlayer.Account.signOut().then(data => console.log(data));
 ```
 
-## Websockets
+## Real-time Notifications
 
-One an account is logged in to our system, our Servers can communicate with the client website over Web Sockets for various reasons. In most of the cases when we need real time communication. Usualy we handle payment results or access expiring through such notifications.
+Once the customer is authenticated on our system, our SDK enables you to subscribe to listening to notifications via web-sockets. For a complete overview of our notification types, you can refer to this [page](https://developers.inplayer.com/docs/notifications/). 
 
-You need to register for a Web-Socket in the following cases:
+## How to Subscribe 
 
-1. Every time someone successfully signs in.
-2. Every time you validate logged in account. Usualy on each page refresh.
-3. Every time someone registers account and you auto login him using the access token direcly.
-
-## How to subscribe to web-socket and listen for messages
-
-Here is a sample code that will let you subscribe to a Web Socket and listen for messages.
+Here is a sample code that enables you to subscribe and listen for messages:
 
 ```javascript
 InPlayer.subscribe(InPlayer.Account.token(),{
@@ -119,9 +104,9 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It is importnat to know that you will need to have a code that will process every diffrent notification type, when you recieve notification message inside OnMessage callback.
+It is important to know that you will need a code that will process every different notification type when you receive notification message inside **OnMessage** callback.
 
-Basic use case is to have 'redirect to premium section' handler after successful payment notification message.
+Basic use-case is to have **'redirect to premium section'** handler after successful payment notification message.
 
 For example:
 
@@ -135,27 +120,28 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 });
 ```
 
-## How to create payments
+## How to Create Payments
 
-If you need to make a payment first you will need to find and fetch the prefered payment method from the Account input. In order to do that you need to call getPaymentMethods with the merchant_uuid identifier for the merchant account.
+If you need to make a payment, first, you will need to find and fetch the prefered payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **merchant_uuid identifier** for the merchant account.
 
 ```javascript
 InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
 ```
 
-Once you fetch the ID of the prefered method you can use it to create payments or subscriptions. If you use only one payment method this step is not needed but you should find your method ID once.
+Once you fetch the ID of the preferred method, you can use it to create payments or subscriptions. If you use only one payment method - this step is not needed, but you should find your method ID once.
 
-The next thing you will need is valid access fee. In the InPlayer platform you can create digital assets(mainly videos), then attach price with currency and access period to the asset to create access fees. AccessFee is an object that hold the data of how much the asset costs, and how long the Account will have access to it once its purchased for the given price. Before every payment all AccesFees(price options) should be presented to the end-Account so he can chose which is the best option for him. Once the end-Account select the AccessFee, you will need to send the AccessFeeId to the payments API.
+The next thing you will need is **valid access fee**. In the InPlayer Platform you can create digital assets (mainly videos), then attach price with currency and access period to the asset to create access fees. The **'AccessFee'** object holds data of how much the asset costs, and for how long the account will have access to it, once it is purchased for the given price. Before every payment all 
+**'AccesFees'** (price options) should be presented to the end-account so they can choose which is the best option for them. Once the end-account selects the 'AccessFee', you will need to send the **'AccessFeeId'** to the payments API.
 
-Given the paragraph from above the first step in making payments is to fetch all AccessFees for one Asset(digital item). If you want to know more about inPlayer Assets and how to create them and attach prices reffer to this guide. The JS SDK is client side library only so Assets and Prices management is done via our API or via the Dashboard.
+Given the paragraph above, the first step in making payments is to fetch all 'AccessFees' for one asset (digital item). If you want to know more about the InPlayer assets and how to create them and attach prices, refer to this guide. The JS SDK is a client-side library only, so assets and prices management is done via our API or via the Dashboard.
 
 ```js
 InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
 ```
 
-After you fetch all AccessFees for your digital Asset(One asset id can represent an OVP video, any file, html, audio or flexible collection) the end-Account should chose his prefered option. Then you will need to pass the selected AccessFeeId to the purchase calls. The methods for one time payments and recurring subscriptions are different. The AccessFee has its own type (Recurrent or PPV), so depending on the selected fee type you will make the following actions:
+After you fetch all 'AccessFees' for your digital asset (one asset ID can represent an OVP video, any file, html, audio or flexible collection), the end-account should choose their preferred option. Then you will need to pass in the selected 'AccessFeeId' to the purchase calls. The methods for one-time payments and recurring subscriptions are different. The 'AccessFee' has its own type (recurrent or PPV), so depending on the selected fee type you will make the following actions:
 
-## Creating one time card payments
+## Creating One-time Card Payments
 
 ```javascript
 InPlayer.Payment
@@ -173,7 +159,7 @@ InPlayer.Payment
 .then(data => console.log(data));
 ```
 
-## Creating card recuring subscriptions
+## Creating Recurring Card Subscriptions
 
 ```javascript
 InPlayer.Subscription
@@ -191,9 +177,9 @@ InPlayer.Subscription
 .then(data => console.log(data));
 ```
 
-## How to make paypal payments
+## How to Make PayPal Payments
 
-To make PayPal payments you will need additional call to fetch the payment details.
+To make PayPal payments you will need an additional call to fetch the payment details:
 
 ```javascript
 InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
@@ -204,11 +190,11 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
 }).then(data => { /* handle paypal data here */ }
 ```
 
-After the call is successful you will get the nessesary PayPal data for the external payment. In the response you will have the endpoint url, which will be either sandbox paypal for development, or standard paypal url for production mode. Use the data.endpoint value to make a redurect link to PayPal and create your PayPal button.
+After the call is successful, you will get the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for production mode. In order to make a redirect link to PayPal and create your PayPal button use the 'data.endpoint' value.
 
-## How to validate content access
+## How to Validate Content Access
 
-When you need to check if some Account has access to watch some Asset you will need to fetch the Authorisation token of the logged in Account and call the checkAccessForAsset method with your asset ID.
+When you need to check if some account has access to watch some asset, you will need to fetch the authorisation token of the logged in account, and call the **'checkAccessForAsset'** method with your asset ID.
 
 ```javascript
 InPlayer.Asset
@@ -217,15 +203,15 @@ InPlayer.Asset
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
-As a response you will recieve an object with full info about the Asset Access. This way you can keep the non premium viewers away from the premium content.
+As a response, you will recieve an object with full info about the asset access. This way, you can keep the non-premium viewers away from the premium content.
 
-## How to create 'My Account' menu
+## How to Create the 'My Account' Menu
 
-When you need to create the account menu of the logged in person you will need the following segments: Account details, ability to update account details, account purchase history, account subscriptions and ability to cancel subscriptions.
+To create the 'My Account' menu for a logged in customer, you will need the following segments: account details, ability to update account details, account purchase history, account subscriptions and ability to cancel subscriptions.
 
-## Fetch Account details
+## Fetching Account Details
 
-By passing the authorisation token you can fetch all Account details using the getAccountInfo method.
+By passing in the authorisation token, you can fetch all of the account details using the **getAccountInfo** method.
 
 ```js
 InPlayer.Account
@@ -234,7 +220,7 @@ InPlayer.Account
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
-## Update Account details
+## Updating the Account Details
 
 ```js
 InPlayer.Account
