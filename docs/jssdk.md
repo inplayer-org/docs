@@ -64,7 +64,7 @@ The **type** parameter can be either **'consumer'** or **'merchant'**. In case y
 
 There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-accounts upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
 
-Lastly, the referrer parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the **referrer** parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
 ## How to Authenticate an Account
 
@@ -78,7 +78,7 @@ InPlayer.Account.authenticate({
 }).then(data => console.log(data));
 ```
 
-After the account is logged in, you should be able to see an object containing **InPlayer auth token** inside **'localStogare'**.
+Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in **'localStogare'**.
 
 If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the **'InPlayer.Account.token()'** call. Additionally, you may call **'InPlayer.Account.isSignedIn()'** to check if someone is logged in or not.
 
@@ -94,7 +94,7 @@ Once the customer is authenticated on our system, our SDK enables you to subscri
 
 ## How to Subscribe 
 
-Here is a sample code that enables you to subscribe and listen for messages:
+In addition, consider the following sample code that enables you to subscribe and listen for messages:
 
 ```javascript
 InPlayer.subscribe(InPlayer.Account.token(),{
@@ -104,9 +104,9 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It is important to know that you will need a code that will process every different notification type when you receive notification message inside **OnMessage** callback.
+It should also be noted that you are going to need a code that processes every different notification type when you receive notification message in the **OnMessage** callback.
 
-Basic use-case is to have **'redirect to premium section'** handler after successful payment notification message.
+Our basic use-case here is to have **'redirect to premium section'** handler after 'successful payment' notification message.
 
 For example:
 
@@ -122,7 +122,7 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 
 ## How to Create Payments
 
-If you need to make a payment, first, you will need to find and fetch the prefered payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **merchant_uuid identifier** for the merchant account.
+If you need to make a payment, first, you will need to find and fetch the preferred payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **merchant_uuid identifier** for the merchant account.
 
 ```javascript
 InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
