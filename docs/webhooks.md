@@ -54,8 +54,14 @@ You can find all relevant info about the event inside the Payload data. In the d
 
 When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events. In the following section you can find more details about each webhook event in the InPlayer platform along with example data.
 
+### Accounts
 
-| Type        | Description           |
+Accounts webhooks are events that are fired when operations about our Accounts service ocurs. Usualy they are used to inform the merchant about the most important actions for his customers. 
+
+These are all of the Accounts webhooks.
+
+
+| Webhook Type        | Description           |
 | ------------- |-------------|
 | ``customer.registered``| Fired each time new customer is registered |
 

@@ -84,26 +84,43 @@ var paywall = new InplayerPaywall(MERCHANT_UUID,
 When the options are used as in the example above, they affect only the asset concerned. In case there are multiple assets with global paywall options set up for each asset in the embed code, the options should be passed in outside of the assets’ list in the following manner:
 
 ```html
-<div id="inplayer-ASSET_ID"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8', //merchant UUID
      [
       {
-         id: ASSET_ID
+         id: 123 //asset ID
       },
-     ],
-     //global options object
+     ], 
+     //asset options object
      {
        language: 'EN',
        hideUserMenu: true, 
        hideLogo: true,
        hideProtectedBy: true
-     }
+     } 
+     //global options object
 )
 </script>
 ```
 
 Here is a list of all the paywall options, those per asset and the global ones:
+
+| Name        | Description        | Format | Usage type  |
+| ------------- |-------------|-------------|------------|
+| accessFeeId | Pre-selects price of a specific access fee. Price option screen will be skipped | Number | Asset option |
+| noInject | If true, skips the premium content injection after successful payment | Boolean, true or false	| Asset option |
+| noPreview | If true, the asset preview will not be rendered. Used for custom preview | Boolean, true or false	| Asset option |
+| brandingId | Sets a specific branding theme for the asset (has highest priority) | Number | Asset option | 
+| language | Default language | Language code	| 	Global option |
+| hideUserMenu |  Hides the default menu of logged account | Boolean, true or false	 | Global option |
+| hideLogo | Hides the Paywall logo	| Boolean, true or false	| Global option |
+| footerLinks | Inserts external links in the Paywall footer | Json, ex. { text: “Google”, url: “https://www.google.com/” } | Global option |
+| hideFooterLinks | Hides the Footer links	| Boolean, true or false | Global option |
+| hideProtectedBy | Hides the protected by logo	 | Boolean, true or false | Global option | 
+| oauthAppKey	| Sets the OAuth application to be used for authentication | String | Global option |
+| brandingId | 	Sets global branding theme for all assets on a page | Number | Global option |
+
 
 ## Custom Player Options
 
@@ -161,10 +178,8 @@ This method sets the language of the paywall interface. It is especially useful 
 
 For instance, to set the paywall language to Danish, the following implementation is needed:
 
-```html
-<script>
+```javascript
     paywall.setLanguage('dk');
-</script>
 ```
 
 It is important to note that the language specified as method argument should be the short, two-letter code for the language.
@@ -172,8 +187,7 @@ It is important to note that the language specified as method argument should be
 **'Show Paywall Method'**:
 This method is a multi-functional method that provides the option to invoke the paywall application for different use-cases via a custom HTML element on the page. This method has the following structure (with all the argument options included):
 
-```js
-<script>
+```javascript
     paywall.showPaywall({
       asset: { 
         assetId: 42564, 
@@ -181,7 +195,6 @@ This method is a multi-functional method that provides the option to invoke the 
       }, 
       registerFirst: true 
     });
-</script>
 ```
 
 More specifically:
@@ -189,43 +202,35 @@ More specifically:
 **'assetId'** – is part of the asset object in the method argument and represents the ID of a specific InPlayer asset. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the price option screen, where all the prices added to the asset would be shown, allow the end-user to select one and proceed further with the payment flow. 
 Usage example:
 
-```html
-<script>
+```javascript
     paywall.showPaywall({asset: { assetId: 42564 }});
-</script>
 ```
 **'preselectedFeeId'** – is part of the asset object in the method argument and represents the ID of a specific price added to an InPlayer asset. It is always used together with the asset id where the price is added. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the end-user would be sent directly to the payment screen where the specified price would be set for purchase.
 
 Usage example:
 
-```html
-<script>
+```javascript
     paywall.showPaywall({
       asset: { 
         assetId: 42564, 
         preselectedFeeId: 4508 
       } 
     });
-</script>
 ```
 
 **'registerFirst'** – boolean parameter (true/false) that specifies whether the register or login screen of the paywall should be shown by default when the modal is open.
 Usage example:
 
-```html
-<script>
+```javascript
     paywall.showPaywall({ registerFirst: true });
-</script>
 ```
 
 The object argument for the **‘showPaywall’** method is optional. This means that the method can be invoked without arguments. With that way of usage, if the user is not authenticated, the login screen would appear, and after successful authentication the modal would be closed. Upon subsequent invoking of the method, with the user being logged in, the account screen will be shown.
 
 Usage example:
 
-```html
-<script>
+```javascript
     paywall.showPaywall();
-</script>
 ```
 
 **'Is Authenticated Method'**: 
@@ -234,9 +239,7 @@ This method is a boolean method that tells whether an end-user has been authenti
 Usage example:
 
 ```js
-<script>
     paywall.isAuthenticated();
-</script>
 ```
 
 ## Standalone Functionalities
