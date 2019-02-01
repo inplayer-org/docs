@@ -92,8 +92,6 @@ InPlayer.Account.signOut().then(data => console.log(data));
 
 Once the customer is authenticated on our system, our SDK enables you to subscribe to listening to notifications via web-sockets. For a complete overview of our notification types, you can refer to this [page](https://developers.inplayer.com/docs/notifications/). 
 
-## How to Subscribe 
-
 In addition, consider the following sample code that enables you to subscribe and listen for messages:
 
 ```javascript
