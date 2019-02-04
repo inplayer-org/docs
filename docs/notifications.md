@@ -15,9 +15,10 @@ Bellow are listed and exemplified the types of notifications that can be sent an
 
 The Payments' notifications are fired after every payment event, notifying the client's application of each successful or unsuccessful one-time payment.
 
+
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.success``| This event is fired each time successful one time payment is made|
+|``payment.card.success``| This event is fired after each successful one-time payment|
 
 Example Structure:
 ```javascript 
@@ -42,7 +43,7 @@ Example Structure:
 <br >
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.failed``| This event is fired when one time payment is not successful|
+|``payment.card.failed``| This event is fired after each unsuccessful one-time payment|
 
 Example Structure:
 ```javascript
@@ -63,7 +64,7 @@ The Subscription notifications are fired only when recurring subscription paymen
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.success``| This event is fired when successful recurring subscription is made|
+|``subscribe.success``| This event is fired after each successful recurring subscription|
 
 Example Structure:
 ```javascript 
@@ -90,7 +91,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.failed``| This event is fired when recuring subscription is not successful|
+|``subscribe.failed``| This event is fired after each unsuccessful recurring subscription|
 
 Example Structure:
 ```javascript
@@ -158,7 +159,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.revoked``| This event is fired when customer loses access for some Asset. It can be either naturaly expired or manualy revoked|
+|``access.revoked``| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked)|
 
 Example Structure:
 ```javascript
@@ -175,7 +176,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.logout``| This event is fired when the customer is logged out due to some reason. Mostly it is used when max concurent sessions are reached so the first session has to be logged out|
+|``account.logout``| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out|
 
 Example Structure:
 ```javascript
@@ -189,7 +190,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.erased``| This event is fired when the customer has erased his account or InPlayer Admin has invoked that operation|
+|``account.erased``| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript
@@ -203,7 +204,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.deactivated``| This event is fired when the customer has deactivated his account or InPlayer Admin has invoked that operation|
+|``account.deactivated``| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript
