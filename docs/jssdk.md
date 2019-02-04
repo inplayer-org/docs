@@ -62,9 +62,9 @@ Before you start using the Inplayer SDK, we suggest that you create a new **OAUT
 
 The **'type'** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
 
-There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-users upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
+There is also a **metadata** parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
-Lastly, the **'referrer'** parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the **referrer** parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
 ## How to Authenticate an Account
 
