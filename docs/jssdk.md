@@ -60,7 +60,7 @@ Among the parameters, **'fullName',** **'email',** **'password',** **'passwordCo
 
 Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as **'clientId'**. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
-The **type** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
+The **'type'** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
 
 There is also a **metadata** parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
@@ -104,7 +104,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It should also be noted that you are going to need a code that processes every different notification type when you receive notification message in the **OnMessage** callback.
+It should also be noted that you are going to need a code that processes every different notification type when you receive notification message in the **'OnMessage'** callback.
 
 Our basic use-case here is to have **'redirect to premium section'** handler after 'successful payment' notification message.
 
@@ -122,7 +122,7 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 
 ## How to Create Payments
 
-If you need to make a payment, first, you will need to find and fetch the preferred payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **merchant_uuid identifier** for the merchant account.
+If you need to make a payment, first, you will need to find and fetch the preferred payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **'merchant_uuid'** - identifier for the merchant account.
 
 ```javascript
 InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
