@@ -11,7 +11,7 @@ You can find the full technical reference of all the SDK methods, [here.](https:
 
 ## Installing the SDK
 
-To find the InPlayer JS SDK refer to [NPM,](https://www.npmjs.com/package/@inplayer-org/inplayer.js) from where you can install the package, directly.
+To find the InPlayer JS SDK refer to [NPM](https://www.npmjs.com/package/@inplayer-org/inplayer.js), from where you can install the package, directly.
 
 
 ```bash
@@ -35,7 +35,7 @@ InPlayer.setConfig('prod'); // the production
 
 ## 'How to' Examples
 
-The following section enumerates multiple 'how to' examples about doing specific operations within the InPlayer Monetization Platform.
+The following section enumerates multiple *'how to' examples* about doing specific operations within the InPlayer Monetization Platform.
 
 ## How to Register an Account
 
@@ -60,11 +60,11 @@ Among the parameters, **'fullName',** **'email',** **'password',** **'passwordCo
 
 Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as **'clientId'**. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
-The **type** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
+The **'type'** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
 
-There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-accounts upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
+There is also a **metadata** parameter, that can refer to additional dynamic fields that merchants can choose to ask from their end-users upon registration. If there are required custom registration fields defined for your merchant account, you will have to send those details as well. By default, the metadata is optional.
 
-Lastly, the **referrer** parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the **'referrer'** parameter can be passed in manually, for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
 ## How to Authenticate an Account
 
@@ -90,9 +90,8 @@ InPlayer.Account.signOut().then(data => console.log(data));
 
 ## Real-time Notifications
 
-Once the customer is authenticated on our system, our SDK enables you to subscribe to listening to notifications via WebSockets. For a complete overview of our notification types, you can refer to this [page](https://developers.inplayer.com/docs/notifications/). 
+Once the customer is authenticated in our system, our SDK enables you to subscribe to listening to notifications via WebSockets. For a complete overview of our notification types, you can refer to this [page](https://developers.inplayer.com/docs/notifications/). 
 
-## How to Subscribe 
 
 In addition, consider the following sample code that enables you to subscribe and listen for messages:
 
@@ -104,9 +103,9 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It should also be noted that you are going to need a code that processes every different notification type when you receive notification message in the **OnMessage** callback.
+It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the **OnMessage** callback.
 
-Our basic use-case here is to have **'redirect to premium section'** handler after 'successful payment' notification message.
+Our basic use-case here is to have a **'redirect to premium section'** handler after the 'successful payment' notification message.
 
 For example:
 
@@ -120,32 +119,32 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 });
 ```
 
+
 ## How to Create Payments
 
-If you need to make a payment, first, you will need to find and fetch the preferred payment method from the account input. In order to do so, you need to call **'getPaymentMethods'** with the **merchant_uuid identifier** for the merchant account.
+### Creating an Aceess Fee
 
-```javascript
-InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
-```
-
-Once you fetch the ID of the preferred method, you can use it to create payments or subscriptions. If you use only one payment method - this step is not needed, but you should find your method ID once.
-
-The next thing you will need is **valid access fee**. In the InPlayer Platform you can create digital assets (mainly videos), then attach price with currency and access period to the asset to create access fees. The **'AccessFee'** object holds data of how much the asset costs, and for how long the account will have access to it, once it is purchased for the given price. Before every payment all 
-**'AccesFees'** (price options) should be presented to the end-account so they can choose which is the best option for them. Once the end-account selects the 'AccessFee', you will need to send the **'AccessFeeId'** to the payments API.
-
-Given the paragraph above, the first step in making payments is to fetch all 'AccessFees' for one asset (digital item). If you want to know more about the InPlayer assets and how to create them and attach prices, refer to this guide. The JS SDK is a client-side library only, so assets and prices management is done via our API or via the Dashboard.
+The InPlayer Platform enables you to create digital assets to which afterwards you can attach **price** with **currency** and **access period**, in order to create **access fees**. **The 'AccessFee' resource** holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function bellow. 
 
 ```js
 InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
 ```
 
-After you fetch all 'AccessFees' for your digital asset (one asset ID can represent an OVP video, any file, html, audio or flexible collection), the end-account should choose their preferred option. Then you will need to pass in the selected 'AccessFeeId' to the purchase calls. The methods for one-time payments and recurring subscriptions are different. The 'AccessFee' has its own type (recurrent or PPV), so depending on the selected fee type you will make the following actions:
+After the end-user has chosen both the price option and the preferred payment method, depending on the access type, you can either invoke the function for creating one-time purchases (pay-per-view) or the one for subscription (recurring card payment). 
 
-## Creating One-time Card Payments
+### Creating Payments
+
+The InPlayer Platform supports two methods of carrying out payments – by **card** and by **PayPal**. In order to create payment, first you must find and fetch the preferred method. 
+
+```javascript
+InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
+```
+
+### Creating One-time Card Payments
 
 ```javascript
 InPlayer.Payment
-.Create(MERCHANT_UUID, {
+.create(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -159,11 +158,11 @@ InPlayer.Payment
 .then(data => console.log(data));
 ```
 
-## Creating Recurring Card Subscriptions
+### Creating Recurring Card Subscriptions
 
 ```javascript
 InPlayer.Subscription
-.Create(MERCHANT_UUID, {
+.create(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -177,7 +176,7 @@ InPlayer.Subscription
 .then(data => console.log(data));
 ```
 
-## How to Make PayPal Payments
+### Creating PayPal Payments
 
 To make PayPal payments you will need an additional call to fetch the payment details:
 
@@ -190,11 +189,11 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
 }).then(data => { /* handle paypal data here */ }
 ```
 
-After the call is successful, you will get the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for production mode. In order to make a redirect link to PayPal and create your PayPal button use the 'data.endpoint' value.
+After a successful call you will obtain the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for a production mode. In order to make a *redirect link to PayPal* and create your *PayPal button* use the **'data.endpoint'** value.
 
 ## How to Validate Content Access
 
-When you need to check if some account has access to watch some asset, you will need to fetch the authorisation token of the logged in account, and call the **'checkAccessForAsset'** method with your asset ID.
+In order to check whether a given account can access a certain asset, you should fetch the authorisation token of the logged in account and call the **'checkAccessForAsset'** method with your **asset ID**.
 
 ```javascript
 InPlayer.Asset
@@ -203,15 +202,15 @@ InPlayer.Asset
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
-As a response, you will recieve an object with full info about the asset access. This way, you can keep the non-premium viewers away from the premium content.
+As a response you will receive an object with detailed information about the asset access. This way, you can keep the non-premium viewers away from the premium content.
 
 ## How to Create the 'My Account' Menu
 
-To create the 'My Account' menu for a logged in customer, you will need the following segments: account details, ability to update account details, account purchase history, account subscriptions and ability to cancel subscriptions.
+To create the 'My Account' menu for a logged in customer, you need the following segments: **account details**, **ability to update account details**, **account purchase history**, **account subscriptions** and **ability to cancel subscriptions**.
 
-## Fetching Account Details
+### Fetching Account Details
 
-By passing in the authorisation token, you can fetch all of the account details using the **getAccountInfo** method.
+By passing in the authorisation token, you can fetch all the account details using the **getAccountInfo** method.
 
 ```js
 InPlayer.Account
@@ -220,7 +219,7 @@ InPlayer.Account
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
-## Updating the Account Details
+### Updating the Account Details
 
 ```js
 InPlayer.Account

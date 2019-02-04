@@ -3,27 +3,27 @@ id: notifications
 title: Notifications Overview
 ---
 
-Every time our backend services need to comunicate with the client applications at InPlayer we use notifications over Web-sockets. 
+Every time our backend services need to communicate with the client applications at InPlayer we use notifications over WebSockets. 
 
-Websocket is a communication protocol that provides communcation channels over a single TCP connection. Each event that happens in the InPlayer platfrom has its own notification that is sent over websocket.
+WebSocket is a communication protocol that provides communcation channels over a single TCP connection. Each event that happens in the InPlayer Platfrom has its own notification that is sent over WebSocket.
 
-In most of the cases a "Premium Content" project will be developed using some of the InPlayer libraries. In all of our libraries there is sepparate integration for this communication that can be used to open websocket, listen and catch client notifications. 
+In most of the cases a 'Premium Content' project will be developed using some of the InPlayer libraries. In all our libraries there is separate integration for this communication that can be used to open WebSocket, listen and catch client notifications. 
 
-You can find the websockets tutorial in each of the sepparate Libraries documentation in the Websockets section. 
+You can find the WebSockets tutorial in each of the sepparate Libraries documentation in the WebSockets' section. 
 
-In adition you can find all details about the Notification types and the payload data of all events that are sent through websockets. 
+In addition, you can find all details about the Notification types and the payload data of all events that are sent through WebSockets. 
 
 ## Notification Types
 
-The following notification types can be sent and recieved in the InPlayer platform.
+The following notification types can be sent and received in the InPlayer Platform.
 
 ### Payments 
 
-The Payments notifications are fired on single payment events. They can serve to notify the client application of successful or not successful one time payment.
+The Payments notifications are fired on single payment events. They can serve to notify the client application of successful or not successful one-time payment.
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.success``| This event is fired each time successful one time payment is made|
+|``payment.card.success``| This event is fired after each successful one-time payment|
 
 Example Structure:
 ```javascript 
@@ -48,7 +48,7 @@ Example Structure:
 <br >
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.failed``| This event is fired when one time payment is not successful|
+|``payment.card.failed``| This event is fired after each unsuccessful one-time payment|
 
 Example Structure:
 ```javascript
@@ -69,7 +69,7 @@ The Subscription notifications are similar to the Payment ones, but they are onl
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.success``| This event is fired when successful recurring subscription is made|
+|``subscribe.success``| This event is fired after each successful recurring subscription|
 
 Example Structure:
 ```javascript 
@@ -96,7 +96,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.failed``| This event is fired when recuring subscription is not successful|
+|``subscribe.failed``| This event is fired after each unsuccessful recurring subscription|
 
 Example Structure:
 ```javascript
@@ -116,7 +116,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.granted``| This event is fired when it is granted access to a customer for some asset. This happens always after successful payment as well|
+|``access.granted``| This event is fired after a customer has been granted access to an asset (this event also occurs after successful payment)|
 
 Example Structure:
 ```javascript 
@@ -164,7 +164,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.revoked``| This event is fired when customer loses access for some Asset. It can be either naturaly expired or manualy revoked|
+|``access.revoked``| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked)|
 
 Example Structure:
 ```javascript
@@ -181,7 +181,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.logout``| This event is fired when the customer is logged out due to some reason. Mostly it is used when max concurent sessions are reached so the first session has to be logged out|
+|``account.logout``| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out|
 
 Example Structure:
 ```javascript
@@ -195,7 +195,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.erased``| This event is fired when the customer has erased his account or InPlayer Admin has invoked that operation|
+|``account.erased``| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript
@@ -209,7 +209,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.deactivated``| This event is fired when the customer has deactivated his account or InPlayer Admin has invoked that operation|
+|``account.deactivated``| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation|
 
 Example Structure:
 ```javascript
