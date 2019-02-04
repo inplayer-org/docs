@@ -3,23 +3,18 @@ id: notifications
 title: Notifications Overview
 ---
 
-Every time our backend services need to communicate with the client applications at InPlayer we use notifications over WebSockets. 
+To enable a real-time bidirectional communication between our backend services and the client’s applications at InPlayer, we use **notifications** via **WebSockets**. WebSocket is a communication protocol that provides communication channels over a single TCP connection. For each event that occurs in the InPlayer Platform, there is a corresponding notification sent over the WebSocket. 
 
-WebSocket is a communication protocol that provides communcation channels over a single TCP connection. Each event that happens in the InPlayer Platfrom has its own notification that is sent over WebSocket.
-
-In most of the cases a 'Premium Content' project will be developed using some of the InPlayer libraries. In all our libraries there is separate integration for this communication that can be used to open WebSocket, listen and catch client notifications. 
-
-You can find the WebSockets tutorial in each of the sepparate Libraries documentation in the WebSockets' section. 
-
-In addition, you can find all details about the Notification types and the payload data of all events that are sent through WebSockets. 
+Each of our SDK libraries contains integration that enables a real-time communication by opening a WebSocket, listening to, and catching client’s notifications. For more information, refer to the tutorials in each of the separate Libraries documentation in the Real-Time Notifications section. 
 
 ## Notification Types
 
-The following notification types can be sent and received in the InPlayer Platform.
+Bellow are listed and exemplified the types of notifications that can be sent and received in the InPlayer Platform.
 
 ### Payments 
 
-The Payments notifications are fired on single payment events. They can serve to notify the client application of successful or not successful one-time payment.
+The Payments' notifications are fired after every payment event, notifying the client's application of each successful or unsuccessful one-time payment.
+
 
 |Event Type| Event Description|
 | ------------- |-------------|
@@ -59,13 +54,13 @@ Example Structure:
         access_fee_id: 4805,
         account_id: 29120,
         code: 422,
-        message: "Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."
+        message: "Your card was declined. Your request was in test mode but used a non-test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."
 }
 ```
 
 ### Subscriptions
 
-The Subscription notifications are similar to the Payment ones, but they are only fired when recurring subscription payment happens. It servers to notify the application about the outcome of subscription payments.  
+The Subscription notifications are fired only when recurring subscription payment takes place, notifying the client’s application of the outcome of the subscription payments.
 
 |Event Type| Event Description|
 | ------------- |-------------|
@@ -106,7 +101,7 @@ Example Structure:
     resource: {
         account_id: 106,
         code: 422,
-        explain: {422: "Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."},
+        explain: {422: "Your card was declined. Your request was in test mode but used a non-test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."},
         message: "Failed to create a subscription"
     }
 }
