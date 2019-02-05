@@ -5,19 +5,17 @@ title: InPlayer Webhooks
 
 ## Webhooks Overview
 
-With Webhooks you can build or setup Applications which are subscribed to certain events in the InPlayer platform. When such events get triggered, we will send a HTTP POST requests with specific payloads to the Webhook’s configured URL.
-
-Web hooks are usually used to update or create platform action/operation tracker, trigger marketing campaigns, sync data between platforms or to fetch results of operations in backend applications.
-
-Webhooks can be installed on a merchant account by setting up Web-hook URL and select specific events that you will like to receive. The Webhooks options and setup details are located in InPlayer dashboard under API Settings in the top right corner menu.
+Our Platform enables you to get automatically notified on certain events happening within the InPlayer Platform, by using webhooks. In other words, you can build or setup applications which are subscribed to certain events in our Platform. When these events are triggered, we send HTTP POST requests with specific payloads to the webhook’s configured URL.  
+The webhooks are usually used for updating or creating a platform action/operation tracker, for triggering marketing campaigns, for syncing data between platforms or for fetching results of operations in backend applications.  
+You can install webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you would like to be notified of. To find the setup details and other options regarding the webhooks, navigate to the InPlayer’s Dashboard, open the top right-hand corner menu and choose 'API'. 
 
 ## Payloads
 
-Each event type has a specific payload format with the relevant event information. InPlayer Webhooks payload has 2 main parts different by context: payload headers and payload data.
+Each event type has a specific payload format. The InPlayer webhooks’ payload has two main parts: payload headers and payload data. 
 
 ### Payload headers
 
-HTTP Post requests that are sent to your Webhook URL will have several headers. Among the standard HTTP headers you can find the custom inplayer signature header. You will use signature to validate the event as described in the validating events section.
+HTTP Post requests that are sent to your Webhook URL will have several headers. Among the standard HTTP headers you can find the custom InPlayer signature header. You will use signature to validate the event as described in the validating events section.
 
 | Header        | Value           |
 | ------------- |-------------|
@@ -40,7 +38,7 @@ created=15475835&id=2333&resource%5Bfoo%5D=bar&type=payment.success
 
 ### Payload data
 
-You can find all relevant info about the event inside the Payload data. In the data of all events you can find the following structure:
+You can find all the relevant info about the event inside the Payload data. In the data of all events you can find the following structure:
 
 | Data        | Description           |
 | ------------- |-------------|
@@ -52,11 +50,11 @@ You can find all relevant info about the event inside the Payload data. In the d
 
 ## Events
 
-When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events. In the following section you can find more details about each webhook event in the InPlayer platform along with example data.
+When configuring a Webhook, you can choose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events. In the following section you can find more details about each webhook event in the InPlayer platform along with example data.
 
 ### Accounts
 
-Accounts webhooks are events that are fired when operations about our Accounts service ocurs. Usualy they are used to inform the merchant about the most important actions for his customers. 
+Accounts webhooks are events that are fired when operations about our accounts service occurs. Usually, they are used to inform the merchant about the most important actions for his customers. 
 
 These are all of the Accounts webhooks.
 
@@ -134,7 +132,7 @@ Once you have generated secret, you can use it in your backend application to va
 
 Once your secret code is set up, InPlayer use it to generate a hash signature with each event. The hash signature is sent as a header with each request as X-InPlayer-Signature.
 
-When you recieve an event and you find the signature header, you should create a HASH using the same secret token and then compare your hash to InPlayer signature header value. If both have the same values you can take that as a validation prove that the event is sent from InPlayer.
+When you receive an event and you find the signature header, you should create a HASH using the same secret token and then compare your hash to InPlayer signature header value. If both have the same values, you can take that as a validation prove that the event is sent from InPlayer.
 
 Here is a PHP example of validating an event using signature comparison method.
 
