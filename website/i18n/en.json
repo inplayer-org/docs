@@ -5,6 +5,9 @@
     "previous": "Previous",
     "tagline": "Get familiar with the InPlayer platform tools and features.",
     "docs": {
+      "androidsdk": {
+        "title": "SDK for Android"
+      },
       "api": {
         "title": "InPlayer API documentation"
       },
@@ -19,6 +22,9 @@
       },
       "guides": {
         "title": "In-app Purchases"
+      },
+      "iossdk": {
+        "title": "SDK for IOS"
       },
       "jssdk": {
         "title": "SDK for JavaScript"

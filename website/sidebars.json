@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Libraries": ["libraries", "paywall2", "paywall1", "jssdk"],
+    "Libraries": ["libraries", "paywall2", "paywall1", "jssdk", "iossdk", "androidsdk"],
     "API": ["api"],
     "Web-Hooks": ["webhooks"],
     "Client Notifications": ["notifications"]

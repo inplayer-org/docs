@@ -16,14 +16,10 @@
 }
 
 .navGroups {
-    background:#f0f0f0;
+    background:#F0F3F6;
     padding:10px!important;
-}
-
-.navGroupCategoryTitle {
-    color: #000!important;
-    font-weight:500;
-    
+    border:1px solid #d7dde5;
+    margin-right:10px;
 }
 
 .feature-block {
@@ -52,9 +48,9 @@
 */
 
 .navGroupCategoryTitle {
-    font-size:16px!important;
-    font-weight:700;
-    color:#333;
+    font-size:17px!important;
+    color:#999999!important;
+    font-weight:400;
 }
 
 .feature-block:hover {
@@ -79,6 +75,17 @@ body {
 
 .blockImage {
     max-width:140px!important;
+}
+
+.toc .toggleNav ul li.navListItemActive a {
+    font-weight:bold;
+    margin-left:5px;
+    font-size:15px;
+}
+
+.toc .toggleNav ul li a {
+    font-size:15px;
+    color:#555555;
 }
 
 @media only screen and (min-width: 1024px)

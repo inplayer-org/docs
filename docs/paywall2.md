@@ -63,13 +63,13 @@ var paywall = new InplayerPaywall(MERCHANT_UUID, [{id: ASSET_1_ID}, {id: ASSET_2
 Depending on the need, you can set up additional options in the embed code. You can choose between **the asset options**, that can be set up **per asset**, and the **global paywall options**, that affect all the assets. The asset embed code options should be passed in, in addition to the asset id:
 
 ```html
-<div id="inplayer-ASSET_ID"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
-        id: ASSET_ID,
-        //per asset options object        
+        id: 123 //asset ID,
+        //asset options object        
         options: {
             noPreview: true,
             brandingId: "111222",
@@ -86,7 +86,7 @@ When the options are used as in the example above, they affect only the asset co
 ```html
 <div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8', //merchant UUID
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
          id: 123 //asset ID
@@ -129,9 +129,10 @@ Each asset type in the InPlayer’s Platform has its own content format implemen
 Each OVP has its own player implementation. The InPlayer Paywall renders the default players with standard player parameters. However, in case there is need for changing the player or some player parameter, you can pass in custom player scripts and/or custom player parameters through the InPlayer embed code. The following example code shows how player scripts or parameters can be altered:
 
 ```html
-<div id="inplayer-ASSET_ID" class="inplayer-paywall"></div>
+<div id="inplayer-assetID" class="inplayer-paywall"></div>
 <script>
-var paywall = new InplayerPaywall(MERCHANT_UUID, [{ id: ASSET_ID, options: {
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{ id: 123, options: {
+    //Merchant UUID and assetID are the variables from above
     playerScripts: [
         {
             src: 'http://player.ooyala.com/static/v4/stable/latest/core.min.js',
@@ -264,12 +265,12 @@ Each asset in the InPlayer Platform has its own preview template with a **call-t
 To begin with, you will need a standard embed code with a **noPreview** option added:
 
 ```html
-<div id="inplayer-ASSET_ID"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
-        id: ASSET_ID,
+        id: 123, //assetID
         options: {
             noPreview: true
         }
@@ -282,15 +283,15 @@ var paywall = new InplayerPaywall(MERCHANT_UUID,
 The embed code above will create a paywall object, but there won't be a preview template, nor anything on the screen. So, the next step requires adding your own custom preview HTML code, with a call-to-action button, inside the DIV element of your asset. The reason why the preview code needs to be inside the asset's DIV container is that the paywall will exchange that content with the real asset, after purchase.
 
 ```html
-<div id="inplayer-ASSET_ID">
+<div id="inplayer-assetID">
 // Create your HTML custom preview here
 <button id="my-paywall-button">purchase</button>
 </div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
-        id: ASSET_ID,
+        id: 123, //asset ID
         options: {
             noPreview: true
         }
@@ -318,12 +319,12 @@ The Paywall comes with a default display preview, but also offers merchants the 
 
 ```html
 
-<div id="inplayer-ASSET_ID"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
-        id: ASSET_ID,
+        id: 123, //asset ID
         options: {
             noPreview: true,
             noInject: true
@@ -353,9 +354,9 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 });
 ```
 
-With this code the method 'showPaywall' functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the **'preselectedFeeId'** parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
+With this code the method 'showPaywall' functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
 
-For the second price, the same 'showPaywall' function needs to be added to the second button, but with a different 'preselectedFeeId' parameter, that identifies the other price option.
+For the second price, the same 'showPaywall' function needs to be added to the second button, but with a different `preselectedFeeId` parameter, that identifies the other price option.
 
 
 
