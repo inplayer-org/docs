@@ -16,9 +16,10 @@ The Paywall 2.0 embed code also consists of **InPlayer paywall scripts** and **a
 Whereas the latter, the asset embed code, has the following format:
 
 ```html
-<div id="inplayer-ASSET_ID"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID, [{ id: ASSET_ID}]);
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{ id: 123}]); 
+// merchant UUID and assetID are the function arguments from above
 </script>
 ```
 
@@ -27,14 +28,14 @@ var paywall = new InplayerPaywall(MERCHANT_UUID, [{ id: ASSET_ID}]);
 If dealing with an OVP asset type, the embed code can be constructed having provided the original Video ID from the external OVP source. The format for embedded external asset ID is the following:
 
 ```html
-<div id="inplayer-OVP_NAME-OVP_VIDEO_ID"></div>
+<div id="inplayer-ovpName-OvpVideoID"></div>
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID,
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
       {
          external: {
             type: 'OVP_NAME',
-            id: OVP_VIDEO_ID,
+            id: 12345, // OVP Video ID
          },
       },
      ]
@@ -69,12 +70,12 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
      [
       {
         id: 123 //asset ID,
-        //asset options object        
         options: {
             noPreview: true,
             brandingId: "111222",
             noInject: true
         } 
+        //asset options object        
       }
      ]
 )
@@ -91,8 +92,8 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
       {
          id: 123 //asset ID
       },
+      //asset options object
      ], 
-     //asset options object
      {
        language: 'EN',
        hideUserMenu: true, 
@@ -174,7 +175,8 @@ The paywall instance has methods that can be used for accomplishing different fu
 
 Below follows a description of all the paywall methods:
 
-**'Set Language Method'**: 
+`setLanguage` 
+
 This method sets the language of the paywall interface. It is especially useful when you have a page that supports multiple languages and by combining the language picker on the page, you can change the language of the paywall, as well. That way, the experience is much smoother for the end-user.
 
 For instance, to set the paywall language to Danish, the following implementation is needed:
@@ -252,9 +254,9 @@ Here is the list of HTML classes that can be used for creating each of the stand
 
 | HTML class	|   Description |
 |--------------|---------------|
-| inplayer-paywall-login	| Invokes Paywall's login screen |
-| inplayer-paywall-logout	| Invokes the logout action  |
-| inplayer-paywall-account	 | Invokes the 'My Account' screen of the logged in user |
+| `inplayer-paywall-login`	| Invokes Paywall's login screen |
+| `inplayer-paywall-logout`	| Invokes the logout action  |
+| `inplayer-paywall-account`	 | Invokes the 'My Account' screen of the logged in user |
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class**, will only be shown when the user is authenticated.
 
