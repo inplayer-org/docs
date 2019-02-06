@@ -187,7 +187,8 @@ For instance, to set the paywall language to Danish, the following implementatio
 
 It is important to note that the language specified as method argument should be the short, two-letter code for the language.
 
-**'Show Paywall Method'**:
+`showPaywall`
+
 This method is a multi-functional method that provides the option to invoke the paywall application for different use-cases via a custom HTML element on the page. This method has the following structure (with all the argument options included):
 
 ```javascript
@@ -200,15 +201,13 @@ This method is a multi-functional method that provides the option to invoke the 
     });
 ```
 
-More specifically:
-
-**'assetId'** – is part of the asset object in the method argument and represents the ID of a specific InPlayer asset. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the price option screen, where all the prices added to the asset would be shown, allow the end-user to select one and proceed further with the payment flow. 
+In addition, the `assetId` is part of the asset object in the method argument and represents the ID of a specific InPlayer asset. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the price option screen, where all the prices added to the asset would be shown, allow the end-user to select one and proceed further with the payment flow. 
 Usage example:
 
 ```javascript
     paywall.showPaywall({asset: { assetId: 42564 }});
 ```
-**'preselectedFeeId'** – is part of the asset object in the method argument and represents the ID of a specific price added to an InPlayer asset. It is always used together with the asset id where the price is added. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the end-user would be sent directly to the payment screen where the specified price would be set for purchase.
+The `preselectedFeeId` is part of the asset object in the method argument and represents the ID of a specific price added to an InPlayer asset. It is always used together with the asset id where the price is added. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the end-user would be sent directly to the payment screen where the specified price would be set for purchase.
 
 Usage example:
 
@@ -221,14 +220,14 @@ Usage example:
     });
 ```
 
-**'registerFirst'** – boolean parameter (true/false) that specifies whether the register or login screen of the paywall should be shown by default when the modal is open.
+The `registerFirst` is a boolean parameter (true/false) that specifies whether the register or login screen of the paywall should be shown by default when the modal is open.
 Usage example:
 
 ```javascript
     paywall.showPaywall({ registerFirst: true });
 ```
 
-The object argument for the **‘showPaywall’** method is optional. This means that the method can be invoked without arguments. With that way of usage, if the user is not authenticated, the login screen would appear, and after successful authentication the modal would be closed. Upon subsequent invoking of the method, with the user being logged in, the account screen will be shown.
+The object argument for the `showPaywall` method is optional. This means that the method can be invoked without arguments. With that way of usage, if the user is not authenticated, the login screen would appear, and after successful authentication the modal would be closed. Upon subsequent invoking of the method, with the user being logged in, the account screen will be shown.
 
 Usage example:
 
@@ -236,7 +235,8 @@ Usage example:
     paywall.showPaywall();
 ```
 
-**'Is Authenticated Method'**: 
+`isAuthenticated`
+
 This method is a boolean method that tells whether an end-user has been authenticated on the page. 
 
 Usage example:
@@ -264,7 +264,7 @@ The advantage of using these classes is that they come with a built-in logic for
 
 Each asset in the InPlayer Platform has its own preview template with a **call-to-action button**, that is rendered after serving an asset embed code on a web page. Those preview templates can be edited and tweaked in the dashboard, though at times the given flexibility doesn't meet everyone's custom needs. For that purpose, the paywall supports a functionality for creating a fully custom HTML preview for each embedded asset, and a way to add a call-to-action button that will trigger the paywall experience.
 
-To begin with, you will need a standard embed code with a **noPreview** option added:
+To begin with, you will need a standard embed code with a `noPreview` option added:
 
 ```html
 <div id="inplayer-assetID"></div>
@@ -313,11 +313,11 @@ document.getElementById('my-paywall-button').addEventListener("click", () => {
 });
 ```
 
-The **'showPaywall'** method is linked to the button, which triggers the paywall functionality. That is the final step for functional custom preview template.
+The `showPaywall` method is linked to the button, which triggers the paywall functionality. That is the final step for functional custom preview template.
 
 ## Embed Specific Prices
 
-The Paywall comes with a default display preview, but also offers merchants the alternative of creating their own page elements, instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for one-week access), instead of the default preview. In order to achieve this, first, you should initialize the Paywall with the **'noInject'** and **'noPreview'** options. The 'noInject' parameter prevents the Paywall from injecting a video after a successful purchase, in favour of the creation of a custom pricing options screen. The 'noPreview' parameter removes the standard preview template for the asset, allowing custom preview for each price.
+The Paywall comes with a default display preview, but also offers merchants the alternative of creating their own page elements, instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for one-week access), instead of the default preview. In order to achieve this, first, you should initialize the Paywall with the `noInject` and `noPreview` options. The 'noInject' parameter prevents the Paywall from injecting a video after a successful purchase, in favour of the creation of a custom pricing options screen. The `noPreview` parameter removes the standard preview template for the asset, allowing custom preview for each price.
 
 ```html
 
@@ -356,9 +356,9 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 });
 ```
 
-With this code the method 'showPaywall' functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
+With this code the method `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is `noInject` option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
 
-For the second price, the same 'showPaywall' function needs to be added to the second button, but with a different `preselectedFeeId` parameter, that identifies the other price option.
+For the second price, the same `showPaywall` function needs to be added to the second button, but with a different `preselectedFeeId` parameter, that identifies the other price option.
 
 
 
