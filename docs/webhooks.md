@@ -5,26 +5,27 @@ title: InPlayer Webhooks
 
 ## Webhooks Overview
 
-With Webhooks you can build or setup Applications which are subscribed to certain events in the InPlayer platform. When such events get triggered, we will send a HTTP POST requests with specific payloads to the Webhook’s configured URL.
+Our Platform enables you to get automatically notified on certain events happening within the InPlayer Platform by using **webhooks**. In other words, you can build or setup applications which are subscribed to certain events in our Platform. When these events are triggered, we send **HTTP POST requests** with specific **payloads** to the webhook’s configured URL. 
 
-Web hooks are usually used to update or create platform action/operation tracker, trigger marketing campaigns, sync data between platforms or to fetch results of operations in backend applications.
+The webhooks are usually used for updating or creating a platform action/operation tracker, for triggering marketing campaigns, for syncing data between platforms or for fetching results of operations in backend applications.
 
-Webhooks can be installed on a merchant account by setting up Web-hook URL and select specific events that you will like to receive. The Webhooks options and setup details are located in InPlayer dashboard under API Settings in the top right corner menu.
+You can install webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you would like to be notified of. You can find the webhooks’ setup details and other options in the **API Settings** section, once you navigate to the InPlayer’s Dashboard, open the top right-hand corner menu and choose 'API'. 
+
 
 ## Payloads
 
-Each event type has a specific payload format with the relevant event information. InPlayer Webhooks payload has 2 main parts different by context: payload headers and payload data.
+Each event type has a specific payload format. The InPlayer webhooks’ payload has two main parts: **payload headers** and **payload data**. 
 
 ### Payload headers
 
-HTTP Post requests that are sent to your Webhook URL will have several headers. Among the standard HTTP headers you can find the custom inplayer signature header. You will use signature to validate the event as described in the validating events section.
+The HTTP POST requests sent to your webhook URL have several **headers**, including the **custom InPlayer signature header**. You will use this signature to validate the event concerned, as described in the validating events section.
 
 | Header        | Value           |
 | ------------- |-------------|
-| X-InPlayer-Signature	| Signature hash created from your secret key and the request payload, using the sha256 algorithm |
+| X-InPlayer-Signature	| The signature is created by hashing your secret key together with the request payload, using the sha256 algorithm |
 |Content-Type |application/x-www-form-urlencoded |
 
-Another header we sent in the POST requests is `Content-Type: application/x-www-form-urlencoded` , which indicates the media type of the resource that we send to your server. The keys and values are encoded in key-value tuples separated by '&', with a '=' between the key and the value. Non-alphanumeric characters in both keys and values are percent encoded. Here is an example request:
+Another header we send in the POST requests is `Content-Type: application/x-www-form-urlencoded` , which indicates the media type of the resource that we send to your server. The keys and values are encoded in **key-value tuples** separated by '**&'**, with an **'='** between the key and the value. The non-alphanumeric characters in both keys and values are **percent encoded**. Here is an example request:
 
 ```
 POST / HTTP/1.1
@@ -40,30 +41,30 @@ created=15475835&id=2333&resource%5Bfoo%5D=bar&type=payment.success
 
 ### Payload data
 
-You can find all relevant info about the event inside the Payload data. In the data of all events you can find the following structure:
+The Payload data holds all the relevant information regarding the event concerned, in the following structure:
 
 | Data        | Description           |
 | ------------- |-------------|
 | id	| Unique alpha-numeric string that is generated for each sent event |
 | created | Unix timestamp of the event |
-| type | The actual event type |
-| resource | Array of all information connected to the resource/operation that you receive for each event |
+| type | The type of event |
+| resource | Array of all the information connected to the resource/operation that you receive for each event |
 
 
 ## Events
 
-When configuring a Webhook, you can chose one or part of the events that you would like to receive payloads for. You can even opt-in to all known InPlayer events. In the following section you can find more details about each webhook event in the InPlayer platform along with example data.
+When configuring webhooks, you can choose one or several events that you would like to receive payloads for. The following section offers more details about each webhook event in our Platform. 
 
-### Accounts
+### Account Webhooks
 
-Accounts webhooks are events that are fired when operations about our Accounts service ocurs. Usualy they are used to inform the merchant about the most important actions for his customers. 
+**Account webhooks** are events that are fired whenever operations concerning our **'Accounts Service'** occur. Usually, they are used to inform the merchant of the most important actions their customers had performed using their accounts. 
 
-These are all of the Accounts webhooks.
+Bellow you can find all the Account webhooks.
 
 
 | Webhook Type        | Description           |
 | ------------- |-------------|
-| ``customer.registered``| Fired each time new customer is registered |
+| ``customer.registered``| Fired whenever a new customer is registered |
 
 Example Payload Data:
 
@@ -88,7 +89,7 @@ type="customer.registered"
 <br>
 | Type        | Description           |
 | ------------- |-------------|
-| ``asset.access.granted``| Fired each time new customer is registered |
+| ``asset.access.granted``| Fired when the customer is granted access to an asset  |
 
 Example Payload Data:
 
@@ -124,19 +125,20 @@ type="asset.access.granted"
 
 ## Securing Webhooks
 
-Once you start receiving Webhooks you will need to be sure that the requests you receive are sent only from InPlayer. Some popular methods include restriction per domain or IP address from where you receive the requests, but at InPlayer we insist that you use the InPlayer signature to validate the event.
+Once you start receiving webhooks, make sure the requests you have received come only from InPlayer. Some of the popular methods to confirm this include restriction per domain or the IP address from where you receive the requests, but at InPlayer, we insist that you use the **InPlayer signature** to validate the event.
 
-In order to use the signature for validation, first you will need to have generated API secret. You can do this at the InPlayer dashboard in the API settings section.
+In order to use the signature for validation, first you will need to have an **API secret** generated. To do so, navigate to the InPlayer’s Dashboard and choose the 'API Settings' section.
 
-Once you have generated secret, you can use it in your backend application to validate the complete event.
+Once the secret is generated, you can use it in your backend application to validate the event concerned.
+
 
 ## Validating Events
 
-Once your secret code is set up, InPlayer use it to generate a hash signature with each event. The hash signature is sent as a header with each request as X-InPlayer-Signature.
+After you have your secret code set up, InPlayer will use it for generating a **hash signature** for each event that is to be sent as a header along with every request as 'X-InPlayer-Signature'.
 
-When you recieve an event and you find the signature header, you should create a HASH using the same secret token and then compare your hash to InPlayer signature header value. If both have the same values you can take that as a validation prove that the event is sent from InPlayer.
+Once you receive an event and find the signature header, you should create a **HASH** using the same secret token and then compare your hash to the **InPlayer signature header value**. If both have the same values, you can take that as a validation prove that the event has been sent from InPlayer.
 
-Here is a PHP example of validating an event using signature comparison method.
+Here it is a PHP example of validating an event while using the signature comparison method:
 
 ```php
 $entityBody = file_get_contents(‘php://input’);
@@ -151,9 +153,9 @@ var_dump(verifySignature($entityBody, "secret"));
 
 You can implement the validation in any backend programming language. However, all implementations should have the following two things in common:
 
-1. No matter which implementation you use, the hash signature starts with sha256=, using the key of your secret token and your payload body.
+1. Regardless which implementation you use, the hash signature starts with `sha256=`, using the key of your secret token and your payload body.
 
-2. Using a plain == operator is not advised. A method like hash_equals performs a "constant time" string comparison, which renders it safe from certain timing attacks against regular equality operators.
+2. Using a plain '==' operator is not advised. Rather, you can use a method like `hash_equals` which performs a 'constant time' string comparison, that renders the comparisson safe from certain timing attacks against regular equality operators.
 
 
 
