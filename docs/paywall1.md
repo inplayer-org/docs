@@ -3,20 +3,22 @@ id: paywall1
 title: Paywall 1.0
 ---
 
-The InPlayer Paywall application is fast and easy way of selling your content online.  For each digital asset that you create in the InPlayer platform, you are granted with corresponding embed code that will create the whole end-user experience once placed on some website. The Paywall app is only web-based solution. For more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides. You can easily find the embed code of any asset  in the InPlayer Dashboard in the single asset section, as its shown in the screenshot.
+The InPlayer Paywall application provides you a fast and easy way for selling your content online. For each digital asset you create in our Platform, you are granted with a corresponding embed code that will create the whole end-user experience once placed on a website. The Paywall application is only the web-based solution, so for more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides. You can easily find the embed code of any asset in the InPlayer Dashboard’s Asset Section, as shown in the screenshot bellow.
 
 ![alt text](https://inplayer.com/wp-content/uploads/2018/07/embed_code.png "Logo Title Text 1")
 
-## Standard embed code
+## Standard Embed Code
 
-The Paywall embed code includes two parts. The InPlayer Paywall application scripts:
+The Paywall embed code includes two parts:
+
+1. the InPlayer Paywall application scripts:
 
 ```html
 <script type='text/javascript' src='https://assets.inplayer.com/injector/staging/injector.js'></script>
 <link rel='stylesheet' href='https://assets.inplayer.com/injector/staging/css/app.min.css' type='text/css' media='all'>
 ```
 
-And the Asset embed code where the video should be embeded:
+2. the Asset embed code where the video should be embedded:
 
 ```html
 <div id="inplayer-42095"></div>
@@ -25,21 +27,21 @@ inplayer.inject('42095', '528b1b80-5868-4abc-a9b6-4d3455d719c8');
 </script>
 ```
 
-The Asset embed code is constructed from two parts as well. HTML code, that will create a DIV element with the Asset ID passed as the element ID in the following format: “inplayer-ASSET_ID”. In the previous example the asset id is 42095.
+The Asset embed code consists of two parts as well: an HTML code and a JavaScript code.  
+The HTML code will create a DIV element having the Asset ID passed in as the element ID in the following format: “inplayer-ASSET_ID”. In the previous example the asset ID is 42095.  
+The JavaScript code should invoke the inject method of our JavaScript App, which will create the complete UI flow of a premium content. If there is no active account logged in the browser, the Inject method will render a preview template of the embedded Asset. There will be a purchase button that would invoke widget overlay functionality for registering/login account, a price selector and a payment details page. After the visitor creates an account, completes the flow and makes successful payment, the InPlayer application will replace the preview template with the Premium Asset.
 
-The second part of the Asset embed code is JavaScript code that should invoke the inject method of our JavaScript APP. That method will create the complete UI flow of a premium content. If no active account is logged in the browser the Inject method will render a preview template of the embedded Asset with a purchase button that will invoke widget overlay functionality for registering/login account, price selector and payment details page. After the visitor creates account, completes the flow and makes successful payment, the InPlayer application will replace the preview template with the Premium Asset(mostly video players) .
-
-The InPlayer inject method receives 3 parameters, although in the standard embed code there is no 3rd parameter.
+The InPlayer inject method receives three parameters, although in the standard embed code there is no third parameter.
 
 ```js
 inplayer.inject(ASSET_ID, MERCHANT_UUID, OPTIONS);
 ```
 
-The first parameter is ASSET_ID, the same value from the DIV element ID of the HTML part of the embed code. The second parameter is MERCHANT_UUID, the unique identifier of the Merchant Account. The third, optional parameter can be Array of many additional options that are described in the following section.
+The first parameter is ASSET_ID, the same value from the DIV element ID of the HTML part of the embed code. The second parameter is MERCHANT_UUID, the unique identifier of the Merchant Account. The third, optional parameter can be array of many additional options that are described in the following section.
 
-## Embed code Options
+## Embed Code Options
 
-All embed code Options should be passed as Array in the last parameter of the embed code. Here is an example of an embed code containing all possible options:
+All embed code Options should be passed as array in the last parameter of the embed code. Here is an example of an embed code containing all possible options:
 
 ```js
 inplayer.inject(assetID, merchantUUID, {
@@ -116,7 +118,7 @@ inplayer.inject(assetID, merchantUUID, {
 }
 ```
 
-There are two types of embed code options. Optional settings and events. With the optional settings you can add, remove or change certain functionalities of the paywall. With the optional events, you can have additional functionality that can be triggered after some action in the paywall.
+There are two types of embed code options: optional settings and events. With the optional settings you can add, remove or change certain functionalities of the paywall. With the optional events, you can have additional functionality that can be triggered after some action in the paywall.
 
 ## Optional Settings
 
