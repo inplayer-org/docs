@@ -35,7 +35,7 @@ InPlayer.setConfig('prod'); // the production
 
 ## 'How to' Examples
 
-The following section enumerates multiple *'how to' examples* about doing specific operations within the InPlayer Monetization Platform.
+The following section enumerates multiple *'how to'* examples about doing specific operations within the InPlayer Monetization Platform.
 
 ## How to Register an Account
 
@@ -105,7 +105,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 
 It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the `OnMessage` callback.
 
-Our basic use-case here is to have a **'redirect to premium section'** handler after the 'successful payment' notification message.
+Our basic use-case here is to have a **'redirect to premium section'** handler after the **'successful payment'** notification message.
 
 For example:
 
@@ -202,7 +202,7 @@ InPlayer.Asset
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
-As a response you will receive an object with detailed information about the asset access. This way, you can keep the non-premium viewers away from the premium content.
+As a response, you will receive an object with detailed information about the asset access. This way, you can keep the non-premium viewers away from the premium content.
 
 ## How to Create the 'My Account' Menu
 
