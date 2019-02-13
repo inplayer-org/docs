@@ -356,7 +356,7 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 });
 ```
 
-With this code the method `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is `noInject` option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
+With this code the method `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
 
 For the second price, the same `showPaywall` function needs to be added to the second button, but with a different `preselectedFeeId` parameter, that identifies the other price option.
 
