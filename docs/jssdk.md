@@ -26,7 +26,7 @@ Once the SDK is installed, you will find available all the methods in the **InPl
 .then(data=>{ /* do something with data */ })
 ```
 
-Currently, there are two different environments for the SDK - **development** and **production**. You can switch between these environments using the **'setConfig'** method:
+Currently, there are two different environments for the SDK - **development** and **production**. You can switch between these environments using the `setConfig` method:
 
 ```js
 InPlayer.setConfig('develop'); // the default one
@@ -39,7 +39,7 @@ The following section enumerates multiple *'how to'* examples about doing specif
 
 ## How to Register an Account
 
-The registration process can be carried out using the **'InPlayer.Account.signUp()'** method.
+The registration process can be carried out using the `InPlayer.Account.signUp()` method.
 
 ```javascript
 InPlayer.Account.signUp({
@@ -56,19 +56,19 @@ InPlayer.Account.signUp({
 }).then(data => console.log(data));
 ```
 
-Among the parameters, **'fullName',** **'email',** **'password',** **'passwordConfirmation',** **'type',** and **'clientId'**  are always **required**.
+Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type` and `clientId`  are always **required**.
 
-Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your **'clinetId'**. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as **'clientId'**. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clinetId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
-The **'type'** parameter can be either **'consumer'** or **'merchant'**. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the 'clientId' parameter.
+The `type` parameter can be either `consumer` or `merchant`. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the `clientId` parameter.
 
-There is also a **'metadata'** parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
+There is also a `metadata` parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
-Lastly, the **'referrer'** parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
 
 ## How to Authenticate an Account
 
-Authentication can be achieved using the **'InPlayer.Account.authenticate()'** method.
+Authentication can be achieved using the `InPlayer.Account.authenticate()` method.
 
 ```javascript
 InPlayer.Account.authenticate({
@@ -78,9 +78,9 @@ InPlayer.Account.authenticate({
 }).then(data => console.log(data));
 ```
 
-Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in **'localStogare'**.
+Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
 
-If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the **'InPlayer.Account.token()'** call. Additionally, you may call **'InPlayer.Account.isSignedIn()'** to check if someone is logged in or not.
+If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.token()` call. Additionally, you may call `InPlayer.Account.isSignedIn()` to check if someone is logged in or not.
 
 For the account sign out operation use the following call:
 
@@ -103,7 +103,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the **'OnMessage'** callback.
+It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the `OnMessage` callback.
 
 Our basic use-case here is to have a **'redirect to premium section'** handler after the **'successful payment'** notification message.
 
@@ -124,7 +124,7 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 
 ### Creating an Aceess Fee
 
-The InPlayer Platform enables you to create digital assets to which afterwards you can attach **price** with **currency** and **access period**, in order to create **access fees**. **The 'AccessFee' resource** holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function bellow. 
+The InPlayer Platform enables you to create digital assets to which afterwards you can attach **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function bellow. 
 
 ```js
 InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
@@ -189,11 +189,11 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
 }).then(data => { /* handle paypal data here */ }
 ```
 
-After a successful call, you will obtain the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for a production mode. In order to make a **redirect link to PayPal** and create your **PayPal button** use the **'data.endpoint'** value.
+After a successful call you will obtain the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for a production mode. In order to make a *redirect link to PayPal* and create your *PayPal button* use the `data.endpoint` value.
 
 ## How to Validate Content Access
 
-To check whether a given account can access a certain asset, you should fetch the authorisation token of the logged in account and call the **'checkAccessForAsset'** method with your **asset ID**.
+In order to check whether a given account can access a certain asset, you should fetch the authorisation token of the logged in account and call the `checkAccessForAsset` method with your **asset ID**.
 
 ```javascript
 InPlayer.Asset
@@ -210,7 +210,7 @@ To create the 'My Account' menu for a logged in customer, you need the following
 
 ### Fetching Account Details
 
-By passing in the authorisation token, you can fetch all the account details using the **'getAccountInfo'** method.
+By passing in the authorisation token, you can fetch all the account details using the `getAccountInfo` method.
 
 ```js
 InPlayer.Account
