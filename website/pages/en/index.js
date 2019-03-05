@@ -97,8 +97,22 @@ class HomeSplash extends React.Component {
 
             <a href={docUrl('jssdk.html', language)}>
             <div className="feature-block">
-            <img src={'img/plat-docs.svg'} alt={'jssdk'} title={'jssdk'} /> 
+            <img src={'img/plat-docs2.png'} alt={'jssdk'} title={'jssdk'} /> 
             JavaScript SDK
+            </div>
+            </a>
+
+            <a href={docUrl('androidsdk.html', language)}>
+            <div className="feature-block">
+            <img src={'img/plat-docs1.png'} alt={'jssdk'} title={'jssdk'} /> 
+            Android SDK
+            </div>
+            </a>
+
+            <a href={docUrl('iossdk.html', language)}>
+            <div className="feature-block">
+            <img src={'img/plat-docs.png'} alt={'jssdk'} title={'jssdk'} /> 
+            IOS SDK
             </div>
             </a>
 

@@ -87,6 +87,34 @@ type="customer.registered"
 ```
 
 <br>
+| Webhook Type        | Description           |
+| ------------- |-------------|
+| ``customer.updated``| Fired whenever an existing customer is updated |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[active]=false
+resource[completed]=true
+resource[created_at]=1547543324
+resource[email]="customer@inplayer.com"
+resource[full_name]="Customer Name"
+resource[id]=29237
+resource[merchant_id]=68
+resource[merchant_uuid]="c6f4002f-7415-4eb6-ab03-72b0f7aff0e8"
+resource[referrer]="https://event.inplayer.com/staging?asset=43861"
+resource[updated_at]=1547543324
+resource[username]="customer@inplayer.com"
+resource[uuid]="5948829d-15da-426b-ab91-6cc586953de2"
+type="customer.updated"
+```
+
+### Access Webhooks
+
+These events are fired whenever operations concerning Asset Access ocurs.
+
 | Type        | Description           |
 | ------------- |-------------|
 | ``asset.access.granted``| Fired when the customer is granted access to an asset  |
@@ -121,6 +149,32 @@ resource[revoked]=false
 resource[starts_at]=1545231639
 resource[type]="purchased"
 type="asset.access.granted"
+```
+
+### Payments Webhooks
+
+These events are fired whenever operations concerning Payments ocurs.
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``payment.card.success``| Fired when the customer is granted access to an asset  |
+
+Example Payload Data:
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[description]="PPV"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type="payment.card.success"
 ```
 
 ## Securing Webhooks

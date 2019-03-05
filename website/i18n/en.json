@@ -9,7 +9,10 @@
         "title": "SDK for Android"
       },
       "api": {
-        "title": "InPlayer API documentation"
+        "title": "API technical reference"
+      },
+      "apireference": {
+        "title": "Technical reference"
       },
       "contact": {
         "title": "Contact InPlayer"
@@ -57,7 +60,7 @@
     },
     "categories": {
       "Libraries": "Libraries",
-      "API": "API",
+      "InPlayer APIs": "InPlayer APIs",
       "Web-Hooks": "Web-Hooks",
       "Client Notifications": "Client Notifications",
       "Tutorials and Guides": "Tutorials and Guides"

@@ -175,7 +175,7 @@ The paywall instance has methods that can be used for accomplishing different fu
 
 Below follows a description of all the paywall methods:
 
-`setLanguage` 
+### `setLanguage` 
 
 This method sets the language of the paywall interface. It is especially useful when you have a page that supports multiple languages and by combining the language picker on the page, you can change the language of the paywall, as well. That way, the experience is much smoother for the end-user.
 
@@ -187,7 +187,7 @@ For instance, to set the paywall language to Danish, the following implementatio
 
 It is important to note that the language specified as method argument should be the short, two-letter code for the language.
 
-`showPaywall`
+### `showPaywall`
 
 This method is a multi-functional method that provides the option to invoke the paywall application for different use-cases via a custom HTML element on the page. This method has the following structure (with all the argument options included):
 
@@ -235,7 +235,7 @@ Usage example:
     paywall.showPaywall();
 ```
 
-`isAuthenticated`
+### `isAuthenticated`
 
 This method is a boolean method that tells whether an end-user has been authenticated on the page. 
 
@@ -244,6 +244,142 @@ Usage example:
 ```js
     paywall.isAuthenticated();
 ```
+
+## Paywall Events
+
+The paywall instance has aproproiate events/callbacks that can be used for aditional custom functionalities. These callbacks are fired every time certain action happens.  
+
+Below follows a description of all the paywall methods:
+
+### `authenticated`
+
+This event is fired each time account makes successful authentication.
+
+Usage example:
+
+```js
+    paywall.on('authenticated', function(e, data) {
+        //e.type: 'authenticated'
+        //e.action: 'login', 'register' or 'token'
+
+        //data.account
+        //data.access_token
+        //data.expires
+        //data.refresh_token
+        //data.timestamp
+        console.log("-- AUTHENTICATED --");
+        console.log(e, data);
+    });
+```
+
+### `logout`
+
+This event is fired each time account makes successful logout opetarion.
+
+Usage example: 
+
+```js
+    paywall.on('logout', function(e, data) {
+        //e.type: 'logout'
+            
+        //data.account
+        console.log("-- LOGOUT --");
+        console.log(e, data);
+    });
+```
+
+### `inject`
+
+This event is fired each time premium content is created.
+
+Usage example:
+
+```js
+    paywall.on('inject', function(e, data) {
+        //e.type: 'inject'
+            
+        //data.account
+        //data.asset
+        console.log("-- INJECT --");
+        console.log(e, data);
+    });
+```
+
+### `payment`
+
+The payment event is fired each time successful payment is made.
+
+Usage example:
+
+```js
+    paywall.on('payment', function(e, data) {            
+        console.log("-- PAYMENT --");
+        console.log(e, data);
+    });
+```
+
+### `init`
+
+This event is fired each time the paywall is initiated.
+
+Usage example:
+
+```js
+    paywall.on('init', function(e, data) {            
+        console.log("-- INIT --");
+        console.log(e, data);
+    });
+```
+
+### `player`
+
+This event is fired when a video player is rendered.
+
+Usage example:
+
+```js
+    paywall.on('player', function(e, data) {            
+        console.log("-- PLAYER --");
+        // e.type
+        // data.name
+        // data.instance
+        console.log(e, data);
+    });
+```
+
+### `language`
+
+The language event is fired when certain language is switched.
+
+```js
+    paywall.on('language', function(e, data) {            
+        console.log("-- LANGUAGE --");
+        console.log(e, data);
+    });
+```
+
+### `access`
+
+This event is fired when the paywall will serve content for which the viewer has access to.
+
+```js
+    paywall.on('access', function(e, data) {            
+        console.log("-- ACCESS --");
+        console.log(e, data);
+    });
+```
+
+### `any`
+
+The any event is fired on every action from above.
+
+```js
+    paywall.on('any', function(e, data) {            
+        console.log("-- ANY EVENT --");
+        console.log(e, data);
+    });
+```
+
 
 ## Standalone Functionalities
 
@@ -359,8 +495,3 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 With this code the method `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will be skipped, since there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
 
 For the second price, the same `showPaywall` function needs to be added to the second button, but with a different `preselectedFeeId` parameter, that identifies the other price option.
-
-
-
-
-

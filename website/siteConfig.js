@@ -82,6 +82,12 @@ const siteConfig = {
     theme: 'a11y-dark'
   },
 
+  algolia: {
+    apiKey: '52be5d710258b25b8670618f1721d557',
+    indexName: 'inplayer',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
+
   // Add custom scripts here that would be placed in <script> tags.
   scripts: [
     'https://buttons.github.io/buttons.js',
@@ -96,6 +102,8 @@ const siteConfig = {
   onPageNav: 'separate',
   // No .html extensions for paths.
   cleanUrl: true,
+
+  docsSideNavCollapsible: false,
 
   // Open Graph and Twitter card images.
   ogImage: 'img/inplayer-logo-1.png',

@@ -23,3 +23,17 @@ The Javascript SDK is a lower level library that can be used to develop custom w
 
 [SDK for JavaScript](jssdk.md)
 
+## SDK for IOS
+
+The IOS SDK is a software development kit by InPlayer that allows for the deveopment of mobile apps in the field of content monetization on Apple's IOS operatng system. 
+
+[SDK for IOS](iossdk.md)
+
+## SDK for Android
+
+The Android SDK includes set of development tools that allows for the development of premium content mobile apps with the functionalities of the InPlayer platform on Google's Android operating system.
+
+[SDK for Android](androidsdk.md)
+
+
+
