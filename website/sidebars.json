@@ -6,6 +6,6 @@
     "Client Notifications": ["notifications"]
     },
   "guides": {
-      "Tutorials and Guides": ["guides"]
+      "Tutorials and Guides": ["guides", "trackingwithevents"]
   }
 }

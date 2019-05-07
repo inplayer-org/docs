@@ -157,7 +157,7 @@ These events are fired whenever operations concerning Payments ocurs.
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``payment.card.success``| Fired when the customer is granted access to an asset  |
+| ``payment.card.success``| Fired when the customer has made successful payment  |
 
 Example Payload Data:
 ```javascript

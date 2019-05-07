@@ -47,6 +47,9 @@
       "security": {
         "title": "Security at InPlayer"
       },
+      "trackingwithevents": {
+        "title": "Paywall Events Tracking"
+      },
       "webhooks": {
         "title": "InPlayer Webhooks"
       }

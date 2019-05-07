@@ -3,37 +3,158 @@ id: guides
 title: In-app Purchases
 ---
 
-In-app purchases are purchases made from within a mobile application. Users typically make an in-app purchase in order to access special content or features in an app. The purchasing process is completed directly from within the app and is seamless to the user in most cases.
+The InPlayer Platform facilitates the payment process by providing in-app purchases (IAPs) as a valid payment method i.e. by supporting payments carried out inside native Android, iOS, or TV applications. 
+In-app purchasing allows you as a merchant to supply your customers with special offers (extra features or premium content behind a Paywall) within an application as a way of providing a cross-platform monetization flow directly on their TV or on their iOS or Android device.  
 
-In-app purchases can be a valid payment method in the InPlayer Platform as well. However, there are few things that are requirements before you jump into native apps payments. 
+Below you can find discussed in detail the steps our Platform undertakes in order to enable in-app purchases.
 
-## How to create In-app purchases
+## Integration
+ 
+To support the in-app payment process, the InPlayer system integrates with native mobile and TV apps, respectively. 
+The integration is a separate and different process for each ecosystem, depending on the parameters required to connect and communicate information between systems.
+Therefore, in our merchant panel you will be provided a UI for specifying the required information and make the integrations for each ecosystem. 
+You can find the dedicated integration pages for each ecosystem on the following page:
 
-You can use the InPlayer REST API in combination with i-app Payment methods to deliver in-app purchases. The only way of implmenting payments into native mobile application is to integrate with the native payment systems of the devices providers. 
+https://demo.inplayer.com:8443/settings/integrations
 
-There are several stepps before you execcute such payments. In the following section we will describe one flow of a native application using in-app purchases.
+Once the integration is set up and you have your merchant offers created, you can then proceed with the implementation of the in-app payment process. 
 
-**Access Check -** The first step that needs to be done is to [verify that the user doesnt have access](https://docs.inplayer.com/api/#operation/getAccess) to the content in the Inplayer system before he is taken to the payment screen.
+## Application Development Steps
 
-Valid Item ID and valid authorisation header are needed is sent, the response will be not successful if the user doesnt have active access. 
+Regarding the application development stage, you as a merchant should use our native SDKs for the ecosystems that we integrate with. The SDKs provide methods for various functionalities and enable the communication between the application and our system. 
 
-**Payment process initiated -** The next step is to initiate the Payment Process in the native device payment system (Android or Apple)
+These specific functionalities (authentication, in-app payment, and subscription) are detailed in the sections below.
 
-On the following link you can find our more about Apple in-app purchases 
-https://developer.apple.com/in-app-purchase/
+## Authentication
 
-On the following link you can find our more about Android in-app purchases 
-https://developer.android.com/google/play/billing/billing_overview
+In order to support payment via the InPlayer system, the native application should have an authentication functionality in place that authenticates a user in the InPlayer system. This can be implemented easily by using our register and login methods, provided in the native SDKs. These methods have the end-user successfully logged in/registered in the InPlayer system, and return an authentication token to the application. Once these methods have the end-user authenticated, the application can offer them the payment options. 
 
-**Forward receipt to InPlayer -**  After succesfull payment into the native mobile system a succesfull payment reciept will be recieved. THe receipt needs to be forwarded to InPlayer end-point to process the payment. 
+### IOS Sign Up
 
-The end point for validating reciepts is the following
+```java
+public static func signUp(
+    fullName: String,
+    email: String,,
+    password: String,
+    passwordConfirmation: String,
+    metadata: [String: Any]? = nil,
+    success: @escaping (_ authorization: InPlayerAuthorization) -> Void,
+    failure: @escaping (_ error: InPlayerError) -> Void
+)
+```
 
-**/v2/external-payments/apple/validate**
+### IOS Authentitacion
 
-**Content display -** Once the InPlayer system completes the process, access will be granted to the enduser and a notiﬁcation will be sent to the application. In order to follow this ﬂow, the application should have a websocket established with the InPlayer system through which the notiﬁcation will be sent. 
+```java
+public static func authenticate(
+    username: String,
+    password: String,
+    success: @escaping (_ authorization: InPlayerAuthorization) -> Void,
+    failure: @escaping (_ error: InPlayerError) -> Void
+)
+```
 
-[Follow this guide](https://docs.inplayer.com/api/#operation/getAccess) to find out more about listening to notifications over web-sockets using our JavaScript SDK.
+https://inplayer-org.github.io/inplayer-ios-sdk/Classes/InPlayer/Account.html#/s:11InPlayerSDK0aB0C7AccountC6signUp8fullName5email8password0J12Confirmation8metadata7success7failureySS_S3SSDySSypGSgyAA0aB13AuthorizationVcyAA0aB5Error_pctFZ 
 
+### Android Sign Up:
+
+```java
+public void createAccount(
+    java.lang.String fullName,
+    java.lang.String email,
+    java.lang.String password,
+    java.lang.String passwordConfirmation,
+    InPlayerCallback<com.sdk.inplayer.model.account.InPlayerAuthorizationModel,com.sdk.inplayer.model.error.InPlayerException> callback
+)
+```
+
+### Android Authentication:
+
+```java
+public void authenticate(
+    java.lang.String username,
+    java.lang.String password,
+    InPlayerCallback<com.sdk.inplayer.model.account.InPlayerAuthorizationModel,com.sdk.inplayer.model.error.InPlayerException> callback
+)
+```
+
+https://inplayer-org.github.io/inplayer-android-sdk/ 
+
+## In-app Payment
+
+The in-app payment is a separate functionality specific for each different ecosystem and is to be implemented independently by your app developers. 
+
+The InPlayer system in this scenario only stores information regarding the in-app payments and offers reporting along with additional management functionalities, whenever feasible for implementation (more details on this in the Reporting and Management Functionalities section below). 
+To enable in-app payment, the application should communicate the payment information with the InPlayer system via the native SDK libraries. More specifically, the in-app payment process ends with a receipt generated by the native (iOS or Android) system. Thus, via the validate method in our SDK libraries, this payment receipt is to be forwarded to the InPlayer system. 
+
+Once our system receives this payment information, as a protection measure, first, it engages into validating that the receipt is both existing and valid in the native ecosystem (the communication with the native ecosystem is done via the parameters entered during the initial integration process). After the validity of the receipt is confirmed, our system will create and store all the relevant information regarding the in-app payment.
+
+More precisely information for:
+1. one-time payments - for which our system will store transaction records;
+2. subscription payments - where for initial payments, our system will create a subscription record and store a transaction record concerning that subscription;
+3. access records - regardless of the type of payment, the final step in the process is granting and writing access records in our system (these access records determine the duration period of an access entitlement for the purchased premium content to the paying customer).
+
+An important thing to note is the value of your offers (= payment options) and how they play a significant role in making the payment process work. An offer ID should be created both in our Platform and in the native app ecosystems, whereas for the iOS and Android implementation each offer is called a 'product' which equals to an 'access fee' (= price) in the InPlayer system. When you create products in the native ecosystem, make sure to have the product IDs constructed in the following format:
+
+`
+<asset id>_<access fee id>
+`
+
+According to this product/access fee correlation, by purchasing one product from a native ecosystem, the end-users are in fact purchasing one price from our system. 
+As a merchant, you need to make sure that you have entered the accurate value as a product ID and then forward this information using the validate method of our native SDKs (illustrated below). This is crucial for having both the payment and access records entered in our system correctly, as well as for ensuring that your end-users will enjoy a cross-platform access on different devices for the purchased content.
+
+The validate method for iOS:
+public static func validate(receiptString: String,
+                            productIdentifier: String,
+                            success: @escaping ()-> Void,
+                            failure: @escaping (_ error: InPlayerError) -> Void)
+
+
+The validate method for Android:
+public void validate(java.lang.String receipt,
+                     java.lang.String productIdentifier,
+                     InPlayerCallback<java.lang.String,com.sdk.inplayer.model.error.InPlayerException> callback)
+
+Once the whole purchase process is completed, the InPlayer system responds with a confirmation and an object returning the premium content which can be used by the native app to display it to the entitled end-user. This success notification is sent via socket. The sole purpose of the socket is enabling communication between the native application and the InPlayer system. The creation of the socket is enabled by the subscribe method that our native SDKs provide. We can view this socket as an open pipe between the app and our backend system. After successful payment, our backend sends the success notification via this ‘pipe’.
+
+Subscription Recurring Charges
+
+When subscription is created via in-app purchase, our backend communicates with the native ecosystem to check and confirm whether a rebill has been successfully issued and paid. This is done independently from the native application and all the rebill transaction and access records related to them will be automatically created by our system.
+
+Reporting and Management Functionalities
+  
+In addition to the support for implementing payments, there are additional reporting and management functionalities related to the payment actions that our system offers.
+
+Reporting
+Our system provides payment reports, subscription reports and asset access reports that you can generate as a merchant. Each report renders details for each record. During the in-app payments, these records are being stored in our system, therefore, you have the reports available for usage.
+
+Regarding the type of records that concern you, proceed to the following link(s):
+- payments - https://dashboard.inplayer.com/transactions/payments 
+- subscriptions - https://dashboard.inplayer.com/transactions/subscription 
+- access records - https://dashboard.inplayer.com/access 
+
+Management
+In the case of in-app payments, the actions to be taken depend on the ecosystems themselves and the extent to which they allow external control over payments and subscriptions created in their systems. At the moment, there is a supporting functionality for subscription, more specifically for subscription cancellation which enables you as a merchant to cancel subscription for a certain Android end-user.
+
+
+In-app Vouchers
+As part of the management section of the Platform, our system supports a specific type of voucher called in-app voucher. What figures as in-app voucher in our system is equivalent to what on the Apple/Google end is termed as introduction offer. The introduction offer is in fact a discounted price for a specific product ID(=in-app) that the end-user is presented with when dealing with certain in-app purchases. 
+
+As a merchant, you are the one presenting your end-users with an appealing offer (with discounted price for a certain in-app) by creating the in-app voucher. 
+
+To create an in-app voucher, you need to specify the following information:
+
+Voucher Title - carries the title of the voucher that will appear in the merchant panel;
+Voucher Discount Percent - refers to the discount percent that will be applied when the voucher has been used;
+Repeating Voucher - specifies the number of cycles that the voucher is to be applied to the given asset/in-app (have your repeating voucher predefined with the number of cycles between 1 and 12); 
+Start & End Date - indicate the dates defining the duration period that the voucher is valid 
+for usage;
+Asset & Access Fee - refers to the selected product ID (according to Apple/Google's terminology) or what in our system is termed as access fee to which a voucher is applied. As the voucher is always linked to one access fee, the UI will direct the end-user to selecting an asset and access fee to which the voucher will be applied.
+
+During the voucher creation process, our system generates a voucher code value automatically. Therefore, whenever you specify or update an access fee for which the voucher is valid, the voucher code gets updated as well. 
+
+The reason we need vouchers on our end is so that we can create discounted prices in our system, as well. Therefore, once the introduction offer has been purchased, our system will fetch the voucher for that product ID in our system and apply the appropriate discount percent.
+
+It is important to note that you will be able to use only the pay-as-you-go introductory offer from the Apple/Google end with a voucher created on our side. Regarding the discount percent, you should calculate the discount percent between the original and the discounted price and then enter that value on our end.
 
 
