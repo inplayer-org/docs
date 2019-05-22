@@ -39,7 +39,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'libraries', label: 'Docs'},
-    {doc: 'guides', label: 'Guides'},
+    {doc: 'in-app-services', label: 'Guides'},
     {href: 'https://github.com/inplayer-org', label: 'GitHub'},
     {page: 'docs/security', label: 'Security'},
     {page: 'docs/contact', label: 'Contact'}

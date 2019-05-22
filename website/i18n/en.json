@@ -5,6 +5,9 @@
     "previous": "Previous",
     "tagline": "Get familiar with the InPlayer platform tools and features.",
     "docs": {
+      "android-in-app-purchases": {
+        "title": "Android In-app Purchasess"
+      },
       "androidsdk": {
         "title": "SDK for Android"
       },
@@ -23,8 +26,17 @@
       "doc5": {
         "title": "Fifth Document"
       },
-      "guides": {
+      "in-app-authentication": {
+        "title": "In-app Authentication"
+      },
+      "in-app-services": {
         "title": "In-app Purchases"
+      },
+      "in-app-vouchers": {
+        "title": "In-app Vouchers"
+      },
+      "ios-in-app-purchases": {
+        "title": "IOS In-app Purchasess"
       },
       "iossdk": {
         "title": "SDK for IOS"
@@ -38,6 +50,9 @@
       "notifications": {
         "title": "Notifications Overview"
       },
+      "paywall-events-tracking": {
+        "title": "Paywall Events Tracking"
+      },
       "paywall1": {
         "title": "Paywall 1.0"
       },
@@ -47,8 +62,11 @@
       "security": {
         "title": "Security at InPlayer"
       },
-      "trackingwithevents": {
-        "title": "Paywall Events Tracking"
+      "standalone-services-overview": {
+        "title": "Basic Overview"
+      },
+      "use-own-authentication": {
+        "title": "Custom Authentication"
       },
       "webhooks": {
         "title": "InPlayer Webhooks"
@@ -66,7 +84,9 @@
       "InPlayer APIs": "InPlayer APIs",
       "Web-Hooks": "Web-Hooks",
       "Client Notifications": "Client Notifications",
-      "Tutorials and Guides": "Tutorials and Guides"
+      "In-app Services": "In-app Services",
+      "Paywall Events Tracking": "Paywall Events Tracking",
+      "Standalone Services": "Standalone Services"
     }
   },
   "pages-strings": {

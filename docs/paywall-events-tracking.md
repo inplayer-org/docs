@@ -1,5 +1,5 @@
 ---
-id: trackingwithevents
+id: paywall-events-tracking
 title: Paywall Events Tracking
 ---
 
