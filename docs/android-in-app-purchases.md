@@ -1,6 +1,6 @@
 ---
 id: android-in-app-purchases
-title: Android In-app Purchasess
+title: Android In-app Purchases
 ---
 
 ## Integration
