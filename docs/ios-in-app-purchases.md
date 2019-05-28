@@ -1,6 +1,6 @@
 ---
 id: ios-in-app-purchases
-title: IOS In-app Purchasess
+title: IOS In-app Purchases
 ---
 
 ## Integration
