@@ -24,7 +24,7 @@ Our native SDKs also provide you with the **register** and **login methods** for
 
 To learn more of the methods in play, please refer to the following guide: 
 
-[In-app Authentication](in-app-authentication)
+[In-app Authentication](https://developers.inplayer.com/docs/in-app-authentication)
 
 ## In-app Payment
 
