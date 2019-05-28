@@ -6,7 +6,7 @@
     "tagline": "Get familiar with the InPlayer platform tools and features.",
     "docs": {
       "android-in-app-purchases": {
-        "title": "Android In-app Purchasess"
+        "title": "Android In-app Purchases"
       },
       "androidsdk": {
         "title": "SDK for Android"
@@ -36,7 +36,7 @@
         "title": "In-app Vouchers"
       },
       "ios-in-app-purchases": {
-        "title": "IOS In-app Purchasess"
+        "title": "IOS In-app Purchases"
       },
       "iossdk": {
         "title": "SDK for IOS"
