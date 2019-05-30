@@ -7,9 +7,7 @@ title: Android In-app Purchases
  
 To support the in-app payment process, the InPlayer system integrates with native apps on your TV or mobile device. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the Android ecosystem.
 
-You can find the dedicated integration page on the following page:  
-
-https://demo.inplayer.com:8443/settings/integrations/in-app-integrations/google-in-app 
+You can find the dedicated integration page [here.](https://demo.inplayer.com:8443/settings/integrations/in-app-integrations/google-in-app)
 
 Once the integration is set up and you have your merchant offers created, you can then proceed with the implementation of the in-app payment process. 
 
@@ -67,6 +65,8 @@ public void subscribe(InPlayerNotificationCallback callback)
 ## Subscription Recurring Charges
 
 When subscription is created via in-app purchase, our backend communicates with the native ecosystem to check and confirm whether a rebill has been successfully issued and paid. This is done independently from the native application and all the **rebill** transaction and access records related to them will be automatically created by our system.
+
+For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/android/)
 
 ## Reporting and Management Functionalities
   
