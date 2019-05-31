@@ -3,9 +3,9 @@ id: standalone-services-overview
 title: Basic Overview
 ---
 
-The InPlayer Platform consists of three core service groups: **Identity Management/Authentication, Payments/Subscriptions** and **Access Entitlement/Validation** for digital assets. Depending on your need and preference, you can choose between using the core services in mutual connection or using just part of them. For the former, we, at InPlayer, will provide you with all the necessary solutions, whereas for the latter, you can switch the left out services with either your own or third party implementation.
+The InPlayer platform consists of three core service groups: **Identity Management/Authentication, Payments/Subscriptions** and **Access Entitlement/Validation** for digital assets. Depending on your need and preference, you can choose between using the core services in mutual connection or using just part of them. For the former, we, at InPlayer, will provide you with all the necessary solutions, whereas for the latter, you can switch the left out services with either your own or third party implementation.
 
-In addition, the flexibility of our Platform in terms of enabling a stand-alone functionality for our services, allows three different scenarios:
+In addition, the flexibility of our platform in terms of enabling a standalone functionality for our services, allows three different scenarios:
 
 * **you can have your own Identity Management/Authentication service in play while using the InPlayer's Payments and Access Entitlement services;**
 * **you can have your own Payment Solution service while using the InPlayer Authentication and Access Entitlement/Access Validation services;** 
