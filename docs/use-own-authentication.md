@@ -3,7 +3,7 @@ id: use-own-authentication
 title: Custom Authentication
 ---
 
-The InPlayer Platform offers the solution of linking your Custom Authentication service to our services. Therefore, if you already have an Authentication service and Identity Management System which you want connected to the rest of our services, continue reading to learn how to achieve that easily.  
+The InPlayer platform offers the solution of linking your Custom Authentication service to our services. Therefore, if you already have an Authentication service and Identity Management System which you want connected to the rest of our services, continue reading to learn how to achieve that easily.  
 
 There are two different levels for using your own **Authentication** and **Identity Provider** services while connecting to the **InPlayer Payment** and **Access Validation** services.
 
@@ -112,17 +112,17 @@ The response returns a valid InPlayer Customer `access_token` that you can use i
 
 The flexibility of the implementation determines how the access_token will be used. If the solution is a native device app, the developer should store the token temporary and use it in the rest of the authorized InPlayer API calls or SDK methods for premium content access validation, or payments and subscriptions in the name of the customer.
 
-If you need to connect the authentication to the Web-Embeddable InPlayer Paywall application, as to provide the access validation and the payment UI screens for web, proceed reading.
+If you need to connect the authentication to the web-embeddable InPlayer paywall application, as to provide the access validation and the payment UI screens for web, proceed reading.
 
 ## Connecting the InPlayer Paywall
 
-The InPlayer Paywall is a web-embeddable application that provides the full experience of content packaging, authentication, access validation, payments and content rendering. In the following section we will demonstrate how you can connect the Web Paywall while using your own authentication.
+The InPlayer paywall is a web-embeddable application that provides the full experience of content packaging, authentication, access validation, payments and content rendering. In the following section we will demonstrate how you can connect the web paywall while using your own authentication.
 
-The main idea is to separate the register and login screens from the Paywall and use your screens from the custom Identity Management Service. Simultaneously, you need to create an InPlayer account session in the Paywall application, so that you can use the rest of the InPlayer services, connected with your auth.
+The main idea is to separate the register and login screens from the paywall and use your screens from the custom Identity Management Service. Simultaneously, you need to create an InPlayer account session in the paywall application, so that you can use the rest of the InPlayer services, connected with your auth.
 
-Once you have your audience connected, you can have a landing page for registering or signing in of the Accounts that will act as a middle-ware behind the pages where the Paywall application will be embedded with the premium content. If an account has been successfully signed into your custom Authentication service and you have fetched the corresponding `access_token` for the same Account at InPlayer, using the [Impersonate Login](https://docs.inplayer.com/api/accounts/#operation/v2impersonate) method, you should pass it on the client's side to their browser's local storage. This way, the InPlayer Paywall can recognize the account and the rest of the Paywall-premium-content flow can continue. Once the Account has valid local storage `access_token`, they can be redirected to the premium pages where the Paywall application is embedded.
+Once you have your audience connected, you can have a landing page for registering or signing in of the Accounts that will act as a middle-ware behind the pages where the paywall application will be embedded with the premium content. If an account has been successfully signed into your custom Authentication service and you have fetched the corresponding `access_token` for the same Account at InPlayer, using the [Impersonate Login](https://docs.inplayer.com/api/accounts/#operation/v2impersonate) method, you should pass it on the client's side to their browser's local storage. This way, the InPlayer paywall can recognize the account and the rest of the paywall-premium-content flow can continue. Once the Account has valid local storage `access_token`, they can be redirected to the premium pages where the paywall application is embedded.
 
-Feel free to use the InPlayer JavaScript SDK in addition to the Paywall for additional functionalities such as setToken in this case.
+Feel free to use the InPlayer JavaScript SDK in addition to the paywall for additional functionalities such as setToken in this case.
 
 **For example:**
 
@@ -153,4 +153,4 @@ The token is passed in from the back-end to the callback page in the page URL. T
 </html> 
 ```
 
-After you successfully set the token into the local storage and you redirect the user to the premium pages where the Paywall code is embedded, you will have your Custom Authentication connected to the Pawyall application.
+After you successfully set the token into the local storage and you redirect the user to the premium pages where the paywall code is embedded, you will have your Custom Authentication connected to the paywall application.
