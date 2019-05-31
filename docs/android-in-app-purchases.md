@@ -9,6 +9,8 @@ To support the in-app payment process, the InPlayer system integrates with nativ
 
 You can find the dedicated integration page [here.](https://demo.inplayer.com:8443/settings/integrations/in-app-integrations/google-in-app)
 
+For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/android/)
+
 Once the integration is set up and you have your merchant offers created, you can then proceed with the implementation of the in-app payment process. 
 
 ## Application Development Steps
@@ -28,7 +30,7 @@ To learn more of the methods in play, please refer to the following guide:
 
 The in-app payment is a separate functionality and should be implemented independently, by your app developers. 
 
-To begin with, **the value of your offers** (= payment options) is vital in making the payment process work. An **offer ID** should be created both in our Platform and in the native app ecosystems, whereas for the Android implementation, each offer is called a **'product'** which equals to an **'access fee'** (= price) in the InPlayer system. When you create products in the native ecosystem, make sure to have the **product IDs** constructed in the following format:
+To begin with, **the value of your offers** (= payment options) is vital in making the payment process work. An **offer ID** should be created both in our platform and in the native app ecosystems, whereas for the Android implementation, each offer is called a **'product'** which equals to an **'access fee'** (= price) in the InPlayer system. When you create products in the native ecosystem, make sure to have the **product IDs** constructed in the following format:
 
 `<asset id>_<access fee id>`
 
@@ -66,8 +68,6 @@ public void subscribe(InPlayerNotificationCallback callback)
 
 When subscription is created via in-app purchase, our backend communicates with the native ecosystem to check and confirm whether a rebill has been successfully issued and paid. This is done independently from the native application and all the **rebill** transaction and access records related to them will be automatically created by our system.
 
-For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/android/)
-
 ## Reporting and Management Functionalities
   
 In addition to the support for implementing payments, the InPlayer system features additional **reporting** and **management functionalities** related to the payment actions that our system offers.
@@ -85,6 +85,6 @@ Regarding the type of records that concern you, proceed to the following link(s)
 
 In the case of in-app payments, the actions to be taken depend on the ecosystems themselves and the extent to which they allow external control over payments and subscriptions created in their systems. At the moment, there is a supporting functionality for subscription, more specifically for **subscription cancellation** which enables you to cancel subscription for some of your Android users.
 
-As part of the management section of the Platform, our system supports a specific type of voucher called **in-app voucher**. To learn more of the in-app voucher, please refer to the following guide: 
+As part of the management section of the platform, our system supports a specific type of voucher called **in-app voucher**. To learn more of the in-app voucher, please refer to the following guide: 
 
 [In-app Voucher](in-app-voucher)
