@@ -3,7 +3,7 @@ id: use-own-authentication
 title: Custom Authentication
 ---
 
-The InPlayer Platform offers the solution of linking your Custom Authentication service to our services. Therefore, if you already have an Authentication service and Identity Management System which you want connected to the rest of our services, continue reading to learn how to achieve that easily.  
+The InPlayer platform offers the solution of linking your Custom Authentication service to our services. Therefore, if you already have an Authentication service and Identity Management System which you want connected to the rest of our services, continue reading to learn how to achieve that easily.  
 
 There are two different levels for using your own **Authentication** and **Identity Provider** services while connecting to the **InPlayer Payment** and **Access Validation** services.
 
