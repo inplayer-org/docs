@@ -61,6 +61,7 @@ When configuring webhooks, you can choose one or several events that you would l
 
 Bellow you can find all the Account webhooks.
 
+### `customer registered`
 
 | Webhook Type        | Description           |
 | ------------- |-------------|
@@ -87,6 +88,9 @@ type="customer.registered"
 ```
 
 <br>
+
+### `customer updated`
+
 | Webhook Type        | Description           |
 | ------------- |-------------|
 | ``customer.updated``| Fired whenever an existing customer is updated |
@@ -114,6 +118,8 @@ type="customer.updated"
 ### Access Webhooks
 
 These events are fired whenever operations concerning Asset Access ocurs.
+
+### `access granted`
 
 | Type        | Description           |
 | ------------- |-------------|
@@ -151,15 +157,47 @@ resource[type]="purchased"
 type="asset.access.granted"
 ```
 
-### Payments Webhooks
+<br >
 
-These events are fired whenever operations concerning Payments ocurs.
+### `access revoked`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``asset.access.revoked``| Fired when the customer is revoked access for an asset  |
+
+Example Payload Data:
+
+```javascript
+id="WHE-tyW8QjyCAYeQDOG0"
+created=1559913102
+type="asset.access.revoked"
+version=2.4.2
+resource[type]="revoked"
+resource[merchant_id]=68
+resource[consumer_id]=73
+resource[consumer_email]="example@email.com"
+resource[item_id]=49306
+resource[item_title]="For+Paywall+03"
+resource[item_access_id]=85950
+resource[created_at]=1559913101
+resource[date]="2019-06-07T13:11:41+0000"
+resource[starts_at]=1559896473
+resource[expires_at]=1559913101
+resource[revoked]=1
+```
+
+### Payments and Subscriptions Webhooks
+
+These events are fired whenever operations concerning Payments and Recurring Subscriptions ocurs.
+
+### `card payment success`
 
 | Type        | Description           |
 | ------------- |-------------|
 | ``payment.card.success``| Fired when the customer has made successful payment  |
 
 Example Payload Data:
+
 ```javascript
 created=1551455676
 id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
@@ -176,6 +214,122 @@ resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
 type="payment.card.success"
 ```
+
+<br >
+
+### `card subscribe success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.success``| Fired when the customer has made successful card subscription  |
+
+Example Payload Data:
+
+```javascript
+id="WHE-jAlBR7bGKGIV2mSr"
+created=1559906599
+type="subscribe.success"
+version=2.4.2
+resource[transaction]="S-S8CqAw18ihqbgYsxCjIly3MwQ-ST"
+resource[description]="sub"
+resource[email]="example@email.com"
+resource[customer_id]=27288
+resource[formatted_amount]="€10.00"
+resource[amount]=10.00
+resource[currency_iso]="EUR"
+resource[status]="success"
+resource[timestamp]=1559906598
+resource[code]=200
+resource[access_fee_id]=3936
+resource[previewTitle]="ooyala+muse+mp4"
+```
+<br >
+
+### `paypal payment success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.payment.success``| Fired when the customer has made successful payment with external payment method (PayPal)  |
+
+Example Payload Data:
+
+```javascript
+id="WHE-yQfbAuScIV59b1Ze"
+created=1559896720
+type="external.payment.success"
+version=2.4.2
+resource[transaction]="C-OnG25z3eKkZWUMmXlvz36oc3S-PP"
+resource[description]="test+price"
+resource[email]="example@email.com"
+resource[customer_id]=73
+resource[formatted_amount]="$20.00"
+resource[amount]=20.00
+resource[currency_iso]="USD"
+resource[status]="success"
+resource[timestamp]=1559896720
+resource[code]=200
+resource[access_fee_id]=6973
+resource[previewTitle]="Asset+Title"
+```
+
+<br >
+
+### `paypal subscribe success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.subscribe.success``| Fired when the customer has made successful subscription with external payment method (PayPal)  |
+
+Example Payload Data:
+
+```javascript
+id="WHE-H3YtX6QP4aTUCXnB"
+created=1559897762
+type="external.subscribe.success"
+version=2.4.2
+resource[transaction]="S-aYPBAwMelYIKG7SOgame8etb1-PP"
+resource[description]="For+Paywall+03"
+resource[email]="test+232@inplayer.com"
+resource[customer_id]=33036
+resource[formatted_amount]="€50.00"
+resource[amount]=50.00
+resource[currency_iso]="EUR"
+resource[status]="success"
+resource[timestamp]=1559897761
+resource[code]=200
+resource[access_fee_id]=6967
+resource[previewTitle]="Asset+Title"
+```
+
+<br >
+
+### `paypal subscription canceled`
+
+| Type        | Description           |
+| ------------- |-------------|
+| `external.subscribe.cancel.success`| Fired when the customer has made successful cancelling of subscription with external payment method (PayPal)  |
+
+Example Payload Data:
+
+```javascript
+id="WHE-FMyb3xJlpdaJTCFq"
+created=1559912055
+type="external.subscribe.cancel.success"
+version=2.4.2
+resource[transaction]="S-n55B9gkzl73lmp5IDjza0HNCH-PP"
+resource[description]="Subscription"
+resource[email]="example@email.com"
+resource[customer_id]=32389
+resource[formatted_amount]="€10.00"
+resource[amount]=10.00
+resource[currency_iso]="EUR"
+resource[status]="success"
+resource[timestamp]=1559912055
+resource[code]=200
+resource[access_fee_id]=6471
+resource[previewTitle]="Asset+Title"
+```
+
 
 ## Securing Webhooks
 
