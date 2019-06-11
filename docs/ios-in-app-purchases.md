@@ -7,7 +7,7 @@ title: IOS In-app Purchases
 
 To support the in-app payment process, the InPlayer system integrates with native apps on your TV or mobile device. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the iOS ecosystem.
 
-You can find the dedicated integration page [here.](https://demo.inplayer.com:8443/settings/integrations/in-app-integrations/apple-in-app)
+You can find the dedicated integration page [here.](https://dashboard.inplayer.com/settings/integrations/in-app-integrations/apple-in-app)
 
 For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/ios/#ppv)
 
