@@ -74,9 +74,7 @@ Our SDKs facilitate you to enable login via social platforms. In order to do so,
 
 Example
 
-First, you should edit your plist file with your URL Scheme by adding the following lines:
-
-Second, in the controller where you want to introduce the social login, you can call the method `getSocialUrls` with the same URL Scheme you have inserted in your plist file:
+In your plist file controller, where you want to introduce the social login, call the method `getSocialUrls`:
 
 ```java
 InPlayer.Account.getSocialUrls(redirectUri: "app.inplayer://", success: { (socialUrls) in
@@ -115,6 +113,7 @@ Example
 
 First, you should edit your AndroidManifest.xml file with your URL Scheme by adding the following lines into your plist file:
 
+![pfile example](https://raw.githubusercontent.com/inplayer-org/docs/master/website/static/img/Picture1.png)
 
 Second, inside your Activity or Fragment, you should search for a list of all the available Social Urls. Once found, you should use the same URI Scheme you have configured in the previous step. To encourage best practices, we suggest that you use the package name. You can configure it on your own, but make sure it is a unique one. Beware not to forget placing the '://' at the end, though this suffix should not be included when defining the scheme in the manifest. This can be done with the following method:
 
