@@ -77,9 +77,10 @@ In addition to the support for implementing payments, the InPlayer system featur
 Our system provides **payment reports, subscription reports** and **asset access reports** that you can generate as a merchant. Each report renders details for each record. During the in-app payments, these records are being stored in our system, therefore, you have the reports available for usage.
 
 Regarding the type of records that concern you, proceed to the following link(s):
-**- payments -** https://dashboard.inplayer.com/transactions/payments 
-**- subscriptions -** https://dashboard.inplayer.com/transactions/subscription 
-**- access records -** https://dashboard.inplayer.com/access 
+
+* **Payments -** https://dashboard.inplayer.com/transactions/payments 
+* **Subscriptions -** https://dashboard.inplayer.com/transactions/subscription 
+* **Access records -** https://dashboard.inplayer.com/access 
 
 ### Management
 
