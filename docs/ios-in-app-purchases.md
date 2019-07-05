@@ -5,7 +5,7 @@ title: IOS In-app Purchases
 
 ## Integration
 
-To support the in-app payment process, the InPlayer system integrates with native apps on your TV or mobile device. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the iOS ecosystem.
+The InPlayer system integrates with native apps (the iOS app in this case) on the end-users’ mobile devices, as a way to support the in-app payment process. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the iOS ecosystem.
 
 You can find the dedicated integration page [here.](https://dashboard.inplayer.com/settings/integrations/in-app-integrations/apple-in-app)
 
@@ -93,6 +93,6 @@ Regarding the type of records that concern you, proceed to the following link(s)
 
 As part of the management section of the platform, our system supports a specific type of voucher called in-app voucher. To learn more of the in-app voucher, please refer to the following guide: 
 
-[In-app Voucher](in-app-voucher)
+[In-app Voucher](https://developers.inplayer.com/docs/in-app-vouchers/)
 
 
