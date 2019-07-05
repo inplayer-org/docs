@@ -5,6 +5,9 @@
     "previous": "Previous",
     "tagline": "Get familiar with the InPlayer platform tools and features.",
     "docs": {
+      "amazon-in-app-purchases": {
+        "title": "Amazon in app purchases"
+      },
       "android-in-app-purchases": {
         "title": "Android In-app Purchases"
       },
