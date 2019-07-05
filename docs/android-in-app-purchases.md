@@ -88,4 +88,4 @@ In the case of in-app payments, the actions to be taken depend on the ecosystems
 
 As part of the management section of the platform, our system supports a specific type of voucher called **in-app voucher**. To learn more of the in-app voucher, please refer to the following guide: 
 
-[In-app Voucher](in-app-voucher)
+[In-app Voucher](https://developers.inplayer.com/docs/in-app-vouchers)
