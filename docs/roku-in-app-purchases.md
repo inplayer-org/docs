@@ -5,21 +5,15 @@ title: ROKU in app purchases
 
 The InPlayer system integrates with native apps (the Roku app in this case) on the end-users’ TV devices, as a way to support the in-app payment process. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the Roku ecosystem.
 
-You can find the dedicated integration page on the following link:  
+You can find the dedicated integration page [here.](https://dashboard.inplayer.com/settings/integrations/in-app-integrations)
 
-https://dashboard.inplayer.com/settings/integrations/in-app-integrations
-
-For a more detailed and visual representation of the integration set-up, click here: 
-
-https://inplayer.com/docs/in-app-purchases/roku/ 
+For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/roku/) 
 
 Once the integration is set up and you have your merchant offers created, you can then proceed with the implementation of the in-app payment process. 
 
 ## Application Development Steps
 
-As an InPlayer Merchant, you should refer to our API services for the purposes of the application development. You can find the technical references of our API services here:
-
-https://docs.inplayer.com/api/ 
+As an InPlayer Merchant, you should refer to our API services for the purposes of the application development. You can find the technical references of our API services [here.](https://docs.inplayer.com/api/)
 
 The APIs provide you with the necessary endpoints for given functionalities and enable the communication between the application and our system. 
 These specific functionalities include authentication, in-app payment, and subscription.
