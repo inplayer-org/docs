@@ -126,12 +126,12 @@ Feel free to use the InPlayer JavaScript SDK in addition to the paywall for addi
 
 **For example:**
 
-Once you have the `access_token` on the back-end side, you can have a callback page that will handle the token passing to the client side and setting it in the local storage.
+Once you have the `access_token` and the `expires` data on the back-end side, you can have a callback page that will handle the token passing to the client side and setting it in the local storage.
 
 ```html
-https://example.com/my-callback-page.html?token=my-example-token
+https://example.com/my-callback-page.html?token=my-example-token&expires=token-expires
 ```
-The token is passed in from the back-end to the callback page in the page URL. The content to the callback page is as follows:
+The token and the expires params are passed in from the back-end to the callback page in the page URL. The content to the callback page is as follows:
 
 ```html
 <!DOCTYPE html>
