@@ -71,6 +71,9 @@
       "standalone-services-overview": {
         "title": "Basic Overview"
       },
+      "syndication": {
+        "title": "Syndication"
+      },
       "use-own-authentication": {
         "title": "Custom Authentication"
       },
@@ -91,8 +94,9 @@
       "Web-Hooks": "Web-Hooks",
       "Client Notifications": "Client Notifications",
       "In-app Services": "In-app Services",
-      "Paywall Events Tracking": "Paywall Events Tracking",
-      "Standalone Services": "Standalone Services"
+      "Standalone Services": "Standalone Services",
+      "Paywall Guides": "Paywall Guides",
+      "Feature Guides": "Feature Guides"
     }
   },
   "pages-strings": {
