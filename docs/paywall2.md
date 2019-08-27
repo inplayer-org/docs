@@ -55,7 +55,7 @@ The Paywall 2.0 also supports **multiple assets embed code**. To embed multiple 
 <div id="inplayer-ASSET_3_ID"></div>
 
 <script type="text/javascript">
-var paywall = new InplayerPaywall(MERCHANT_UUID, [{id: ASSET_1_ID}, {id: ASSET_2_ID}, {id: ASSET_3_ID}]);
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{id: ASSET_1_ID}, {id: ASSET_2_ID}, {id: ASSET_3_ID}]);
 </script>
 ```
 
@@ -394,14 +394,14 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-login`	| Invokes the login screen of the Paywall |
 | `inplayer-paywall-logout`	| Invokes the logout action  |
 | `inplayer-paywall-account`	 | Invokes the 'My Account' screen of the registered user |
+| `inplayer-paywall--ccm`      | Invokes the  default card management screen |
+| `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen |
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class**, will only be shown when the user is authenticated.
 
 ## Custom Asset Preview
 
-Each asset in the InPlayer Platform has its own preview template with a **call-to-action button** that is rendered after serving an asset embed code on a web page. Those preview templates can be edited and tweaked in the dashboard, though at times the given flexibility doesn't meet everyone's custom needs. For that purpose, the Paywall supports a functionality for creating a fully custom HTML preview for each embedded asset and a way to add a call-to-action button that will trigger the paywall experience.
-
-To begin with, you will need a standard embed code with a `noPreview` option added:
+There's a default asset preview template that you can tweak via our dashboard, but if that doesn't meet your custom needs you can always use the `noPreview` flag (by setting it to `true`) to disable displaying of the default preview altogether, and put your own preview HTML code in the asset `div`.
 
 ```html
 <div id="inplayer-assetID"></div>
@@ -419,13 +419,12 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
 </script>
 ```
 
-The embed code above will create a paywall object but there won't be a preview template nor anything on the screen. So, the next step requires adding your own custom preview HTML code, with a call-to-action button inside the DIV element of your asset. The reason why the preview code needs to be inside the asset's DIV container is that the paywall will exchange that content with the real asset after purchase.
+The embed code above will create a paywall instance but since `noPreview` is set to `true`, no preview will be shown. The next step is optional and it involves adding your own custom preview HTML code inside the DIV element of your asset and a call-to-action button outside the DIV element. Whatever preview code you decide to add, it will be replaced with the actual asset content once the user gets access.
 
 ```html
-<div id="inplayer-assetID">
+<div id="inplayer-assetID"></div>
 // Create your HTML custom preview here
 <button id="my-paywall-button">purchase</button>
-</div>
 <script type="text/javascript">
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
@@ -450,11 +449,11 @@ document.getElementById('my-paywall-button').addEventListener("click", () => {
 });
 ```
 
-The `showPaywall` method is linked to the button which triggers the paywall functionality. That is the final step for functional custom preview template.
+The `showPaywall` method is linked to the button which triggers the paywall functionality. That is the final step for functional custom preview.
 
 ## Embedding Specific Prices
 
-The Paywall comes with a default display preview, but also offers you, as a merchant the alternative of creating your own page elements, instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for a one-week access) instead of the default preview. In order to achieve this, first, you should initialize the Paywall with the `noInject` and `noPreview` options. The 'noInject' parameter prevents the Paywall from injecting a video after a successful purchase in favour of the creation of a custom pricing options screen. The `noPreview` parameter removes the standard preview template for the asset, allowing custom preview for each price.
+The Paywall comes with a default display preview, but also offers you, as a merchant, the alternative of creating your own page elements instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for a one-week access) instead of the default preview. In order to achieve this, first, you should initialize the Paywall with the `noInject` and `noPreview` options. The 'noInject' parameter prevents the Paywall from injecting a video after a successful purchase in favour of the creation of a custom pricing options screen. The `noPreview` parameter removes the standard preview template for the asset, allowing custom preview for each price.
 
 ```html
 
@@ -474,7 +473,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
 </script>
 ```
 
-Once the paywall object is created, you can use additional methods to invoke functionalities. The next thing that needs to be done is adding the custom HTML blocks that will describe both pricing options and the call-to-action buttons for each of them.
+Once the paywall instance is created, you can use additional methods for invoking functionalities, such as adding custom HTML blocks that describe both the pricing options and the call-to-action buttons for each one of them.
 
 Here's how to add the custom HTML code for the first price:
 
@@ -483,7 +482,7 @@ Here's how to add the custom HTML code for the first price:
 <button id="first-price-button">purchase</button>
 ```
 
-Now, add the paywall trigger functionality to the button for the corresponding price:
+Now, add the paywall functionality trigger to the button for the corresponding price:
 
 ```js
 document.getElementById('first-price-button').addEventListener("click", () => { 
@@ -493,6 +492,6 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 });
 ```
 
-With this code the method `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will not appear as there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
+With this code, the `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will not appear as there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
 
 For the second price, the same `showPaywall` function needs to be added to the second button but with a different `preselectedFeeId` parameter that identifies the other price option.
