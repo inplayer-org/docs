@@ -65,6 +65,9 @@
       "roku-in-app-purchases": {
         "title": "ROKU in app purchases"
       },
+      "sca": {
+        "title": "Strong Customer Authentication"
+      },
       "security": {
         "title": "Security at InPlayer"
       },
