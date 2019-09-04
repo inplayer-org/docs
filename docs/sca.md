@@ -16,7 +16,7 @@ As the customer payment journey would appear slightly different from the usual, 
 During the payment process for one-time payments, the UI flow for the customer progresses through the following steps:
 
 1. Payment initiated
-The customer initiates payment by entering their CC details and clicking the 'Pay' button afterwards. This is done by firing the `create_payment` endpoint (which includes the `return_to_url` parameter) or calling for the `createPayment` SDK method (which also includes the `return_to_url`), respectfully. 
+The customer initiates payment by entering their CC details and clicking the 'Pay' button afterwards. This is done by firing the `create_payment` endpoint (which includes the `return_url` parameter) or calling for the `createPayment` SDK method (which also includes the `return_url`), respectfully. 
 
 API Example for `create_payment`
 
@@ -62,12 +62,65 @@ When SCA is needed, the customer follows through step 3, otherwise proceeds dire
 Upon a SCA request, we send the `payment.card.requires.action` notification to the paywall application via the socket you have established previously. The socket notification contains a `redirect_to_url` for redirecting the targeted customer to a third party page where the additional payment authentication can be completed. In addition, we also send an informative email to the customer including SCA related information (explanation as to why the email has been sent), asset information (the title and price of the asset being purchased), customer information (the name of the customer) and redirection for authentication (the URL where the customer can complete the payment authentication).
 Once the SCA is completed successfully, the customer is automatically redirected back to the payment page. If the SCA process has failed by chance, we would inform the customer on the paywall screen. Afterwards, the customer should initiate the payment again by providing their CC information.
 
+Subscribe to listen to the `payment.card.requires.action` notification:
+
+```InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+  onMessage: message => {
+    const parsedMessage = JSON.parse(message);
+
+    if (parsedMessage.type === "payment.card.requires.action") {
+      const {
+        resource: { redirect_to_url }
+      } = parsedMessage;
+
+      window.location.href = redirect_to_url;
+    }
+  }
+});
+```
 
 4. Payment completion 
 If there is no need for additional authentication, the payment flow follows its usual course without any additional steps and with all the records stored in our system. In contrast, if the customer has completed the SCA process successfully, the paywall application again initiates and then confirms the payment intent. 
 In other words, the customer would be redirected to the payment page via the `return_url` which holds (for query parameter) the value of the `payment_intent` that is the id of the payment, initially created at step 1. This is the value you need to take and confirm whenever a customer sends an additional payment request to complete the payment process. 
 So, you take the `payment_intent` and fire either the `create_payment` endpoint or the `confirmPayment` SDK method, respectively. The `create_payment` endpoint is the same API call used at step 1 for payment initiation, only this time providing the `pi_id` as parameter. The `confirmPayment` method is a new SDK method that also includes the payment intent as parameter. 
 Finally, the funds should be instantaneously debited and our system will proceed with the regular process of storing transaction records and granting the customer access to the premium content being purchased.
+
+After the successful authentication, the customer is redirected back to the `return_url` with the `payment_intent` query parameter with which we can confirm the payment like in the example below:
+
+```const parseURLparams = (urlString, wantedParams = []) => {
+  const res = {
+    href: urlString,
+    query: {}
+  };
+
+  const {
+    url,
+    url: { searchParams }
+  } = { url: new URL(urlString) };
+
+  wantedParams.forEach(paramName => {
+    if (searchParams.has(paramName)) {
+      const val = searchParams.get(paramName);
+      searchParams.delete(paramName);
+      res.query[paramName] = val;
+    }
+  });
+
+  res.href = url.href;
+
+  return res;
+};
+
+// get payment intent id from route params
+const {
+  query: { ippwat: accessType, payment_intent: paymentIntentId }
+} = parseURLparams(window.location.href, ["ippwat", "payment_intent"]);
+
+// confirmPayment should only be called if the accees fee type is 'ppv'
+if (accessType === "ppv" && paymentIntentId) {
+  InPlayer.Payment.confirmPayment(paymentIntentId);
+}
+```
 
 ## Subscription Creation Flow
 
@@ -83,7 +136,24 @@ We will also store the subscription records in our system.
 
 3. SCA process
 Upon SCA request, the subscription status in our system is set to `incomplete`. This status expires after 24h, meaning if the customer fails to meanwhile authenticate and complete the subscription payment, the subscription would be set to `incomplete_expired` in our system, after which the subscription can no longer be activated. 
-Once the subscription status is set to `incomplete` we send the customer the `payment.card.requires.action` notification containing the `redirect_to_url` parameter and they are redirected to their banks' 3D secure page to complete the authentication process. 
+Once the subscription status is set to `incomplete` we send the customer the `subscribe.requires.action` notification containing the `redirect_to_url` parameter and they are redirected to their banks' 3D secure page to complete the authentication process. 
+
+Subscribe to listen to the `subscribe.requires.action` notification:
+
+```InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+  onMessage: message => {
+    const parsedMessage = JSON.parse(message);
+
+    if (parsedMessage.type === "subscribe.requires.action") {
+      const {
+        resource: { redirect_to_url }
+      } = parsedMessage;
+
+      window.location.href = redirect_to_url;
+    }
+  }
+});
+```
 
 4. Subscription confirmation 
 Once the SCA process is completed successfully, the subscription status changes to `active` and the customer is automatically redirected back to the payment page where they would be granted access to the premium content. 
