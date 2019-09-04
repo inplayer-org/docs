@@ -62,6 +62,21 @@ When SCA is needed, the customer follows through step 3, otherwise proceeds dire
 Upon a SCA request, we send the `payment.card.requires.action` notification to the paywall application via the socket you have established previously. The socket notification contains a `redirect_to_url` for redirecting the targeted customer to a third party page where the additional payment authentication can be completed. In addition, we also send an informative email to the customer including SCA related information (explanation as to why the email has been sent), asset information (the title and price of the asset being purchased), customer information (the name of the customer) and redirection for authentication (the URL where the customer can complete the payment authentication).
 Once the SCA is completed successfully, the customer is automatically redirected back to the payment page. If the SCA process has failed by chance, we would inform the customer on the paywall screen. Afterwards, the customer should initiate the payment again by providing their CC information.
 
+Example:
+
+InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+  onMessage: message => {
+    const parsedMessage = JSON.parse(message);
+
+    if (parsedMessage.type === "payment.card.requires.action") {
+      const {
+        resource: { redirect_to_url }
+      } = parsedMessage;
+
+      window.location.href = redirect_to_url;
+    }
+  }
+}); 
 
 4. Payment completion 
 If there is no need for additional authentication, the payment flow follows its usual course without any additional steps and with all the records stored in our system. In contrast, if the customer has completed the SCA process successfully, the paywall application again initiates and then confirms the payment intent. 
@@ -83,7 +98,23 @@ We will also store the subscription records in our system.
 
 3. SCA process
 Upon SCA request, the subscription status in our system is set to `incomplete`. This status expires after 24h, meaning if the customer fails to meanwhile authenticate and complete the subscription payment, the subscription would be set to `incomplete_expired` in our system, after which the subscription can no longer be activated. 
-Once the subscription status is set to `incomplete` we send the customer the `payment.card.requires.action` notification containing the `redirect_to_url` parameter and they are redirected to their banks' 3D secure page to complete the authentication process. 
+Once the subscription status is set to `incomplete` we send the customer the `subscribe.requires.action` notification containing the `redirect_to_url` parameter and they are redirected to their banks' 3D secure page to complete the authentication process. 
+
+Example:
+
+InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+  onMessage: message => {
+    const parsedMessage = JSON.parse(message);
+
+    if (parsedMessage.type === "subscribe.requires.action") {
+      const {
+        resource: { redirect_to_url }
+      } = parsedMessage;
+
+      window.location.href = redirect_to_url;
+    }
+  }
+});
 
 4. Subscription confirmation 
 Once the SCA process is completed successfully, the subscription status changes to `active` and the customer is automatically redirected back to the payment page where they would be granted access to the premium content. 
