@@ -64,7 +64,8 @@ Once the SCA is completed successfully, the customer is automatically redirected
 
 Subscribe to listen to the `payment.card.requires.action` notification:
 
-```InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+```
+InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
   onMessage: message => {
     const parsedMessage = JSON.parse(message);
 
@@ -87,7 +88,8 @@ Finally, the funds should be instantaneously debited and our system will proceed
 
 After the successful authentication, the customer is redirected back to the `return_url` with the `payment_intent` query parameter with which we can confirm the payment like in the example below:
 
-```const parseURLparams = (urlString, wantedParams = []) => {
+```
+const parseURLparams = (urlString, wantedParams = []) => {
   const res = {
     href: urlString,
     query: {}
@@ -140,7 +142,8 @@ Once the subscription status is set to `incomplete` we send the customer the `su
 
 Subscribe to listen to the `subscribe.requires.action` notification:
 
-```InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
+```
+InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
   onMessage: message => {
     const parsedMessage = JSON.parse(message);
 
