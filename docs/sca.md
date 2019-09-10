@@ -161,7 +161,7 @@ InPlayer.subscribe("adsasd-d1-cjc1c-1ajaveo", {
 4. Subscription confirmation 
 Once the SCA process is completed successfully, the subscription status changes to `active` and the customer is automatically redirected back to the payment page where they would be granted access to the premium content. 
 
-Customer Off-session SCA Flow
+## Customer Off-session SCA Flow
 
 Both one-time payment and subscription creation flows are cases when the customer is active on a website/application or put differently on-session and initiates payment. However, in the case of subscriptions, there might be cases when the customer is off-session, meaning not on the website/application and a payment is still being initiated. 
 Currently, there are two such cases: 
@@ -170,7 +170,7 @@ Currently, there are two such cases:
 
 The SCA applies also for both off-session cases so the customer might be required to authenticate the payment again, as to ensure the funds have been successfully transferred.
 
-## The off-session SCA flow progresses through the following steps:
+### The off-session SCA flow progresses through the following steps:
 
 1. SCA process initiated
 When Stripe determines that SCA is needed for the aforementioned cases they send us a hook with that information to our system. 
