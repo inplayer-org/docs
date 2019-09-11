@@ -175,7 +175,7 @@ The SCA applies also for both off-session cases so the customer might be require
 **1. SCA process initiated**  
 When SCA is needed for the aforementioned cases this information reaches our system.  
 **2. Email to customer**   
-At this point, we send an email to the customer informing them of the need for further payment authentication. The email will contain the redirect URL that leads the customer to an external application where they can complete the authentication. 
+At this point, we send an email to the customer informing them of the need for further payment authentication. The email will contain the redirect URL that leads the customer to an external application where they can complete the authentication.  
 **3. Customer completes authentication**  
 Once the customer completes the authentication, they should be redirected to a hosted page where information about payment competition would be provided.
 
