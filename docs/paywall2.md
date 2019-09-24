@@ -70,10 +70,9 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
      [
       {
         id: 123 //asset ID,
-        options: {
-            noPreview: true,
+        options: { 
             brandingId: "111222",
-            noInject: true
+            showPreviewPrices: true
         } 
         //asset options object        
       }
