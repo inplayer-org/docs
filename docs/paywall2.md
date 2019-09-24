@@ -120,6 +120,7 @@ Here is a list of all the paywall options, those per asset and the global ones:
 | hideProtectedBy | Hides the protected by logo	 | Boolean | Global option | 
 | oauthAppKey	| Sets the OAuth application to be used for authentication | String | Global option |
 | brandingId | 	Sets global branding theme for all assets on a page | Number | Global option |
+| showPreviewPrices | 	Shows the prices of the asset to the end-user in the asset preview  | Boolean | Asset option |
 
 
 ## Custom Player Options
