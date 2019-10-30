@@ -380,6 +380,15 @@ The 'any' event is fired for every action mentioned above.
     });
 ```
 
+### `close`
+
+This event is fired when the paywall's modal gets closed by a user action or otherwise.
+
+```js
+paywall.on('close_modal', function(e) {
+    console.log("-- CLOSE MODAL --", e.type);
+});
+```
 
 ## Standalone Functionalities
 
