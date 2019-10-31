@@ -5,11 +5,11 @@ title: InPlayer Webhooks
 
 ## Webhooks Overview
 
-Our Platform enables you to get automatically notified on certain events happening within the InPlayer Platform by using **webhooks**. In other words, you can build or setup applications which are subscribed to certain events in our Platform. When these events are triggered, we send **HTTP POST requests** with specific **payloads** to the webhook’s configured URL. 
+Whenever an event occurs in the InPlayer platform, that is of interest to you as our merchant, we automatically notify you using **webhooks**. Even more so, you can build or setup applications which are subscribed to certain events in our platform. When these events are triggered, we send **HTTP POST requests** with specific **payloads** to the webhooks' configured URL.
 
-The webhooks are usually used for updating or creating a platform action/operation tracker, for triggering marketing campaigns, for syncing data between platforms or for fetching results of operations in backend applications.
+Typically, the webhooks are being used for creating or updating a platform action/operation tracker for triggering marketing campaigns, for syncing data between platforms, or for fetching results of backend applications' operations.
 
-You can install webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you would like to be notified of. You can find the webhooks’ setup details and other options in the **API Settings** section, once you navigate to the InPlayer’s Dashboard, open the top right-hand corner menu and choose 'API'. 
+You can install a handful of webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you have interest in being notified of. You can find the webhooks’ setup details and other options in the **API Settings** section. More precisely, once you navigate to the InPlayer’s dashboard, open the top right-hand corner menu and choose 'API'.
 
 
 ## Payloads
@@ -25,7 +25,7 @@ The HTTP POST requests sent to your webhook URL have several **headers**, includ
 | X-InPlayer-Signature	| The signature is created by hashing your secret key together with the request payload, using the sha256 algorithm |
 |Content-Type |application/x-www-form-urlencoded |
 
-Another header we send in the POST requests is `Content-Type: application/x-www-form-urlencoded` , which indicates the media type of the resource that we send to your server. The keys and values are encoded in **key-value tuples** separated by '**&'**, with an **'='** between the key and the value. The non-alphanumeric characters in both keys and values are **percent encoded**. Here is an example request:
+Another header we send in the POST requests is `Content-Type: application/x-www-form-urlencoded` which indicates the media type of the resource that we send to your server. The keys and values are encoded in **key-value tuples** separated by '**&'**, with an **'='** between the key and the value. The non-alphanumeric characters in both keys and values are **percent encoded**. Here is an example request:
 
 ```
 POST / HTTP/1.1
@@ -53,19 +53,19 @@ The Payload data holds all the relevant information regarding the event concerne
 
 ## Events
 
-When configuring webhooks, you can choose one or several events that you would like to receive payloads for. The following section offers more details about each webhook event in our Platform. 
+When configuring webhooks, you can choose one or several events that you would like to receive payloads for. The following section offers more details about each webhook and event in our Platform. 
 
 ### Account Webhooks
 
-**Account webhooks** are events that are fired whenever operations concerning our **'Accounts Service'** occur. Usually, they are used to inform the merchant of the most important actions their customers had performed using their accounts. 
+**Account webhooks** are fired to notify you of events that occur whenever an operation concerning our **Accounts Service** is taking place. Usually, they are used to inform the merchant of the most important actions their customers had performed using their accounts. 
 
-Bellow you can find all the Account webhooks.
+Below you can find illustrated the account webhooks within our platform.
 
-### `customer registered`
+### `customer.registered`
 
 | Webhook Type        | Description           |
 | ------------- |-------------|
-| ``customer.registered``| Fired whenever a new customer is registered |
+| ``customer.registered``| Fired to notify you that a new customer is registered |
 
 Example Payload Data:
 
@@ -89,11 +89,11 @@ type="customer.registered"
 
 <br>
 
-### `customer updated`
+### `customer.updated`
 
 | Webhook Type        | Description           |
 | ------------- |-------------|
-| ``customer.updated``| Fired whenever an existing customer is updated |
+| ``customer.updated``| Fired to notify you that data regarding an existing customer of yours have been updated |
 
 Example Payload Data:
 
@@ -117,13 +117,14 @@ type="customer.updated"
 
 ### Access Webhooks
 
-These events are fired whenever operations concerning Asset Access ocurs.
+The access webhooks are fired to notify you of events that occur whenever an operation concerning the **Asset Access** is taking place.
 
-### `access granted`
+
+### `access.granted`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``asset.access.granted``| Fired when the customer is granted access to an asset  |
+| ``asset.access.granted``| Fired to notify you that a customer has been granted access to your asset |
 
 Example Payload Data:
 
@@ -159,11 +160,11 @@ type="asset.access.granted"
 
 <br >
 
-### `access revoked`
+### `access.revoked`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``asset.access.revoked``| Fired when the customer is revoked access for an asset  |
+| ``asset.access.revoked``| Fired to notify you when a customer's access to your asset has been revoked |
 
 Example Payload Data:
 
@@ -189,12 +190,14 @@ resource[revoked]=1
 ### Payments and Subscriptions Webhooks
 
 These events are fired whenever operations concerning Payments and Recurring Subscriptions ocurs.
+These events are fired to notify you of events that occur whenever operations concerning **Payments** and **Recurring Subscriptions** are taking place.
 
-### `card payment success`
+
+### `payment.card.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``payment.card.success``| Fired when the customer has made successful payment  |
+| ``payment.card.success``| Fired to notify you that a customer of yours has made a successful payment |
 
 Example Payload Data:
 
@@ -217,11 +220,11 @@ type="payment.card.success"
 
 <br >
 
-### `card subscribe success`
+### `subscribe.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``subscribe.success``| Fired when the customer has made successful card subscription  |
+| ``subscribe.success``| Fired to notify you that a customer has just subscribed to your asset successfully |
 
 Example Payload Data:
 
@@ -245,11 +248,11 @@ resource[previewTitle]="ooyala+muse+mp4"
 ```
 <br >
 
-### `paypal payment success`
+### `external.payment.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``external.payment.success``| Fired when the customer has made successful payment with external payment method (PayPal)  |
+| ``external.payment.success``| Fired to notify you that a customer has made a successful payment via an external payment method (PayPal) |
 
 Example Payload Data:
 
@@ -274,11 +277,11 @@ resource[previewTitle]="Asset+Title"
 
 <br >
 
-### `paypal subscribe success`
+### `external.subscribe.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``external.subscribe.success``| Fired when the customer has made successful subscription with external payment method (PayPal)  |
+| ``external.subscribe.success``| Fired to notify you that a customer has made a successful subscription via an external payment method (PayPal) |
 
 Example Payload Data:
 
@@ -303,11 +306,11 @@ resource[previewTitle]="Asset+Title"
 
 <br >
 
-### `paypal subscription canceled`
+### `external.subscribe.cancel.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| `external.subscribe.cancel.success`| Fired when the customer has made successful cancelling of subscription with external payment method (PayPal)  |
+| `external.subscribe.cancel.success`| Fired to notify you that the subscription of a customer of yours who had subscribed to your asset via PayPal (or other external payment method) has been cancelled successfully |
 
 Example Payload Data:
 
@@ -333,18 +336,18 @@ resource[previewTitle]="Asset+Title"
 
 ## Securing Webhooks
 
-Once you start receiving webhooks, make sure the requests you have received come only from InPlayer. Some of the popular methods to confirm this include restriction per domain or the IP address from where you receive the requests, but at InPlayer, we insist that you use the **InPlayer signature** to validate the event.
+Once you start receiving webhooks, make sure the requests you have received are coming only from InPlayer. Some of the popular methods to confirm this include restriction per domain or the IP address from where you receive the requests; but at InPlayer, we insist that you use the **InPlayer signature** to validate the event.
 
-In order to use the signature for validation, first you will need to have an **API secret** generated. To do so, navigate to the InPlayer’s Dashboard and choose the 'API Settings' section.
+In order to use the signature for validation, first you need to have an **API secret** generated. To do so, navigate to the InPlayer’s dashboard and choose the 'API Settings' section.
 
 Once the secret is generated, you can use it in your backend application to validate the event concerned.
 
 
 ## Validating Events
 
-After you have your secret code set up, InPlayer will use it for generating a **hash signature** for each event that is to be sent as a header along with every request as 'X-InPlayer-Signature'.
+After you have your secret code set up, InPlayer will use it for generating a **hash signature** for each event that is to be sent as a header, along with every request as 'X-InPlayer-Signature'.
 
-Once you receive an event and find the signature header, you should create a **HASH** using the same secret token and then compare your hash to the **InPlayer signature header value**. If both have the same values, you can take that as a validation prove that the event has been sent from InPlayer.
+Once you receive an event and find the signature header, you should create a **HASH** using the same secret token and then compare your hash to the **InPlayer signature header value**. If both have the same values, you can take that as a validation proof that the event has been sent from InPlayer.
 
 Here it is a PHP example of validating an event while using the signature comparison method:
 
