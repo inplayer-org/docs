@@ -121,6 +121,7 @@ Here is a list of all the paywall options, those per asset and the global ones:
 | hideProtectedBy | Hides the protected by logo	 | Boolean | Global option | 
 | oauthAppKey	| Sets the OAuth application to be used for authentication | String | Global option |
 | brandingId | 	Sets global branding theme for all assets on a page | Number | Global option |
+| registerFirst | Specifies that the default modal screen, which is the register screen, appears first when the paywall modal is opened | Boolean | Global option |
 
 
 ## Custom Player Options
@@ -387,8 +388,8 @@ The 'any' event is fired for every action mentioned above.
 This event is fired when the paywall's modal gets closed by a user action or otherwise.
 
 ```js
-paywall.on('close_modal', function(e) {
-    console.log("-- CLOSE MODAL --", e.type);
+paywall.on('close', function(e) {
+    console.log("-- CLOSE --", e.type);
 });
 ```
 
