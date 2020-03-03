@@ -43,6 +43,23 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
 </script>
 ```
 
+The 'type' parameter can be one of the following values:
+  - for Amazon CloudFront - 'aws',
+  - for Brightcove - 'brightcove',
+  - for DaCast - 'dacast',
+  - for JWPlayer - 'jwplayer',
+  - for Kaltura - 'kaltura',
+  - for Laola1.tv  - 'laola',
+  - for LiveStream - 'livestream',
+  - for Ooyala - 'ooyala',
+  - for Panopto - 'panopto',
+  - for Piksel - 'piksel',
+  - for Qbrick - 'qbrick',
+  - for StreamAMG - 'streamamg',
+  - for SportRadar - 'sportradar',
+  - for Wistia - 'wistia',
+  - for Wowza - 'wowza'.
+
 ## Multiple Assets Embed Code
 
 The paywall 2.0 also supports **multiple assets embed code**. To embed multiple assets, you should include them in the JavaScript code as an array. The order of the html elements where the assets would be rendered is not important. Below you can find an example of multiple assets embed code in action.
