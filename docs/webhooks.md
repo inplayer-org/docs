@@ -9,7 +9,7 @@ Whenever an event occurs in the InPlayer platform, that is of interest to you as
 
 Typically, the webhooks are being used for creating or updating a platform action/operation tracker for triggering marketing campaigns, for syncing data between platforms, or for fetching results of backend applications' operations.
 
-You can install a handful of webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you have interest in being notified of. You can find the webhooks’ setup details and other options in the **API Settings** section. More precisely, once you navigate to the InPlayer’s dashboard, open the top right-hand corner menu and choose 'API'.
+You can install a handful of webhooks on your merchant account by setting up a webhook URL and by selecting the specific events you have interest in being notified of. You can find the webhooks’ setup details and other options in the **Webhooks Settings** section. More precisely, once you navigate to the InPlayer’s dashboard, open the top right-hand corner menu and choose 'Webhooks'.
 
 
 ## Payloads
