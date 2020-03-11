@@ -16,7 +16,7 @@ The paywall 2.0 embed code also consists of **InPlayer paywall scripts** and **a
 Whereas the latter, the asset embed code, has the following format:
 
 ```html
-<div id="inplayer-assetID"></div>
+<div id="inplayer-{asset_id}" class="inplayer-paywall"></div>
 <script type="text/javascript">
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{ id: 123}]); 
 // merchant UUID and assetID are the function arguments from above
@@ -81,7 +81,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{id: 
 Depending on the need, you can set up additional options in the embed code. You can choose between **the asset options** that can be set up **per asset** and the **global paywall options** that affect all the assets. The asset embed code options should be passed in, in addition to the asset id:
 
 ```html
-<div id="inplayer-{asset_id}" class="inplayer-paywall"></div>
+<div id="inplayer-assetID"></div>
 <script type="text/javascript">
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merchant UUID
      [
