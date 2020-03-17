@@ -252,7 +252,7 @@ resource[previewTitle]="ooyala+muse+mp4"
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``external.payment.success``| Fired to notify you that a customer has made a successful payment via an external payment method (PayPal) |
+| ``external.payment.success``| Fired to notify you that a customer has made a successful payment via PayPal or other external payment method |
 
 Example Payload Data:
 
@@ -281,7 +281,7 @@ resource[previewTitle]="Asset+Title"
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``external.subscribe.success``| Fired to notify you that a customer has made a successful subscription via an external payment method (PayPal) |
+| ``external.subscribe.success``| Fired to notify you that a customer has made a successful subscription via PayPal or other external payment method |
 
 Example Payload Data:
 
@@ -310,7 +310,7 @@ resource[previewTitle]="Asset+Title"
 
 | Type        | Description           |
 | ------------- |-------------|
-| `external.subscribe.cancel.success`| Fired to notify you that the subscription of a customer of yours who had subscribed to your asset via PayPal (or other external payment method) has been cancelled successfully |
+| `external.subscribe.cancel.success`| Fired to notify you that the subscription of a customer of yours who has been subscribed to your asset via PayPal or other external payment method is cancelled successfully |
 
 Example Payload Data:
 
