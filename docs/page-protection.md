@@ -1,4 +1,9 @@
-﻿# Page Protection 
+---
+id: page-protection
+title: Page Protection
+---
+
+# Page Protection 
 
 The InPlayer platform ensures a smooth monetization process and guarantees full protection for your Premium Page, once you embody the status of an InPlayer Merchant. 
 As a merchant, you intend your valuable content to reach, engage, and retain an audience without any geographical restrictions or ties to traditional content distributors (like cable, broadcast, or satellite television platforms). InPlayer offers you a way to bypass tradition and embrace the trend of developing OTT solutions, like a custom web-based premium content solution, by using our fully-packed UI Libraries. Due to your preference, you can turn to our embeddable paywall application or our JavaScript SDK. With the former, you get a ready ‘plug and play’ application that enables you to embed your premium content into any website. With the latter, you are provided with the flexibility of user-friendly methods that allow you to start developing from scratch. 
@@ -53,10 +58,10 @@ Example:
 
 ```
 paywall.on('access', function(e, data) {
-	if(data.hasAccess) {
-	// token extraction to cookie
-	// optional redirect to premium page
-	}
+  if(data.hasAccess) {
+    // token extraction to cookie
+    // optional redirect to premium page
+  }
 });
 ```
 
@@ -116,40 +121,31 @@ Successful Response:
   }
 }
 
-
-
-
 Possible Errors:
-
 
 {
   "code": 401,
   "message": "Invalid auth token"
 }
 
-
 {
   "code": 402,
   "message": "No access"
 }
-
 
 {
   "code": 403,
   "message": "Invalid privileges"
 }
 
-
 {
   "code": 404,
   "message": "Item not found"
 }
 
-
 {
   "code": 422,
   "message": "No access"
 }
-```
 
 If the API request returns a successful response, we let the customer reach the premium section of your page and access the content behind. In case of any of the above illustrated errors, we redirect the customer back to your Landing Page where they can try to register and/or complete the payment successfully this time.
