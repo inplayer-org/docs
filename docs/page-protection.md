@@ -18,7 +18,7 @@ To begin with, you need to log into the [InPlayer dashboard](https://dashboard.i
 The following steps include naming your asset, setting the pricing type (choosing between login/register type or code/password as a means to gaining access), as well as setting the rest of the asset properties. 
 
 You get to customize the look of your asset preview by adding an image, title, description, and personalized 'Buy' button; then choose between a pay-per-view or subscription as a payment option; set any geographic, domain and/or age restrictions you have considered; add your HTML code of the content in the 'Asset content' section and embed the asset on your website, simply by clicking the 'Get Asset Embed Code' button at the top right.
-For a more picturesque guide on asset creation, please refer to the following guide: https://inplayer.com/docs/assets/html-asset/.
+For a more picturesque guide on asset creation, please refer [here](https://inplayer.com/docs/assets/html-asset/).
 
 ## Finding Your Asset ID
 
@@ -38,7 +38,7 @@ In order to implement the logic of having two pages coexisting, one for validati
 - `noInject` is true;
 - have the `access` paywall event implemented. 
 
-Here you can find our paywall events documented: https://developers.inplayer.com/docs/paywall2.html#paywall-events.
+[Here](https://developers.inplayer.com/docs/paywall2.html#paywall-events) you can find our paywall events documented.
 
 
 ### `noInject`
@@ -145,5 +145,6 @@ Possible Errors:
   "code": 422,
   "message": "No access"
 }
+```
 
 If the API request returns a successful response, we let the customer reach the premium section of your page and access the content behind. In case of any of the above illustrated errors, we redirect the customer back to your Landing Page where they can try to register and/or complete the payment successfully this time.
