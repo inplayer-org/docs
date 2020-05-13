@@ -35,7 +35,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
       {
          external: {
             type: 'OVP_NAME',
-            id: 12345, // 'OVP Video ID'
+            id: '1234abcd', // 'OVP Video ID'
          },
       },
      ]
