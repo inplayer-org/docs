@@ -18,7 +18,7 @@ The Payments' notifications are fired after every payment event, notifying the c
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.success``| This event is fired after each successful one-time payment|
+|``payment.card.success``| This event is fired after each successful one-time payment.|
 
 Example Structure:
 ```javascript 
@@ -41,9 +41,10 @@ Example Structure:
 }
 ```
 <br >
-|Event Type| Event Description|
-| ------------- |-------------|
-|``payment.card.failed``| This event is fired after each unsuccessful one-time payment|
+
+|Event Type| Event Description| 
+| ------------- |-------------| 
+|``payment.card.failed``| This event is fired after each unsuccessful one-time payment.| 
 
 Example Structure:
 ```javascript
@@ -58,13 +59,23 @@ Example Structure:
 }
 ```
 
+|Event Type| Event Description|
+| ------------- |-------------|
+|``external.payment.success``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) is completed successfully.|
+
+
+|Event Type| Event Description|
+| ------------- |-------------|
+|``external.payment.failed``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) has failed to complete successfully.|
+
+
 ### Subscriptions
 
 The Subscription notifications are fired only when recurring subscription payment takes place, notifying the client’s application of the outcome of the subscription payments.
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.success``| This event is fired after each successful recurring subscription|
+|``subscribe.success``| This event is fired after each successful recurring subscription.|
 
 Example Structure:
 ```javascript 
@@ -91,7 +102,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.failed``| This event is fired after each unsuccessful recurring subscription|
+|``subscribe.failed``| This event is fired after each unsuccessful recurring subscription.|
 
 Example Structure:
 ```javascript
@@ -111,7 +122,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.granted``| This event is fired after a customer has been granted access to an asset (this event also occurs after successful payment)|
+|``access.granted``| This event is fired after a customer has been granted access to an asset (this event also occurs after successful payment).|
 
 Example Structure:
 ```javascript 
@@ -159,7 +170,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.revoked``| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked)|
+|``access.revoked``| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked).|
 
 Example Structure:
 ```javascript
@@ -176,7 +187,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.logout``| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out|
+|``account.logout``| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out.|
 
 Example Structure:
 ```javascript
@@ -190,7 +201,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.erased``| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation|
+|``account.erased``| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation.|
 
 Example Structure:
 ```javascript
@@ -204,7 +215,7 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.deactivated``| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation|
+|``account.deactivated``| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation.|
 
 Example Structure:
 ```javascript
