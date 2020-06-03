@@ -1,5 +1,5 @@
-﻿---
-id: standalone-services-overview
+---
+id: custom-payment
 title: Custom Payment
 ---
 
