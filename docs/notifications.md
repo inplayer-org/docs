@@ -68,6 +68,17 @@ Example Structure:
 | ------------- |-------------|
 |``external.payment.failed``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) has failed to complete successfully.|
 
+Example Structure:
+```javascript 
+{ 
+    type: "external.payment.failed",
+    timestamp: 1546611150,
+    resource: {
+        message: "Payment parameters error.",
+        explain: "you already have access for this asset",
+        code: 422
+}
+```
 
 ### Subscriptions
 
