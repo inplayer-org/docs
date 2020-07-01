@@ -145,5 +145,6 @@ Possible Errors:
   "code": 422,
   "message": "No access"
 }
+```
 
 If the API request returns a successful response, we let the customer reach the premium section of your page and access the content behind. In case of any of the above illustrated errors, we redirect the customer back to your Landing Page where they can try to register and/or complete the payment successfully this time.
