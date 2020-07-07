@@ -56,6 +56,7 @@ Example Structure:
         account_id: 29120,
         code: 422,
         message: "Your card was declined. Your request was in test mode but used a non-test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."
+    }
 }
 ```
 
@@ -161,7 +162,7 @@ Example Structure:
             title: "Asset Example Title",
             updated_at: 1546612165
         },
-    starts_at: -62135596800
+        starts_at: -62135596800
     }
 }
 ```
