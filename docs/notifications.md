@@ -64,6 +64,26 @@ Example Structure:
 | ------------- |-------------|
 |``external.payment.success``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) is completed successfully.|
 
+Example Structure:
+```javascript
+{ 
+    type: "external.payment.success",
+    timestamp: 1563797342,
+    resource: {
+        access_fee_id: 123,
+        transaction: "C-nfkjJnkfniNEjkwneDKnjsdfn-ST",
+        description: "Description",
+        email: "consumer@inplayer.com",
+        customer_id: 123123,
+        formatted_amount: "15.5 EUR",
+        amount: "15.5",
+        currency_iso: "EUR",
+        status: "",
+        timestamp: 1563797342,
+        code: 200
+    }
+}
+```
 
 |Event Type| Event Description|
 | ------------- |-------------|
