@@ -7,7 +7,7 @@ title: SDK for JavaScript
 
 The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer platform services. The JS SDK applies to  any frontend project.
 
-You can find the full technical reference of all the SDK methods, [here.](https://inplayer-org.github.io/inplayer.js/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
+You can find the full technical reference of all the SDK methods, [here.](https://inplayer-js.netlify.app/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
 
 ## Installing the SDK
 
