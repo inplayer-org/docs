@@ -64,7 +64,7 @@ The `type` parameter can be either `consumer` or `merchant`. In case you want to
 
 There is also a `metadata` parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
-Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked or the location where the account has been created.
 
 ## How to Authenticate an Account
 
@@ -103,7 +103,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the `OnMessage` callback.
+It should also be noted that you are going to need a code that processes every different notification type when you receive a notification message in the `OnMessage` callback.
 
 Our basic use-case here is to have a **'redirect to premium section'** handler after the **'successful payment'** notification message.
 
@@ -124,7 +124,7 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 
 ### Creating an Access Fee
 
-The InPlayer platform enables you to create digital assets to which afterwards you can attach **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function below. 
+The InPlayer platform enables you to create digital assets to which afterwards you can attach a **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function below. 
 
 ```js
 InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
