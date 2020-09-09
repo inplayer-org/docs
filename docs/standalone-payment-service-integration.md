@@ -70,7 +70,7 @@ curl https://services.inplayer.com/v2/accounts/customers \
 -d email=john@example.com \
 ```
 
-For a more detailed description of this endpoint refer to [this section](https://docs.inplayer.com/api/accounts/#operation/getSocial) of our API documentation.
+For a more detailed description of this endpoint refer to [this section](https://docs.inplayer.com/api/accounts/#operation/createAccount) of our API documentation.
 
 As for user authentication, fire the [POST] /accounts/authenticate request.
 
