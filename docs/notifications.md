@@ -73,7 +73,7 @@ Example Structure:
     timestamp: 1563797342,
     resource: {
         item_id: 73828,
-        previewTitle: "Example title"
+        previewTitle: "Example title",
         access_fee_id: 123,
         transaction: "C-nfkjJnkfniNEjkwneDKnjsdfn-ST",
         description: "Description",
@@ -120,7 +120,7 @@ Example Structure:
     timestamp: 1546612934,
     resource: {
         item_id: 73828,
-        previewTitle: "Example title"
+        previewTitle: "Example title",
         access_fee_id: 5227,
         amount: "3.00",
         code: 200,
