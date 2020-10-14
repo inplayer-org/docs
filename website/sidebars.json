@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Libraries": ["libraries", "paywall2", "paywall1", "jssdk", "iossdk", "androidsdk"],
+    "Libraries": ["libraries", "paywall3", "paywall2", "paywall1", "jssdk", "iossdk", "androidsdk"],
     "InPlayer APIs": ["api"],
     "Web-Hooks": ["webhooks"],
     "Client Notifications": ["notifications"]
