@@ -131,7 +131,10 @@ Once you have the `access_token` and the `expires` data on the back-end side, yo
 ```html
 https://example.com/my-callback-page.html?token=my-example-token&expires=token-expires
 ```
-The token and the expires params are passed in from the back-end to the callback page in the page URL. The content to the callback page is as follows:
+The token and the expires params are passed in from the back-end to the callback page in the page URL. The content to the callback page is as follows in the example below.
+
+| ℹ️ This example applies only if you are using paywall V2. For more examples and guidance check out our guide [here.](https://developers.inplayer.com/docs/paywall2/) |
+| --- |
 
 ```html
 <!DOCTYPE html>
@@ -152,9 +155,6 @@ The token and the expires params are passed in from the back-end to the callback
 
 </html> 
 ```
-
-| ⚠️ This example applies only if you are using paywall V2. For more examples and guidance check out our guide [here.](https://developers.inplayer.com/docs/paywall2/) |
-| --- |
 
 | ℹ️ If you are using our updated paywall V3, disregard the example above and proceed to the following one below in order to learn how to add the token received from back-end into the local storage. You can find the complete guide to all paywall V3 functionalities [here.](https://developers.inplayer.com/docs/paywall3/) |
 | --- |
