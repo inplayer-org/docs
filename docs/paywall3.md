@@ -1,3 +1,8 @@
+---
+id: paywall3
+title: Paywall 3.0
+---
+
 **Paywall 3.0**
 
 The InPlayer paywall application provides you with a fast and easy way for selling your content online. For each digital asset created in our platform, you have available a corresponding embed code that creates the whole end-user experience once placed on a website. The paywall application is only the web-based solution, so for more complex integrations or cross-platform solutions refer to our REST API or JS SDK guides.
