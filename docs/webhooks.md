@@ -5,7 +5,7 @@ title: InPlayer Webhooks
 
 ## Webhooks Overview
 
-Whenever an event occurs in the InPlayer platform, that is of interest to you as our merchant, we automatically notify you using **webhooks**. Even more so, you can build or setup applications which are subscribed to certain events in our platform. When these events are triggered, we send **HTTP POST requests** with specific **payloads** to the webhooks' configured URL.
+Whenever an event occurs in the InPlayer platform, that is of interest to you as our merchant, we automatically notify you using **webhooks**. Even more so, you can build or set up applications which are subscribed to certain events on our platform. When these events are triggered, we send **HTTP POST requests** with specific **payloads** to the webhooks' configured URL.
 
 Typically, the webhooks are being used for creating or updating a platform action/operation tracker for triggering marketing campaigns, for syncing data between platforms, or for fetching results of backend applications' operations.
 
@@ -59,7 +59,7 @@ When configuring webhooks, you can choose one or several events that you would l
 
 **Account webhooks** are fired to notify you of events that occur whenever an operation concerning our **Accounts Service** is taking place. Usually, they are used to inform the merchant of the most important actions their customers had performed using their accounts. 
 
-Below you can find illustrated the account webhooks within our platform.
+Below you can find an illustration of the account webhooks within our platform.
 
 ### `customer.registered`
 
@@ -189,7 +189,7 @@ resource[revoked]=1
 
 ### Payments and Subscriptions Webhooks
 
-These events are fired whenever operations concerning Payments and Recurring Subscriptions ocurs.
+These events are fired whenever operations concerning Payments and Recurring Subscriptions occur.
 These events are fired to notify you of events that occur whenever operations concerning **Payments** and **Recurring Subscriptions** are taking place.
 
 
@@ -336,7 +336,7 @@ resource[previewTitle]="Asset+Title"
 
 ## Securing Webhooks
 
-Once you start receiving webhooks, make sure the requests you have received are coming only from InPlayer. Some of the popular methods to confirm this include restriction per domain or the IP address from where you receive the requests; but at InPlayer, we insist that you use the **InPlayer signature** to validate the event.
+Once you start receiving webhooks, make sure the requests you have received are coming only from InPlayer. Some of the popular methods to confirm this include restriction per domain or the IP address from where you receive the requests. At InPlayer, we insist that you use the **InPlayer signature** to validate the event.
 
 In order to use the signature for validation, first you need to have an **API secret** generated. To do so, navigate to the InPlayer’s dashboard and choose the 'API Settings' section.
 
@@ -366,7 +366,7 @@ You can implement the validation in any backend programming language. However, a
 
 1. Regardless which implementation you use, the hash signature starts with `sha256=`, using the key of your secret token and your payload body.
 
-2. Using a plain '==' operator is not advised. Rather, you can use a method like `hash_equals` which performs a 'constant time' string comparison, that renders the comparisson safe from certain timing attacks against regular equality operators.
+2. Using a plain '==' operator is not advised. Rather, you can use a method like `hash_equals` which performs a 'constant time' string comparison that renders the comparison safe from certain timing attacks against regular equality operators.
 
 
 

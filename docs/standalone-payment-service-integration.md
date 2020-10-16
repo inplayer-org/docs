@@ -3,20 +3,20 @@ id: custom-payment
 title: Custom Payment
 ---
 
-The InPlayer platform offers the solution of linking your Custom Payment service to our Authentication and Access Management services. In this guide you will learn how to integrate with our technology for the process of user authentication and access validation, while using your own external payment method. 
+InPlayer offers the solution of linking your Custom Payment service to our Authentication and Access Management services. In this guide you will learn how to integrate with our technology for the process of user authentication and access validation while using your own external payment method. 
 
 ## Asset Creation
 
-To begin with, first you must obtain the status of an InPlayer Merchant. It is a simple and easy-to-do procedure, precisely described in [this guide](https://inplayer.com/docs/getting-started/creating-your-account/). 
+To begin with, first, you must obtain the status of an InPlayer Merchant. It is a simple and easy-to-do procedure, precisely described in [this guide](https://inplayer.com/docs/getting-started/creating-your-account/). 
 Once you have gained the status of a merchant, it is time to create your first asset. On our platform, you protect your content by putting it in an 'asset'. So once created, our system recognizes your content as 'asset'. In other words, whenever your end-users try to access your content (after they completed the purchase successfully), the content specified in the asset (e.g. a video) will be displayed to the paying customer.
 
 To create an asset, visit our [asset creation documentation](https://inplayer.com/docs/assets/) for assistance. Depending on the type of your content (video, audio, text, HTML, file etc) choose the suitable step-by-step guide to walk you throughout the procedure. 
 
 ## Account Authentication 
 
-Next to fall in line is connecting your audience with InPlayer. This can be achieved by having your end-users registered and authenticated in our system. For that purpose, we provide you with numerous easy-to-use methods from our [JavaScript SDK library](https://inplayer-org.github.io/inplayer.js/) and a wide range of endpoints from our [API](https://docs.inplayer.com/api/). Depending on your needs and preference, you can choose between using the former or latter.
+Next to fall in line is connecting your audience with InPlayer. This can be achieved by having your end-users registered and authenticated in our system. For that purpose, we provide you with numerous easy-to-use methods from our [JavaScript SDK library](https://inplayer-js.netlify.app/) and a wide range of endpoints from our [API](https://docs.inplayer.com/api/). Depending on your needs and preference, you can choose between using the former or latter.
 
-To register an account using the JS SDK you need to call the `InPlayer.Account.signUp()` method, entering all the specific signup data for your end-user. 
+To register an account using the JS SDK, you need to call the `InPlayer.Account.signUp()` method, entering all the specific signup data for your end-user. 
 
 Example:
 ```
@@ -34,48 +34,43 @@ InPlayer.Account.signUp({
 .then(data => console.log(data));
 ```
 
-You can find this method defined in detail [here](https://inplayer-org.github.io/inplayer.js/classes/Account.html#method-signUp). 
+You can find this method defined in detail [here](https://inplayer-js.netlify.app/classes/account.html#signup). 
 
-*When the registration is completed and delivers a successful response, among the response parameters you will find a unique authentication token. This token indicates that the respective end-user is authenticated. 
+When the registration is completed and delivers a successful response, among the response parameters you will find a unique authentication token. This token indicates that the respective end-user is authenticated.
 
-To authenticate or login an already existing account, you need to call the ‘InPlayer.Account.authenticate()' method.
+To authenticate or login an already existing account, you need to call the ‘InPlayer.Account.signIn()' method.
 
 
 Example:
 ```
-InPlayer.Account.authenticate({
- email: 'test@test.com',
- password: 'test123',
- clientId: '123-123-hf1hd1-12dhd1',
- referrer: 'http://localhost:3000/',
- refreshToken: '528b1b80-ddd1hj-4abc-gha3j-111111'
+InPlayer.Account.signIn({
+email: 'test@test.com',
+password: 'test123',
+clientId: '123-123-hf1hd1-12dhd1',
+referrer: 'http://localhost:3000/',
+refreshToken: '528b1b80-ddd1hj-4abc-gha3j-111111'
 })
 .then(data => console.log(data));
 ```
 
-Proceed [here](https://inplayer-org.github.io/inplayer.js/classes/Account.html#method-authenticate) to learn more about this method.
+Proceed [here](https://inplayer-js.netlify.app/classes/account.html#signin) to learn more about this method.
 
 
 On the other hand, if you decide to use our API, these are the endpoints you need:
 
 
-Start by firing the [POST] /accounts request and enter all the relevant details that will get your end-user registered in our system. 
+Start by firing the [POST] /v2/accounts/customers request and enter all the relevant details that will get your end-user registered in our system. 
 
 
 Example:
 ```
-curl https://services.inplayer.com/accounts \
--d full_name="John Doe" \
--d username=john@example.com \
--d password=foobar123 \
--d password_confirmation=foobar123 \
--d type=consumer \
--d grant_type=password \
--d client_id=507d866c-4e33-445d-b027-f163d0099f54 \
--d metadata[phone]=bar
+curl https://services.inplayer.com/v2/accounts/customers \
+-H 'authorization: Bearer Access-Token' \
+-H 'content-type: application/x-www-form-urlencoded' \
+-d email=john@example.com \
 ```
 
-For a more detailed description of this endpoint, refer to [this section](https://docs.inplayer.com/api/accounts/#operation/createAccount) of our API documentation.
+For a more detailed description of this endpoint refer to [this section](https://docs.inplayer.com/api/accounts/#operation/createAccount) of our API documentation.
 
 As for user authentication, fire the [POST] /accounts/authenticate request.
 
@@ -99,7 +94,7 @@ InPlayer.Asset.checkAccessForAsset(42597)
 .then(data => console.log(data));
 ```
 
-To check out our JS SDK documentation, specifically for this method, proceed [here](https://inplayer-org.github.io/inplayer.js/classes/Asset.html#method-checkAccessForAsset).
+To check out our JS SDK documentation, specifically for this method, proceed [here](https://inplayer-js.netlify.app/classes/asset.html#checkaccessforasset).
 
 In case you have been using our APIs, the `GET items access` is to be fired with the specified asset ID (item ID) and the token as an authorization header. 
 
@@ -116,7 +111,7 @@ If the access to the required asset is verified, the content will be included in
 
 ## Payment Process
 
-Since the payment process is your implementation that functions completely independent of our platform, you present the end-users with a payment screen displaying your pay-per-view and/or subscription prices. The payment process is initiated and completed at your payment page, and what follows is for you to grant the customers access to the required asset via our services. 
+Since the payment process is your implementation that functions completely independent of our platform, you present the end-users with a payment screen displaying your pay-per-view and/or subscription prices. The payment process is initiated and completed at your payment page. Afterwards, you get to grant the customers access to the required asset via our services. 
 
 ## Granting Access
 

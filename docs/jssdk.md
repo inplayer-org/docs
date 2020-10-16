@@ -9,6 +9,7 @@ The InPlayer SDKs for JS allow developers to build libraries and applications th
 
 Currently, there are two versions comprising fully the technical reference of all JS SDK methods that you can use. Proceed [here](https://inplayer-js.netlify.app/) to check out our latest more up-to-date version, and [here](https://inplayer-org.github.io/inplayer.js/) to the previous SDK version. Decide which version suits you best and choose that one. However, we advise you to read this tutorial thoroughly, before jumping into exploring any SDK.
 
+
 ## Installing the SDK
 
 To find the InPlayer JS SDK refer to [NPM](https://www.npmjs.com/package/@inplayer-org/inplayer.js), from where you can install the package directly.
@@ -64,7 +65,7 @@ The `type` parameter can be either `consumer` or `merchant`. In case you want to
 
 There is also a `metadata` parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
-Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked or the location where the account has been created.
 
 ## How to Authenticate an Account
 

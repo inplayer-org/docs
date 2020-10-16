@@ -9,7 +9,7 @@ Each of our SDK libraries contains integration that enables a real-time communic
 
 ## Notification Types
 
-Bellow are listed and exemplified the types of notifications that can be sent and received in the InPlayer Platform.
+Below are listed and exemplified the types of notifications that can be sent and received in the InPlayer Platform.
 
 ### Payments 
 
@@ -26,6 +26,8 @@ Example Structure:
     type: "payment.card.success",
     timestamp: 1546609799,
     resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
         access_fee_id: 4805,
         amount: "3.00",
         code: 200,
@@ -62,12 +64,34 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``external.payment.success``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) is completed successfully.|
+|``external.payment.success``| This event is fired whenever a payment conducted via an external payment method (PayPal or in-app) is completed successfully.|
 
+Example Structure:
+```javascript
+{ 
+    type: "external.payment.success",
+    timestamp: 1563797342,
+    resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
+        access_fee_id: 123,
+        transaction: "C-nfkjJnkfniNEjkwneDKnjsdfn-ST",
+        description: "Description",
+        email: "consumer@inplayer.com",
+        customer_id: 123123,
+        formatted_amount: "15.5 EUR",
+        amount: "15.5",
+        currency_iso: "EUR",
+        status: "",
+        timestamp: 1563797342,
+        code: 200
+    }
+}
+```
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``external.payment.failed``| This event is fired whenever a payment conducted via an external payment method (= PayPal or in-app) has failed to complete successfully.|
+|``external.payment.failed``| This event is fired whenever a payment conducted via an external payment method (PayPal or in-app) has failed to complete successfully.|
 
 Example Structure:
 ```javascript
@@ -95,6 +119,8 @@ Example Structure:
     type: "subscribe.success",
     timestamp: 1546612934,
     resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
         access_fee_id: 5227,
         amount: "3.00",
         code: 200,
