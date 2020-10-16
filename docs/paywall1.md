@@ -7,6 +7,9 @@ The InPlayer paywall application provides you a fast and easy way for selling yo
 
 ![alt text](https://inplayer.com/wp-content/uploads/2018/07/embed_code.png "Logo Title Text 1")
 
+| ⚠️ Due to all innovations and changes introduced with [Paywall 2.0](https://developers.inplayer.com/docs/paywall2/) and Paywall 3.0, the Paywall 1.0 version is no longer applicable. Consequently, the contents of this guide will be deleted by **31.12.2020**. |
+| --- |
+
 ## Standard Embed Code
 
 The paywall embed code includes two parts:

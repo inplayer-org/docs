@@ -3,6 +3,13 @@ id: android-in-app-purchases
 title: Android In-app Purchases
 ---
 
+The InPlayer Platform facilitates the payment process by providing in-app purchases (IAPs) as a valid payment method i.e. by supporting payments carried out inside native Android or TV applications.
+In-app purchasing allows you, as a merchant, to supply your customers with special offers (extra features or premium content behind a Paywall) within an application, as a way of providing a cross-platform monetization flow, directly on their TV or on their Android device.  
+
+Below, you can find described all the steps our Platform undertakes, in order to enable Android in-app purchases. 
+
+Proceed here to take a look at our fully equipped [Android SDK](https://inplayer-org.github.io/inplayer-android-sdk/).
+
 ## Integration
  
 The InPlayer system integrates with native apps (the Android app in this case) on the end-users’ mobile devices, as a way to support the in-app payment process. For that purpose, in our merchant panel you will be provided a UI for specifying the required parameters for integrating the Android ecosystem.

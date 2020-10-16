@@ -3,7 +3,7 @@ id: paywall2
 title: Paywall 2.0
 ---
 
-Paywall 2.0 is the latest InPlayer’s content monetization application featuring multiple changes and improvements over its preceding version. The paywall retains its purpose of providing you with an embed code for each asset created on our platform, so you can insert them to your website and ease the accessibility for your end-users.  
+Paywall 2.0 is the second InPlayer’s content monetization application featuring multiple changes and improvements over its preceding version. The paywall retains its purpose of providing you with an embed code for each asset created on our platform, so you can insert them to your website and ease the accessibility for your end-users.  
 The paywall 2.0 embed code can be found at the same place where it used to reside at paywall 1.0 i.e. at the asset section. In addition, there are two different tabs that enable the embed code generator to switch between both paywall versions.
 
 ## Standard Embed Code
@@ -35,7 +35,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
       {
          external: {
             type: 'OVP_NAME',
-            id: 12345, // 'OVP Video ID'
+            id: '1234abcd', // 'OVP Video ID'
          },
       },
      ]

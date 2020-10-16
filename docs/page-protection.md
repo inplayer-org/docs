@@ -14,11 +14,12 @@ Once you are successfully logged in, you would be registered in the InPlayer sys
 ## Creating Your Asset
 
 Our platform supports almost all forms of online content: video, audio, text, HTML, file etc. out of which you can choose the one that best aligns with your needs. 
-To begin with, you need to log into the [InPlayer dashboard](https://dashboard.inplayer.com/dashboard)  and click the 'Assets' icon from the navigation bar on the left. Then, click the '+Add new asset' button. This opens a window displaying the asset types. For the purpose of this guide let's choose the HTML/Text type. 
+To begin with, you need to log into the [InPlayer dashboard](https://dashboard.inplayer.com/dashboard) and click the 'Assets' icon from the navigation bar on the left. Then, click the '+Add new asset' button. This opens a window displaying the asset types. For the purpose of this guide let's choose the HTML/Text type. 
 The following steps include naming your asset, setting the pricing type (choosing between login/register type or code/password as a means to gaining access), as well as setting the rest of the asset properties. 
 
 You get to customize the look of your asset preview by adding an image, title, description, and personalized 'Buy' button; then choose between a pay-per-view or subscription as a payment option; set any geographic, domain and/or age restrictions you have considered; add your HTML code of the content in the 'Asset content' section and embed the asset on your website, simply by clicking the 'Get Asset Embed Code' button at the top right.
 For a more picturesque guide on asset creation, please refer [here](https://inplayer.com/docs/assets/html-asset/).
+
 
 ## Finding Your Asset ID
 
