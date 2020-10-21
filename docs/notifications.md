@@ -1,6 +1,6 @@
 ---
 id: notifications
-title: Notifications Overview
+title: Client Notifications
 ---
 
 To enable a real-time bidirectional communication between our backend services and the client’s applications at InPlayer, we use **notifications** via **WebSockets**. WebSocket is a communication protocol that provides communication channels over a single TCP connection. For each event that occurs in the InPlayer Platform, there is a corresponding notification sent over the WebSocket. 
@@ -9,7 +9,7 @@ Each of our SDK libraries contains integration that enables a real-time communic
 
 ## Notification Types
 
-Bellow are listed and exemplified the types of notifications that can be sent and received in the InPlayer Platform.
+Below are listed and exemplified the types of notifications that can be sent and received in the InPlayer Platform.
 
 ### Payments 
 
@@ -18,14 +18,16 @@ The Payments' notifications are fired after every payment event, notifying the c
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``payment.card.success``| This event is fired after each successful one-time payment|
+|`payment.card.success`| This event is fired after each successful one-time payment.|
 
 Example Structure:
-```javascript 
+```
 { 
     type: "payment.card.success",
     timestamp: 1546609799,
     resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
         access_fee_id: 4805,
         amount: "3.00",
         code: 200,
@@ -40,13 +42,13 @@ Example Structure:
     }
 }
 ```
-<br >
-|Event Type| Event Description|
-| ------------- |-------------|
-|``payment.card.failed``| This event is fired after each unsuccessful one-time payment|
+
+|Event Type| Event Description| 
+| ------------- |-------------| 
+|`payment.card.failed`| This event is fired after each unsuccessful one-time payment.| 
 
 Example Structure:
-```javascript
+```
 { 
     type: "payment.card.failed",
     timestamp: 1546611150,
@@ -55,6 +57,50 @@ Example Structure:
         account_id: 29120,
         code: 422,
         message: "Your card was declined. Your request was in test mode but used a non-test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing."
+    }
+}
+```
+
+|Event Type| Event Description|
+| ------------- |-------------|
+|`external.payment.success`| This event is fired whenever a payment conducted via an external payment method (PayPal or in-app) is completed successfully.|
+
+Example Structure:
+```
+{ 
+    type: "external.payment.success",
+    timestamp: 1563797342,
+    resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
+        access_fee_id: 123,
+        transaction: "C-nfkjJnkfniNEjkwneDKnjsdfn-ST",
+        description: "Description",
+        email: "consumer@inplayer.com",
+        customer_id: 123123,
+        formatted_amount: "15.5 EUR",
+        amount: "15.5",
+        currency_iso: "EUR",
+        status: "",
+        timestamp: 1563797342,
+        code: 200
+    }
+}
+```
+
+|Event Type| Event Description|
+| ------------- |-------------|
+|`external.payment.failed`| This event is fired whenever a payment conducted via an external payment method (PayPal or in-app) has failed to complete successfully.|
+
+Example Structure:
+```
+{ 
+    type: "external.payment.failed",
+    timestamp: 1546611150,
+    resource: {
+        message: "Payment parameters error.",
+        explain: "you already have access for this asset",
+        code: 422
 }
 ```
 
@@ -64,14 +110,16 @@ The Subscription notifications are fired only when recurring subscription paymen
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.success``| This event is fired after each successful recurring subscription|
+|`subscribe.success`| This event is fired after each successful recurring subscription.|
 
 Example Structure:
-```javascript 
+``` 
 { 
     type: "subscribe.success",
     timestamp: 1546612934,
     resource: {
+        item_id: 73828,
+        previewTitle: "Example title",
         access_fee_id: 5227,
         amount: "3.00",
         code: 200,
@@ -87,14 +135,13 @@ Example Structure:
 }
 ```
 
-<br >
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``subscribe.failed``| This event is fired after each unsuccessful recurring subscription|
+|`subscribe.failed`| This event is fired after each unsuccessful recurring subscription.|
 
 Example Structure:
-```javascript
+```
 { 
     type: "subscribe.failed",
     timestamp: 1546612267,
@@ -111,10 +158,10 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.granted``| This event is fired after a customer has been granted access to an asset (this event also occurs after successful payment)|
+|`access.granted`| This event is fired after a customer has been granted access to an asset (this event also occurs after successful payment).|
 
 Example Structure:
-```javascript 
+``` 
 { 
     type: "access.granted",
     timestamp: 1546613927,
@@ -150,19 +197,17 @@ Example Structure:
             title: "Asset Example Title",
             updated_at: 1546612165
         },
-    starts_at: -62135596800
+        starts_at: -62135596800
     }
 }
 ```
 
-<br >
-
 |Event Type| Event Description|
 | ------------- |-------------|
-|``access.revoked``| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked)|
+|`access.revoked`| This event is fired after a customer’s entitlement to an asset expires (the asset can either expire naturally, or it can be manually revoked).|
 
 Example Structure:
-```javascript
+```
 { 
     type: "access.revoked",
     timestamp: 1546612267,
@@ -176,40 +221,39 @@ Example Structure:
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.logout``| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out|
+|`account.logout`| This event is fired when the customer is logged out for some reason, typically due to reaching maximum concurrent sessions, so that the first session must be logged out.|
 
 Example Structure:
-```javascript
+```
 { 
     type: "account.logout",
     timestamp: 1546612267
 }
 ```
 
-<br >
-
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.erased``| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation|
+|`account.erased`| This event is fired when the customer has erased their account or an InPlayer Admin has invoked that operation.|
 
 Example Structure:
-```javascript
+```
 { 
     type: "account.erased",
     timestamp: 1546612267,
 }
 ```
 
-<br >
+
 
 |Event Type| Event Description|
 | ------------- |-------------|
-|``account.deactivated``| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation|
+|`account.deactivated`| This event is fired when the customer has deactivated their account or an InPlayer Admin has invoked that operation.|
 
 Example Structure:
-```javascript
+```
 { 
     type: "account.deactivated",
     timestamp: 1546612267,
 }
 ```
+

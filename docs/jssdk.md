@@ -5,13 +5,13 @@ title: SDK for JavaScript
 
 ## Full Technical Reference
 
-The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer Platform services. The JS SDK applies to  any frontend project.
+The InPlayer SDK for JS allows developers to build libraries and applications that use InPlayer platform services. The JS SDK applies to  any frontend project.
 
-You can find the full technical reference of all the SDK methods, [here.](https://inplayer-org.github.io/inplayer.js/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
+You can find the full technical reference of all the SDK methods, [here.](https://inplayer-js.netlify.app/) However, we advise you to read this tutorial thoroughly, before jumping into exploring the SDK.
 
 ## Installing the SDK
 
-To find the InPlayer JS SDK refer to [NPM](https://www.npmjs.com/package/@inplayer-org/inplayer.js), from where you can install the package, directly.
+To find the InPlayer JS SDK refer to [NPM](https://www.npmjs.com/package/@inplayer-org/inplayer.js), from where you can install the package directly.
 
 
 ```bash
@@ -35,7 +35,7 @@ InPlayer.setConfig('prod'); // the production
 
 ## 'How to' Examples
 
-The following section enumerates multiple *'how to'* examples about doing specific operations within the InPlayer Monetization Platform.
+The following section enumerates multiple *'how to'* examples about doing specific operations within the InPlayer monetization platform.
 
 ## How to Register an Account
 
@@ -56,7 +56,7 @@ InPlayer.Account.signUp({
 }).then(data => console.log(data));
 ```
 
-Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type` and `clientId`  are always **required**.
+Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type`, and `clientId`  are always **required**.
 
 Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clinetId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
@@ -64,7 +64,7 @@ The `type` parameter can be either `consumer` or `merchant`. In case you want to
 
 There is also a `metadata` parameter which can contain additional required and/or optional fields that merchants can choose to require from their end-users to fill in upon registration. If you have required custom registration fields defined by your merchant account, you will have to send those details as well. By default, the metadata parameter is optional.
 
-Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked, or the location where the account has been created.
+Lastly, the `referrer` parameter can be passed in manually for every register request. This parameter represents the URL from which the request has been invoked or the location where the account has been created.
 
 ## How to Authenticate an Account
 
@@ -103,7 +103,7 @@ InPlayer.subscribe(InPlayer.Account.token(),{
 });
 ```
 
-It should also be noted, that you are going to need a code that processes every different notification type when you receive notification message in the `OnMessage` callback.
+It should also be noted that you are going to need a code that processes every different notification type when you receive a notification message in the `OnMessage` callback.
 
 Our basic use-case here is to have a **'redirect to premium section'** handler after the **'successful payment'** notification message.
 
@@ -122,9 +122,9 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 
 ## How to Create Payments
 
-### Creating an Aceess Fee
+### Creating an Access Fee
 
-The InPlayer Platform enables you to create digital assets to which afterwards you can attach **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function bellow. 
+The InPlayer platform enables you to create digital assets to which afterwards you can attach a **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function below. 
 
 ```js
 InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
@@ -189,7 +189,7 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
 }).then(data => { /* handle paypal data here */ }
 ```
 
-After a successful call you will obtain the neccessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for a production mode. In order to make a *redirect link to PayPal* and create your *PayPal button* use the `data.endpoint` value.
+After a successful call you will obtain the necessary PayPal data for the external payment. The response will carry the endpoint URL, which will either be a Sandbox PayPal for development, or a standard PayPal URL for a production mode. In order to make a *redirect link to PayPal* and create your *PayPal button* use the `data.endpoint` value.
 
 ## How to Validate Content Access
 

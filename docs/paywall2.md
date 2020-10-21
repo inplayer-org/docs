@@ -1,14 +1,14 @@
 ---
 id: paywall2
-title: Paywall 2.0
+title: v2
 ---
 
-Paywall 2.0 is the latest InPlayer’s content monetization application, featuring multiple changes and improvements over its preceding version. The Paywall retains its purpose of providing you with an embed code for each asset created on our platform, so you can insert them to your website and ease the accessibility for your end-users.  
-The Paywall 2.0 embed code can be found at the same place where it used to reside at Paywall 1.0, i.e. at the asset section. In addition, there are two different tabs that enable the embed code generator to switch between both Paywall versions.
+Paywall 2.0 is the second InPlayer’s content monetization application featuring multiple changes and improvements over its preceding version. The paywall retains its purpose of providing you with an embed code for each asset created on our platform, so you can insert them to your website and ease the accessibility for your end-users.  
+The paywall 2.0 embed code can be found at the same place where it used to reside at paywall 1.0 i.e. at the asset section. In addition, there are two different tabs that enable the embed code generator to switch between both paywall versions.
 
 ## Standard Embed Code
 
-The Paywall 2.0 embed code also consists of **InPlayer paywall scripts** and **asset embed code**, but differs slightly from its precedent in that the former is now only one minified JS file, encompassing CSS inside:
+The paywall 2.0 embed code also consists of **InPlayer paywall scripts** and **asset embed code**, but differs slightly from its precedent in that the former is now only one minified JS file, encompassing CSS inside:
 
 ```html
 <script type='text/javascript' src='https://assets.inplayer.com/paywall/staging/paywall.min.js'></script>
@@ -16,7 +16,7 @@ The Paywall 2.0 embed code also consists of **InPlayer paywall scripts** and **a
 Whereas the latter, the asset embed code, has the following format:
 
 ```html
-<div id="inplayer-assetID"></div>
+<div id="inplayer-{asset_id}" class="inplayer-paywall"></div>
 <script type="text/javascript">
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{ id: 123}]); 
 // merchant UUID and assetID are the function arguments from above
@@ -25,7 +25,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', [{ id:
 
 ## OVP Custom Embed Code
 
-If dealing with an OVP asset type, the embed code can be constructed having provided the original Video ID from the external OVP source. The format for embedded external asset ID is the following:
+If dealing with an OVP asset type, the embed code can be constructed having provided the original **video ID** from the external OVP source. The format for **embedded external asset ID** is the following:
 
 ```html
 <div id="inplayer-ovpName-OvpVideoID"></div>
@@ -35,7 +35,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
       {
          external: {
             type: 'OVP_NAME',
-            id: 12345, // OVP Video ID
+            id: '1234abcd', // 'OVP Video ID'
          },
       },
      ]
@@ -43,9 +43,26 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
 </script>
 ```
 
+The 'type' parameter can be one of the following values:
+  - for Amazon CloudFront - `aws`,
+  - for Brightcove - `brightcove`,
+  - for DaCast - `dacast`,
+  - for JWPlayer - `jw`,
+  - for Kaltura - `kaltura`,
+  - for Laola1.tv  - `laola`,
+  - for LiveStream - `livestream`,
+  - for Ooyala - `ooyala`,
+  - for Panopto - `panopto`,
+  - for Piksel - `piksel`,
+  - for Qbrick - `qbrick`,
+  - for StreamAMG - `streamamg`,
+  - for SportRadar - `sportradar`,
+  - for Wistia - `wistia`,
+  - for Wowza - `wowza`.
+
 ## Multiple Assets Embed Code
 
-The Paywall 2.0 also supports **multiple assets embed code**. To embed multiple assets, you should include them in the JavaScript code as an array. The order of the html elements where the assets would be rendered is not important. Below you can find an example of multiple assets embed code in action.
+The paywall 2.0 also supports **multiple assets embed code**. To embed multiple assets, you should include them in the JavaScript code as an array. The order of the html elements where the assets would be rendered is not important. Below you can find an example of multiple assets embed code in action.
 
 ```html
 <script type='text/javascript' src='https://assets.inplayer.com/paywall/staging/paywall.min.js'></script>
@@ -115,19 +132,20 @@ Here is a list of all the paywall options, those per asset and the global ones:
 | language | Default language | Language code	| 	Global option |
 | hideUserMenu |  Hides the default menu of the registered account | Boolean	 | Global option |
 | hideLogo | Hides the paywall logo	| Boolean	| Global option |
-| footerLinks | Inserts external links in the Paywall footer | Json, ex. { text: “Google”, url: “https://www.google.com/” } | Global option |
+| footerLinks | Inserts external links in the paywall footer | Json, ex. { text: “Google”, url: “https://www.google.com/” } | Global option |
 | hideFooterLinks | Hides the Footer links	| Boolean | Global option |
 | hideProtectedBy | Hides the protected by logo	 | Boolean | Global option | 
 | oauthAppKey	| Sets the OAuth application to be used for authentication | String | Global option |
 | brandingId | 	Sets global branding theme for all assets on a page | Number | Global option |
 | showPreviewPrices | 	Shows the prices of the asset to the end-user in the asset preview  | Boolean | Asset option |
+| registerFirst | Specifies that the default modal screen, which is the register screen, appears first when the paywall modal is opened | Boolean | Global option |
 
 
 ## Custom Player Options
 
-Each asset type in the InPlayer’s Platform has its own content format implementation. In most of the cases, where the asset is of OVP type (online video provider hosted videos), the Paywall creates a video player after an account with premium access asks for the content.
+Each asset type in the InPlayer’s platform has its own content format implementation. In most of the cases, where the asset is of OVP type (online video provider hosted videos), the paywall creates a video player after an account with premium access asks for the content.
 
-Each OVP has its own player implementation. The InPlayer Paywall renders the default players with standard player parameters. However, in case there is need for changing the player or some player parameter, you can pass in custom player scripts and/or custom player parameters via the InPlayer embed code. The following example code shows how player scripts or parameters can be altered:
+Each OVP has its own player implementation. The InPlayer paywall renders the default players with standard player parameters. However, in case there is need for changing the player or some player parameter, you can pass in custom player scripts and/or custom player parameters via the InPlayer embed code. The following example code shows how player scripts or parameters can be altered:
 
 ```html
 <div id="inplayer-assetID" class="inplayer-paywall"></div>
@@ -207,7 +225,7 @@ Usage example:
 ```javascript
     paywall.showPaywall({asset: { assetId: 42564 }});
 ```
-The `preselectedFeeId` is part of the asset object in the method argument and represents the ID of a specific price added to an InPlayer asset. It is always used together with the asset id where the price is added. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the end-user would be sent directly to the payment screen where the specified price would be set for purchase.
+The `preselectedFeeId` is part of the asset object in the method argument and represents the ID of a specific price added to an InPlayer asset. It is always used together with the asset ID where the price is added. When attached to an HTML element click event, the method opens the paywall modal. If the user is not authenticated, the login screen would appear. After a successful authentication, the end-user would be sent directly to the payment screen where the specified price would be set for purchase.
 
 Usage example:
 
@@ -247,9 +265,7 @@ Usage example:
 
 ## Paywall Events
 
-The paywall instance has appropriate events/callbacks that can be used for additional custom functionalities. These callbacks are fired every time a certain action occurs.  
-
-Below you can find descriptions of each of the paywall methods:
+A paywall instance supports custom event handlers for any of its public events by using its `paywallInstance.on('event_name', callback);` method. Below are listed all of the supported public events with examples how to use them.
 
 ### `authenticated`
 
@@ -290,7 +306,7 @@ Usage example:
 
 ### `inject`
 
-This event is fired every time a premium content is created.
+This event is fired when an asset's actual content is added on the page.
 
 Usage example:
 
@@ -320,7 +336,7 @@ Usage example:
 
 ### `init`
 
-This event is fired whenever the paywall is initiated.
+This event is fired when a paywall instance is created and initiated. It only occurs once during a paywall instance lifecycle.
 
 Usage example:
 
@@ -333,7 +349,9 @@ Usage example:
 
 ### `player`
 
-This event is fired whenever a video player is rendered.
+This event is fired whenever a player instance is created.
+Note: It is currently only supported for 'SportRadar' assets.
+
 
 Usage example:
 
@@ -350,6 +368,7 @@ Usage example:
 ### `language`
 
 The 'language' event is fired after a certain language has been switched.
+This event is fired when a language is initially set as well as every time it gets changed by a user action or otherwise.
 
 ```js
     paywall.on('language', function(e, data) {            
@@ -361,6 +380,7 @@ The 'language' event is fired after a certain language has been switched.
 ### `access`
 
 This event is fired when the paywall distributes the viewer the content they have access to.
+This event is fired every time it is initially determined if the current user has access to the current asset or not. Additionally, it is also fired when this access status gets changed, e.g. when the asset is 'paid' or the access status turns 'expired' or 'revoked'.
 
 ```js
     paywall.on('access', function(e, data) {            
@@ -380,28 +400,37 @@ The 'any' event is fired for every action mentioned above.
     });
 ```
 
+### `close`
+
+This event is fired when the paywall's modal gets closed by a user action or otherwise.
+
+```js
+paywall.on('close', function(e) {
+    console.log("-- CLOSE --", e.type);
+});
+```
 
 ## Standalone Functionalities
 
-The InPlayer's Paywall also supports standalone functionalities involving the **login/logout button** functionality, as well as accessing the 'My Account' section of the paywall application.
+The InPlayer's paywall also supports standalone functionalities involving the **login/logout button** functionality, as well as accessing the 'My Account' section of the paywall application.
 
-Although you may use the Paywall's JavaScript methods to invoke some of the functionalities or certain paywall screens, you can achieve the same functionalities by adding HTML classes to the elements on the page. 
+Although you may use the paywall's JavaScript methods to invoke some of the functionalities or certain paywall screens, you can achieve the same functionalities by adding HTML classes to the elements on the page. 
 
 Here is the list of the HTML classes that can be used for creating each of the standalone functionalities: 
 
 | HTML class	|   Description |
 |--------------|---------------|
-| `inplayer-paywall-login`	| Invokes the login screen of the Paywall |
+| `inplayer-paywall-login`	| Invokes the login screen of the paywall |
 | `inplayer-paywall-logout`	| Invokes the logout action  |
 | `inplayer-paywall-account`	 | Invokes the 'My Account' screen of the registered user |
 | `inplayer-paywall--ccm`      | Invokes the  default card management screen |
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen |
 
-The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class**, will only be shown when the user is authenticated.
+The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
 ## Custom Asset Preview
 
-There's a default asset preview template that you can tweak via our dashboard, but if that doesn't meet your custom needs you can always use the `noPreview` flag (by setting it to `true`) to disable displaying of the default preview altogether, and put your own preview HTML code in the asset `div`.
+There's a default asset preview template that you can tweak via our dashboard, but if that doesn't meet your custom needs you can always use the `noPreview` flag (by setting it to `true`) to disable displaying of the default preview altogether and put your own preview HTML code in the asset `div`.
 
 ```html
 <div id="inplayer-assetID"></div>
@@ -453,7 +482,7 @@ The `showPaywall` method is linked to the button which triggers the paywall func
 
 ## Embedding Specific Prices
 
-The Paywall comes with a default display preview, but also offers you, as a merchant, the alternative of creating your own page elements instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for a one-week access) instead of the default preview. In order to achieve this, first, you should initialize the Paywall with the `noInject` and `noPreview` options. The 'noInject' parameter prevents the Paywall from injecting a video after a successful purchase in favour of the creation of a custom pricing options screen. The `noPreview` parameter removes the standard preview template for the asset, allowing custom preview for each price.
+The Paywall comes with a default display preview, but also offers you, as our merchant, the alternative of creating your own page elements instead of choosing to maintain the default look. Let’s consider a scenario where customers come across with an asset with two different prices on the page (say 5$ for a 24 hours access, and 30$ for a one-week access) instead of the default preview. In order to achieve this, first, you should initialize the paywall with the `noInject` and `noPreview` options. The 'noInject' parameter prevents the paywall from injecting a video after a successful purchase in favour of the creation of a custom pricing options screen. The `noPreview` parameter removes the standard preview template for the asset, allowing custom preview for each price.
 
 ```html
 
@@ -492,6 +521,6 @@ document.getElementById('first-price-button').addEventListener("click", () => {
 });
 ```
 
-With this code, the `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will not appear as there is already a specific price option selected on that action. As there is 'noInject' option in the code where the Paywall object is created, after a successful purchase the paywall modal will be closed.
+With this code, the `showPaywall` functionality is connected to your action button for one price. It will invoke the paywall flow but with pre-selected price as the `preselectedFeeId` parameter. The pricing screen will not appear as there is already a specific price option selected on that action. As there is 'noInject' option in the code where the paywall object is created, after a successful purchase the paywall modal will be closed.
 
 For the second price, the same `showPaywall` function needs to be added to the second button but with a different `preselectedFeeId` parameter that identifies the other price option.
