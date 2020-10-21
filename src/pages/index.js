@@ -59,12 +59,10 @@ function Home() {
                 className={styles.heroLogo}
                 src={useBaseUrl('img/inplayer-logo.png')}
               />
-              Build{' '}
-              <span className={styles.heroProjectKeywords}>optimized</span>{' '}
-              websites{' '}
-              <span className={styles.heroProjectKeywords}>quickly</span>, focus
-              on your{' '}
-              <span className={styles.heroProjectKeywords}>content</span>
+              Develop with{' '}
+              <span className={styles.heroProjectKeywords}>ease</span>{' '}
+              with InPlayer{' '}
+              <span className={styles.heroProjectKeywords}>content monetization</span>{' '}tools
             </h1>
             <div className={styles.indexCtas}>
               <Link
@@ -75,22 +73,6 @@ function Home() {
             </div>
           </div>
         </div>
-      {/* <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/')}>
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </header> */}
       <main>
         {features && features.length > 0 && (
           <section className={styles.features}>
