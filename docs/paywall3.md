@@ -9,7 +9,7 @@ Paywall 3.0 is our latest content monetization application featuring innovations
 
 ## Standard Embed Code
 
-The Paywall 3.0 embed code consists of two parts: **InPlayer paywall scripts** and a **sset embed code**.
+The Paywall 3.0 embed code consists of two parts: **InPlayer paywall scripts** and an **asset embed code**.
 
 The scripts are stripped down from any redundancies from the previous versions and therefore they contain a minified JS file, encompassing CSS inside:
 
@@ -349,8 +349,7 @@ To gain a better understanding of all paywall options mentioned above (both per 
 | `codeAccess` | An object consisting of the access code, custom inputs, and code patterns. | JSON Object | Asset option |
 | `inputs` | An object containing the access code and custom inputs. | JSON Object | Asset option |
 | `access_code` | A custom placeholder for the access code input; optional. | Char | Asset option |
-| `customInput1/2` | The placeholder of the custom input/code. |
- | Asset option |
+| `customInput1/2` | The placeholder of the custom input/code. | Char | Asset option |
 | `codePattern` | The custom inputs and the access code together make the codePattern. The default value is `{ inputs: { access_code: 'Code' }, codePattern: '{{access_code}}' }`; optional. | Char | Asset option |
 | `language` | Sets the fallback language; English or `en` is the default one. | Language code | Global option |
 | `hideUserMenu` | If it is set as`true`, it hides the user menu dropdown of the registered account. | Boolean(set `false` by default) | Global option |
