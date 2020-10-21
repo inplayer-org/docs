@@ -1,0 +1,14 @@
+{
+  "docs": {
+    "Libraries": ["libraries", "paywall3", "paywall2", "paywall1", "jssdk", "iossdk", "androidsdk"],
+    "InPlayer APIs": ["api"],
+    "Web-Hooks": ["webhooks"],
+    "Client Notifications": ["notifications"]
+    },
+  "guides": {
+      "In-app Services": ["in-app-services", "android-in-app-purchases", "ios-in-app-purchases", "roku-in-app-purchases","amazon-in-app-purchases","in-app-authentication", "in-app-vouchers"],
+      "Standalone Services": ["standalone-services-overview", "use-own-authentication", "custom-payment"],
+      "Paywall Guides": ["paywall-events-tracking"],
+      "Feature Guides" : ["syndication", "sca", "page-protection"]
+  }
+}
