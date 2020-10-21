@@ -30,11 +30,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-      - name: Cloudfront invalidation
-        uses: ItsKarma/aws-cli@v1.70.0
-        with:
-          args: cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
+      - name: invalidate
+        uses: chetan/invalidate-cloudfront-action@master
         env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION_ID }}
+          PATHS: '/*'
+          AWS_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
