@@ -87,10 +87,9 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e7', //merc
      [
       {
         id: 123 //asset ID,
-        options: {
-            noPreview: true,
-            brandingId: 111222,
-            noInject: true
+        options: { 
+            brandingId: "111222",
+            showPreviewPrices: true
         } 
         //asset options object        
       }
@@ -138,6 +137,7 @@ Here is a list of all the paywall options, those per asset and the global ones:
 | hideProtectedBy | Hides the protected by logo	 | Boolean | Global option | 
 | oauthAppKey	| Sets the OAuth application to be used for authentication | String | Global option |
 | brandingId | 	Sets global branding theme for all assets on a page | Number | Global option |
+| showPreviewPrices | 	Shows the prices of the asset to the end-user in the asset preview  | Boolean | Asset option |
 | registerFirst | Specifies that the default modal screen, which is the register screen, appears first when the paywall modal is opened | Boolean | Global option |
 
 
