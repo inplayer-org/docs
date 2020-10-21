@@ -8,8 +8,8 @@ The InPlayer platform consists of three core service groups: **Identity Manageme
 
 In addition, the flexibility of our platform in terms of enabling a standalone functionality for our services, allows three different scenarios:
 
-* **you can have your own Identity Management/Authentication service in play while using the InPlayer's Payments and Access Entitlement services;**
-* **you can have your own Payment Solution service while using the InPlayer Authentication and Access Entitlement/Access Validation services;** 
-* **you can have your own Payment and Authentication solutions while referring to InPlayer for a secure Access Management.**   
+1. **you can have your own Identity Management/Authentication service in play while using the InPlayer's Payments and Access Entitlement services;**
+2. **you can have your own Payment Solution service while using the InPlayer Authentication and Access Entitlement/Access Validation services;** 
+3. **you can have your own Payment and Authentication solutions while referring to InPlayer for a secure Access Management.**   
 
 For each of these solutions you need an appropriate implementation integrated, ensuring you will have all the parts connected. In the following guide, we will take a closer look at the ways of achieving each implementation along with details for connecting to some of the Paywall Application functionalities and embeddable Web UI screens.
