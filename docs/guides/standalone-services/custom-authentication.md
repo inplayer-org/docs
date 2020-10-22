@@ -153,8 +153,10 @@ The token and the expires params are passed in from the back-end to the callback
 
 </html> 
 ```
-| ℹ️ This example applies only if you are using paywall V2. For more examples and guidance check out our guide [here](https://developers.inplayer.com/docs/paywall2). |
-| --- |
+
+:::info
+This example applies only if you are using paywall V2. For more examples and guidance check out our guide [here](https://developers.inplayer.com/docs/paywall2).
+:::
 
 If you are using our updated paywall V3, disregard the example above and proceed to the following one below in order to learn how to add the token received from back-end into the local storage. You can find the complete guide to all paywall V3 functionalities [here](https://developers.inplayer.com/docs/paywall3/).
 
