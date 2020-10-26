@@ -362,7 +362,7 @@ To gain a better understanding of all paywall options mentioned above (both per 
 | `registerFirst` | If `true`, it sets the 'Register screen' as default, as opposed to the 'Login screen'; optional. | Boolean(set `false` by default) | Global option |
 | `ssoDomain` | By providing a valid `ssoDomain`, the SSO feature will be enabled; optional. | String | Global option |
 
-**Paywall Methods**
+## Paywall Methods
 
 The paywall instance has methods that can be used for accomplishing different functionalities. This adds to the flexibility of the application in covering various use-cases in addition to what can be accomplished via the embed code.
 
@@ -457,7 +457,7 @@ async paywall.checkUserAccess(assetId, clientId, accessFeeId);
 </script>
 ```
 
-**Asset Manipulation Methods**
+### Asset Manipulation Methods
 
 The Paywall 3.0 increases flexibility by introducing methods that help you easily manipulate with adding or removing specific or all assets to/from a paywall instance. Also, aids optimization of created paywall instances by giving you the choice of destroying those that are most likely not to be used in the recent future.
 
@@ -515,11 +515,13 @@ paywall.isDestroyed();
 </script>
 ```
 
-**Asset Manipulation Paywall Options**
+### Asset Manipulation Paywall Options
 
-There is also the possibility of enabling removal for all your assets by
+There is also the possibility of enabling removal for all your assets by invoking a single paywall option and/or allowing destruction for a paywall instance. 
 
-invoking a single paywall option and/or allowing destruction for a paywall instance. Beware that these are **global options** which once being set cannot be changed later.
+:::caution
+Beware that these are **global options** which once being set cannot be changed later.
+:::
 
 | **Option** | **Description** | **Format** | **Usage Type** |
 | --- | --- | --- | --- |
@@ -527,7 +529,7 @@ invoking a single paywall option and/or allowing destruction for a paywall insta
 | `allowDestroy` | Enables destruction of a given paywall instance. If you don't want to allow destruction of the paywall instance at any point, you need to set this option to `false` upon creating the paywall instance. Once set to `false`, paywall.destroy() will not work (but a non-blocking error message would be displayed on the console). | Boolean(`true` is set by default) | Global Option |
 
 
-**Paywall Events**
+## Paywall Events
 
 The paywall instance supports custom event handlers for any of its public events by using its `paywallInstance.on('event_name', callback);` method. Below you can find examples of all supported public events as guidance on how to use them.
 
@@ -681,7 +683,7 @@ paywall.on('preview', function(e) {
 });
 ```
 
-**Standalone Paywall Functions**
+## Standalone Paywall Functions
 
 Paywall 3.0 also supports standalone functionalities. Apart from the login/logout button functionality, accessing 'My Account' section, and invoking the 'Change Password' screen, supported in the previous version, Paywall 3.0 introduces and adds to the list the register button functionality, the setup of a language, and accessing the 'Credit Card Details' screen.
 
@@ -728,7 +730,7 @@ Here are listed and defined the paywall 3.0 standalone functionalities:
 
 Table 4
 
-**Custom Asset Preview**
+## Custom Asset Preview
 
 There's a default asset preview template that you can tweak via our dashboard but if that doesn't meet your custom needs, you can always use the `noPreview` flag (by setting it to `true`) to disable displaying of the default preview altogether and put your own preview HTML code in the asset div.
 
@@ -782,7 +784,7 @@ document.getElementById('my-paywall-button').addEventListener("click", () => {
 
 The `showPaywall` method is linked to the button which triggers the paywall functionality. That is the final step for functional custom preview.
 
-**Embedding Specific Prices**
+## Embedding Specific Prices
 
 Our merchants are free to use our paywall for embedding different prices on their page for their content. In the process you get to create your own page (HTML) elements and as a result, alter the default display preview. A custom preview would display a different price for the same content depending on the pricing type (pay-per-view or subscription). In other words, you can have a custom preview displaying one price for a 24-hour-access, for example 10$ and another one with a different price for a recurring period, for example 5$ weekly for a month. To embed your prices, first, you should initialize the paywall via creating an empty paywall instance, as illustrated in the example below:
 
