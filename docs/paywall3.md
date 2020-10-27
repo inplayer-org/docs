@@ -368,7 +368,7 @@ The paywall instance has methods that can be used for accomplishing different fu
 
 Below follows a description of all the paywall methods:
 
-`setLanguage`
+### `setLanguage`
 
 This method sets the language of the paywall interface. It is especially useful when invoked with the appropriate option from the language picker on multilingual pages. Thus, when you change the language of the site, the paywall language will be changed as well.
 
@@ -380,7 +380,7 @@ paywall.setLanguage('dk');
 
 It is important to note that the language specified as method argument should be the short two-letter code for the language.
 
-`showPaywall`
+### `showPaywall`
 
 This method is a multi-functional method that provides the option to invoke the paywall application for different use-cases via a custom HTML element on the page. This method has the following structure (with all the argument options included):
 
@@ -427,7 +427,7 @@ Usage example:
 paywall.showPaywall();
 ```
 
-`isAuthenticated`
+### `isAuthenticated`
 
 This method is a boolean method that tells whether an end-user has been authenticated on the page.
 
@@ -437,7 +437,7 @@ Usage example:
 paywall.isAuthenticated();
 ```
 
-`checkUserAccess`
+### `checkUserAccess`
 
 This method checks whether the user has valid access for the specified combination of `assetId`, `clientId`, and `accessFeeId`
 
@@ -533,7 +533,7 @@ Beware that these are **global options** which once being set cannot be changed 
 
 The paywall instance supports custom event handlers for any of its public events by using its `paywallInstance.on('event_name', callback);` method. Below you can find examples of all supported public events as guidance on how to use them.
 
-`authenticated`
+### `authenticated`
 
 This event is fired whenever an account is successfully authenticated.
 
@@ -553,7 +553,7 @@ paywall.on('authenticated', function(e, data) {
 });
 ```
 
-`logout`
+### `logout`
 
 This event is fired whenever an account delivers a successful logout operation.
 
@@ -568,7 +568,7 @@ paywall.on('logout', function(e, data) {
 });
 ```
 
-`inject`
+### `inject`
 
 This event is fired when the asset's content is added on the page.
 
@@ -584,7 +584,7 @@ paywall.on('inject', function(e, data) {
 });
 ```
 
-`payment`
+### `payment`
 
 The payment event is fired after each successful payment.
 
@@ -597,7 +597,7 @@ paywall.on('payment', function(e, data) {
 });
 ```
 
-`init`
+### `init`
 
 This event is fired when a paywall instance is created and initiated. It only occurs once during the paywall instance lifecycle.
 
@@ -610,7 +610,7 @@ paywall.on('init', function(e, data) {
 });
 ```
 
-`player`
+### `player`
 
 This event is fired whenever a player instance is created. Note: It is currently only supported for 'SportRadar' assets.
 
@@ -626,7 +626,7 @@ paywall.on('player', function(e, data) {
 });
 ```
 
-`language`
+### `language`
 
 The 'language' event is fired after the previously set up paywall language has been switched. This event is fired when a language is initially set as well as every time it gets changed by a user action or otherwise.
 
@@ -637,7 +637,7 @@ paywall.on('language', function(e, data) {
 });
 ```
 
-`access`
+### `access`
 
 This event is fired when the paywall distributes the viewer the content they have access to. This event is fired every time it is initially determined if the current user has access to the current asset or not. Additionally, it is also fired when this access status gets changed, e.g. when the asset is 'paid' or the access status turns 'expired' or 'revoked'.
 
@@ -648,7 +648,7 @@ paywall.on('access', function(e, data) {
 });
 ```
 
-`any`
+### `any`
 
 The 'any' event is fired for every action mentioned above.
 
@@ -659,7 +659,7 @@ paywall.on('any', function(e, data) {
 });
 ```
 
-`close`
+### `close`
 
 This event is fired when the paywall's modal gets closed by a user action or otherwise.
 
@@ -669,7 +669,7 @@ paywall.on('close', function(e) {
 });
 ```
 
-`preview`
+### `preview`
 
 This event is fired when an asset's preview is added on the page.
 
@@ -683,9 +683,28 @@ paywall.on('preview', function(e) {
 });
 ```
 
-## Standalone Paywall Functions
+## Standalone Functionalities
 
-Paywall 3.0 also supports standalone functionalities. Apart from the login/logout button functionality, accessing 'My Account' section, and invoking the 'Change Password' screen, supported in the previous version, Paywall 3.0 introduces and adds to the list the register button functionality, the setup of a language, and accessing the 'Credit Card Details' screen.
+Much like the previous version, Paywall 3.0 also supports the standalone functionalities involving the login/logout button functionality, the 'Change Password' screen, the card management screen, as well as accessing the 'My Account' section of the paywall application.
+
+Although you may use the paywall's JavaScript methods to invoke some of the functionalities or certain paywall screens, you can achieve the same functionalities by adding HTML classes to the elements on the page. 
+
+Here is the list of the HTML classes that can be used for creating each of the standalone functionalities: 
+
+| HTML class	|   Description |
+|--------------|---------------|
+| `inplayer-paywall-login`	| Invokes the login screen of the paywall |
+| `inplayer-paywall-logout`	| Invokes the logout action  |
+| `inplayer-paywall-account`	 | Invokes the 'My Account' screen of the registered user |
+| `inplayer-paywall--ccm`      | Invokes the  default card management screen |
+| `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen |
+
+The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
+
+
+### Standalone Paywall Functions
+
+Our latest paywall version also introduces several standalone paywall functions. Apart from relying on the HTML classes, discussed above for invoking the login/logout button functionality, the 'Change Password' screen, the 'Credit Card Details' screen, or accessing 'My Account' section, you can now do the same by calling a function. Other standalone functions introduced by Paywall 3.0 include the setup of a language, invocation of the register button functionality, and invocation of the paywall application. 
 
 Take a look at the following example to see how they can be used:
 
@@ -715,7 +734,7 @@ paywall.showPaywall({
 </script>
 ```
 
-Here are listed and defined the paywall 3.0 standalone functionalities:
+Here are listed and defined the Paywall 3.0 standalone functions:
 
 | **Function** | **Description** |
 | --- | --- |
