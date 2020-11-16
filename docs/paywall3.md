@@ -14,7 +14,7 @@ The Paywall 3.0 embed code consists of two parts: **InPlayer paywall scripts** a
 The scripts are stripped down from any redundancies from the previous versions and therefore they contain a minified JS file, encompassing CSS inside:
 
 ```
-<script type='text/javascript' src='https://assets.inplayer.com/paywall/staging/paywall.min.js'></script>
+<script type="text/javascript" src="https://assets.inplayer.com/paywall/v3/paywall.min.js"></script>
 ```
 
 In addition, the asset embed code has the following format:
@@ -425,16 +425,6 @@ Usage example:
 
 ```
 paywall.showPaywall();
-```
-
-### `isAuthenticated`
-
-This method is a boolean method that tells whether an end-user has been authenticated on the page.
-
-Usage example:
-
-```
-paywall.isAuthenticated();
 ```
 
 ### `checkUserAccess`
