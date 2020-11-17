@@ -154,32 +154,4 @@ The token and the expires params are passed in from the back-end to the callback
 </html> 
 ```
 
-:::info
-This example applies only if you are using paywall V2. For more examples and guidance check out our guide [here](https://developers.inplayer.com/docs/paywall2).
-:::
-
-If you are using our updated paywall V3, disregard the example above and proceed to the following one below in order to learn how to add the token received from back-end into the local storage. You can find the complete guide to all paywall V3 functionalities [here](https://developers.inplayer.com/docs/paywall3/).
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>InPlayer JS SDK Sandbox</title>
-  <meta charset="UTF-8" />
-  <script src="https://unpkg.com/@inplayer-org/inplayer.js@v3/dist/inplayer.min.js"></script>
-</head>
-<body>
-  <script>
-    var urlParams = new URLSearchParams(window.location.search);
-    var credentials = { 
-      token: urlParams.get("token"), 
-      expires: urlParams.get("expires") 
-    }
-    localStorage.setItem('inplayer_token', JSON.stringify(credentials));
-    // handle redirect to the premium pages after setting the token
-  </script>
-</body>
-</html>
-```
-
 After you successfully set the token into the local storage and you redirect the user to the premium pages where the paywall code is embedded, you will have your Custom Authentication connected to the paywall application.
