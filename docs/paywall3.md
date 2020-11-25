@@ -688,6 +688,7 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-account`	 | Invokes the 'My Account' screen of the registered user |
 | `inplayer-paywall-ccm`      | Invokes the  default card management screen |
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen |
+| `inplayer-paywall-purchases`  | Invokes the 'My Purchases' paywall screen where an end-user can see the list of payments they have completed |
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
