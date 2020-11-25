@@ -35,6 +35,10 @@
   justify-content: center;
 }
 
+.headerContainer {
+  color: white;
+}
+
 .features {
   display: flex;
   align-items: center;
@@ -49,7 +53,10 @@
 
 .hero {
   background-color: #32383d;
-  padding: 48px;
+  background: url('../../static/img/header.png') no-repeat center center;
+  background-size: cover;
+  border-bottom: 1.5rem solid #28bfd8;
+  padding: 9rem;
 }
 
 .heroInner {
