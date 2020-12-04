@@ -2,7 +2,8 @@ export default [
   [
     {
       imageUrl: 'img/1.png',
-      description: 'Design, create and deliver flawless monetization experiences.',
+      description:
+        'Design, create and deliver flawless monetization experiences.',
     },
     {
       imageUrl: 'img/2.png',
@@ -20,7 +21,8 @@ export default [
   [
     {
       title: 'COMPLETE MONETIZATION PLATFORM',
-      description: 'Our experience and monetization platform is industry leading. Build any powerful monetization solution our advanced development tools.',
+      description:
+        'Our experience and monetization platform is industry leading. Build any powerful monetization solution our advanced development tools.',
       centered: false,
       as: 'h2',
     },
@@ -36,7 +38,8 @@ export default [
     },
     {
       title: 'BUILDING MADE EASY',
-      description: 'Get started quickly with powerful SDKs, comprehensive docs and handy tools that will jumpstart your paywall project.',
+      description:
+        'Get started quickly with powerful SDKs, comprehensive docs and handy tools that will jumpstart your paywall project.',
       centered: false,
       as: 'h2',
     },
@@ -45,34 +48,39 @@ export default [
     {
       title: 'Android SDK',
       imageUrl: 'img/android-sdk.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      description:
+        'Using our native Android SDK you have a simple interface to our core functionalities allowing you to build Android apps with authentication, in-app payments and access entitlement flows.',
     },
     {
       title: 'iOS SDK',
       imageUrl: 'img/ios-sdk.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      description:
+        'Build iOS apps that have authentication, in-app payments and access entitlement flows. Our iOS SDK can be used for easy integration with the InPlayer system.',
     },
     {
       title: 'JavaScript SDK',
       imageUrl: 'img/js-sdk.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      description:
+        'Our JavaScript SDK is equipped with all methods our paywall app is using, allowing you to customize the end-user journey as you wish.',
     },
   ],
   [
     {
       title: 'Paywall App',
       imageUrl: 'img/paywall-app.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description:
+        'Our plug-and-play embeddable application that provides a sleek user experience of authentication, payment and access entitlement.',
     },
     {
       title: 'REST API',
       imageUrl: 'img/rest-api.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description: 'Complete reference documentation to the InPlayer REST API',
     },
     {
       title: 'Webhooks',
       imageUrl: 'img/webhooks.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description:
+        'InPlayer sends webhooks to notify you when an event happens in your merchant account (e.g. a new account registered to watch your content).',
     },
-  ]
+  ],
 ];
