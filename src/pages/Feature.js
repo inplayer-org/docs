@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 // styles
-import styles from '../../styles.module.css';
+import styles from './styles.module.css';
 
 const Feature = ({ imageUrl, title, description, centered = true, as: Typography = 'h3' }) => {
   const imgUrl = useBaseUrl(imageUrl);

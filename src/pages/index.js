@@ -7,7 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
 // components
-import Features from './components/Features';
+import Features from './Features';
 
 function Home() {
   const { siteConfig = {} } = useDocusaurusContext();
