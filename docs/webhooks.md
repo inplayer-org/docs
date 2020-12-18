@@ -25,7 +25,7 @@ The HTTP POST requests sent to your webhook URL have several **headers**, includ
 | X-InPlayer-Signature	| The signature is created by hashing your secret key together with the request payload, using the sha256 algorithm |
 |Content-Type |application/x-www-form-urlencoded |
 
-Another header we send in the POST requests is `Content-Type: application/x-www-form-urlencoded` which indicates the media type of the resource that we send to your server. The keys and values are encoded in **key-value tuples** separated by '**&'**, with an **'='** between the key and the value. The non-alphanumeric characters in both keys and values are **percent encoded**. Here is an example request:
+Another header we send in the POST requests is `Content-Type: application/x-www-form-urlencoded` which indicates the media type of the resource that we send to your server. The keys and values are encoded in **key-value tuples** separated by an ampersand (&) with the equal sign (=) in between the key and the value. The non-alphanumeric characters in both keys and values are **percent encoded**. Here is an example request:
 
 ```
 POST / HTTP/1.1
@@ -118,7 +118,7 @@ type="customer.updated"
 
 ### Access Webhooks
 
-The access webhooks are fired to notify you of events that occur whenever an operation concerning the **Asset Access** is taking place.
+The access webhooks are fired to notify you of events that occur whenever an operation concerning **accessing an asset** is taking place.
 
 
 ### `access.granted`
@@ -160,8 +160,6 @@ resource[type]="purchased"
 type="asset.access.granted"
 ```
 
-
-
 ### `access.revoked`
 
 | Type        | Description           |
@@ -173,7 +171,6 @@ Example Payload Data:
 ```javascript
 id="WHE-tyW8QjyCAYeQDOG0"
 created=1559913102
-type="asset.access.revoked"
 version=2.4.2
 resource[type]="revoked"
 resource[merchant_id]=68
@@ -188,13 +185,12 @@ resource[date]="2019-06-07T13:11:41+0000"
 resource[starts_at]=1559896473
 resource[expires_at]=1559913101
 resource[revoked]=1
+type="asset.access.revoked"
 ```
 
-### Payment and Subscription Webhooks
+### Payment Webhooks
 
-These events are fired whenever operations concerning Payments and Recurring Subscriptions occur.
-These events are fired to notify you of events that occur whenever operations concerning **Payments** and **Recurring Subscriptions** are taking place.
-
+These webhooks are fired to notify you of events that occur whenever operations concerning **payments** are taking place.
 
 ### `payment.card.success`
 
@@ -223,20 +219,85 @@ resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
 type="payment.card.success"
 ```
 
+### `payment.card.failed`
 
+| Type        | Description           |
+| ------------- |-------------|
+| ``payment.card.failed``| Fired to notify that a customer of yours has made an unsuccessful payment |
+
+Example Payload Data:
+
+```javascript
+created=1547545322
+id="6c9fb170-e0b8-4559-b442-0c986f6354c6"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type="payment.card.failed"
+```
+
+### `payment.refund.success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``payment.refund.success``| Fired to notify you that a customer of yours has been refunded |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[description]="PPV"
+resource[email]="example@email.com
+resource[formatted_amount]="10.00"
+resource[is_partial]=0
+resource[note]=""
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=payment.refund.success
+```
+
+### `payment.refund.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``payment.refund.failed``| Fired to notify you that the attempt for refunding a customer has failed |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-c251-0c986f6354c7"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”payment.refund.failed”
+```
+
+### Subscription Webhooks
+
+These webhooks are fired to notify you of events that occur whenever operations concerning **recurring subscriptions** are taking place.
 
 ### `subscribe.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``subscribe.success``| Fired to notify you that a customer has just subscribed to your asset successfully |
+| ``subscribe.success``| Fired to notify you that a customer has subscribed to your asset successfully |
 
 Example Payload Data:
 
 ```javascript
 id="WHE-jAlBR7bGKGIV2mSr"
 created=1559906599
-type="subscribe.success"
 version=2.4.2
 resource[transaction]="S-S8CqAw18ihqbgYsxCjIly3MwQ-ST"
 resource[description]="sub"
@@ -252,8 +313,131 @@ resource[timestamp]=1559906598
 resource[code]=200
 resource[access_fee_id]=3936
 resource[previewTitle]="ooyala+muse+mp4"
+type="subscribe.success"
 ```
 
+### `subscribe.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.failed``| Fired to notify you that a customer's attempt to subscribe has failed |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-1b486f6354c6"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”subscribe.failed”
+```
+
+### `subscribe.canceled.success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.canceled.success``| Fired to notify you that a subscribed customer of yours has canceled the subscription successfully |
+
+Example Payload Data:
+
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[item_id]=4122
+resource[description]="PPV"
+resource[previewTitle]="Example title"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=”subscribe.canceled.success”
+```
+
+### `subscribe.canceled.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.canceled.failed``| Fired to notify you that a customer's attempt to cancel their subscription has failed |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e3c1-4559-b142-0c986f6354c6"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”subscribe.canceled.failed”
+```
+
+### `subscribe.updated`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.updated``| Fired to notify you that a subscribed customer has just updated their billing agreement successfully |
+
+Example Payload Data:
+
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[item_id]=4122
+resource[description]="PPV"
+resource[previewTitle]="Example title"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=”subscribe.updated”
+```
+
+### `subscribe.expired`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.expired``| Fired to notify you that a certain subscriber of yours has reached the subscription's expiration date |
+
+Example Payload Data:
+
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[item_id]=4122
+resource[description]="PPV"
+resource[previewTitle]="Example title"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=”subscribe.expired”
+```
+
+### External Payment Webhooks
+
+These webhooks are fired to notify you of events that occur whenever operations involving **external payments** are taking place.
 
 ### `external.payment.success`
 
@@ -266,7 +450,6 @@ Example Payload Data:
 ```javascript
 id="WHE-yQfbAuScIV59b1Ze"
 created=1559896720
-type="external.payment.success"
 version=2.4.2
 resource[transaction]="C-OnG25z3eKkZWUMmXlvz36oc3S-PP"
 resource[description]="test+price"
@@ -282,22 +465,90 @@ resource[timestamp]=1559896720
 resource[code]=200
 resource[access_fee_id]=6973
 resource[previewTitle]="Asset+Title"
+type="external.payment.success"
 ```
 
+### `external.payment.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.payment.failed``| Fired to notify you that a customer has unsuccessfully tried to complete payment via PayPal or other external payment method to gain access to your asset |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”external.payment.failed”
+```
+
+### `external.payment.refund.success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.payment.refund.success``| Fired to notify you that a customer of yours, who has accessed your asset via external payment, has been refunded successfully |
+
+Example Payload Data:
+
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[item_id]=4122
+resource[description]="PPV"
+resource[previewTitle]="Example title"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=”external.payment.refund.success”
+```
+
+### `external.payment.refund.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.payment.refund.failed``|  Fired to notify you that the attempt for refunding a customer of yours, who has accessed your asset via external payment, has been unsuccessful |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”external.payment.refund.failed”
+```
+
+### External Subscription Webhooks
+
+These webhooks are fired to notify you of events that occur whenever operations involving **external subscriptions** are taking place.
 
 
 ### `external.subscribe.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``external.subscribe.success``| Fired to notify you that a customer has made a successful subscription via PayPal or other external payment method |
+| ``external.subscribe.success``| Fired to notify you that a customer has subscribed successfully to your asset via PayPal or other external payment method |
 
 Example Payload Data:
 
 ```javascript
 id="WHE-H3YtX6QP4aTUCXnB"
 created=1559897762
-type="external.subscribe.success"
 version=2.4.2
 resource[transaction]="S-aYPBAwMelYIKG7SOgame8etb1-PP"
 resource[description]="For+Paywall+03"
@@ -313,9 +564,73 @@ resource[timestamp]=1559897761
 resource[code]=200
 resource[access_fee_id]=6967
 resource[previewTitle]="Asset+Title"
+type="external.subscribe.success"
 ```
 
+### `external.subscribe.failed`
 
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.subscribe.failed``| Fired to notify you that a customer has made an unsuccessful attempt to subscribe to your asset using PayPal or other external payment method |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”external.subscribe.failed”
+```
+
+### `external.subscribe.update.success`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``external.subscribe.update.success``| Fired to notify you that a subscriber of yours has updated the billing agreement successfully via PayPal or other external payment method |
+
+Example Payload Data:
+
+```javascript
+created=1551455676
+id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
+resource[access_fee_id]=6113
+resource[amount]=10.00
+resource[code]=200
+resource[currency_iso]="EUR"
+resource[customer_id]=29894
+resource[item_id]=4122
+resource[description]="PPV"
+resource[previewTitle]="Example title"
+resource[email]="filiptestettas@inplayer.com"
+resource[formatted_amount]="€10.00"
+resource[status]="success"
+resource[timestamp]=1551455675
+resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+type=”external.subscribe.update.success”
+```
+
+### `external.subscribe.update.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| `external.subscribe.update.failed`| Fired to notify you that a subscriber of yours has unsuccessfully tried to update the billing agreement via PayPal or other external payment method |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”external.subscribe.update.failed”
+```
 
 ### `external.subscribe.cancel.success`
 
@@ -328,7 +643,6 @@ Example Payload Data:
 ```javascript
 id="WHE-FMyb3xJlpdaJTCFq"
 created=1559912055
-type="external.subscribe.cancel.success"
 version=2.4.2
 resource[transaction]="S-n55B9gkzl73lmp5IDjza0HNCH-PP"
 resource[description]="Subscription"
@@ -344,8 +658,27 @@ resource[timestamp]=1559912055
 resource[code]=200
 resource[access_fee_id]=6471
 resource[previewTitle]="Asset+Title"
+type="external.subscribe.cancel.success"
 ```
 
+### `external.subscribe.cancel.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| `external.subscribe.cancel.failed`| Fired to notify you that a customer of yours, subscribed to your asset externally, has unsuccessfully tried to cancel the subscription |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[account_id]=68
+resource[code]=422
+resource[explain]="error": "Failed to get access fee."
+resource[extras]="access_fee": "AccessFee is nil"
+resource[message]="Charge parameters error."
+type=”external.subscribe.cancel.failed”
+```
 
 ## Securing Webhooks
 
