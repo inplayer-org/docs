@@ -447,6 +447,16 @@ async paywall.checkUserAccess(assetId, clientId, accessFeeId);
 </script>
 ```
 
+### `isAuthenticated`
+
+This method is a boolean method that tells whether an end-user has been authenticated on the page. 
+
+Example:
+
+```js
+    paywall.isAuthenticated();
+```
+
 ### Asset Manipulation Methods
 
 The Paywall 3.0 increases flexibility by introducing methods that help you easily manipulate with adding or removing specific or all assets to/from a paywall instance. Also, aids optimization of created paywall instances by giving you the choice of destroying those that are most likely not to be used in the recent future.
