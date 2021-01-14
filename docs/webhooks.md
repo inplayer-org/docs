@@ -124,24 +124,12 @@ type="customer.updated"
 Example Payload Data:
 
 ```javascript
-created=1608732400
-id=”c2ca3ce1-1898-4de4-a375-0a65e86e4812”
-resource[active]=false
-resource[completed]=true
-resource[created_at]=1608732306
-resource[date_of_birth]=0
-esource[email]=asd@adas.com
-resource[full_name]=daredare34
-resource[id]=51732
-resource[merchant_id]=21860
-resource[merchant_uuid]=d29924eb-49e2-4dc9-80ae-30b816db4a20
-resource[referrer]=https://event.inplayer.com/staging/?asset=72395
-resource[updated_at]=1608732399
-resource[username]=asd@adas.com
-resource[uuid]=48b6a79a-f036-44e5-bfed-fa987c8231d0
-resource[metadata][clientId]=d29924eb-49e2-4dc9-80ae-30b816db4a20
-resource[metadata][register_source]=inplayer
-resource[metadata][fullname]=daredare34
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354z9"
+resource[merchant_id]=68
+resource[customer_id]=73
+resource[email]=example@email.com
+resource[timestamp]=1551455675
 type=customer.password.updated
 ```
 
