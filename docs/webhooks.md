@@ -354,11 +354,11 @@ resource[message]="Charge parameters error."
 type=”subscribe.failed”
 ```
 
-### `subscribe.canceled.success`
+### `subscribe.cancelled.success`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``subscribe.canceled.success``| Fired to notify you that a subscribed customer of yours has canceled the subscription successfully |
+| ``subscribe.cancelled.success``| Fired to notify you that a subscribed customer of yours has canceled the subscription successfully |
 
 Example Payload Data:
 
@@ -378,14 +378,14 @@ resource[formatted_amount]="€10.00"
 resource[status]="success"
 resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
-type=”subscribe.canceled.success”
+type=”subscribe.cancelled.success”
 ```
 
-### `subscribe.canceled.failed`
+### `subscribe.cancelled.failed`
 
 | Type        | Description           |
 | ------------- |-------------|
-| ``subscribe.canceled.failed``| Fired to notify you that a customer's attempt to cancel the subscription has failed |
+| ``subscribe.cancelled.failed``| Fired to notify you that a customer's attempt to cancel the subscription has failed |
 
 Example Payload Data:
 
@@ -397,7 +397,7 @@ resource[code]=422
 resource[explain]="error": "Failed to get access fee."
 resource[extras]="access_fee": "AccessFee is nil"
 resource[message]="Charge parameters error."
-type=”subscribe.canceled.failed”
+type=”subscribe.cancelled.failed”
 ```
 
 ### `subscribe.updated`
