@@ -457,6 +457,26 @@ Example:
     paywall.isAuthenticated();
 ```
 
+### `showDonationsFlow`
+
+This method initiates donation flow for a specified asset = `paywall.showDonationsFlow(assetId)`.
+
+Example:
+
+```
+paywall.showDonationsFlow(23578)
+```
+
+### `showGiftsFlow`
+
+This method initiates gift flow for a specified asset = paywall.showGiftsFlow(assetId).
+
+Example: 
+
+```
+paywall.showGiftsFlow(79066)
+```
+
 ### Asset Manipulation Methods
 
 The Paywall 3.0 increases flexibility by introducing methods that help you easily manipulate with adding or removing specific or all assets to/from a paywall instance. Also, aids optimization of created paywall instances by giving you the choice of destroying those that are most likely not to be used in the recent future.
