@@ -5,16 +5,33 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 // styles
 import styles from './styles.module.css';
 
-const Feature = ({ imageUrl, title, description, centered = true, as: Typography = 'h3' }) => {
+const Feature = ({
+  imageUrl,
+  title,
+  description,
+  centered = true,
+  as: Typography = 'h3',
+  path,
+}) => {
   const imgUrl = useBaseUrl(imageUrl);
 
-  return (
+  const renderContent = () => (
     <div className={clsx('col', styles.feature, centered && 'text--center')}>
       {imgUrl && <img src={imgUrl} alt={title} />}
       {title && <Typography>{title}</Typography>}
       {description && <p>{description}</p>}
     </div>
   );
+
+  if (path) {
+    return (
+      <a className={styles.link} href={path}>
+        {renderContent()}
+      </a>
+    );
+  }
+
+  return renderContent();
 };
 
 export default Feature;

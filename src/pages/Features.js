@@ -59,18 +59,21 @@ const featuresConfig = [
       imageUrl: 'img/android-sdk.png',
       description:
         'Using our native Android SDK you have a simple interface to our core functionalities allowing you to build Android apps with authentication, in-app payments and access entitlement flows.',
+      path: 'docs/androidsdk',
     },
     {
       title: 'iOS SDK',
       imageUrl: 'img/ios-sdk.png',
       description:
         'Build iOS apps that have authentication, in-app payments and access entitlement flows. Our iOS SDK can be used for easy integration with the InPlayer system.',
+      path: 'docs/iossdk',
     },
     {
       title: 'JavaScript SDK',
       imageUrl: 'img/js-sdk.png',
       description:
         'Our JavaScript SDK is equipped with all methods our paywall app is using, allowing you to customize the end-user journey as you wish.',
+      path: 'docs/jssdk',
     },
   ],
   [
@@ -79,17 +82,20 @@ const featuresConfig = [
       imageUrl: 'img/paywall-app.png',
       description:
         'Our plug-and-play embeddable application that provides a sleek user experience of authentication, payment and access entitlement.',
+      path: 'docs/paywall3',
     },
     {
       title: 'REST API',
       imageUrl: 'img/rest-api.png',
       description: 'Complete reference documentation to the InPlayer REST API',
+      path: 'api',
     },
     {
       title: 'Webhooks',
       imageUrl: 'img/webhooks.png',
       description:
         'InPlayer sends webhooks to notify you when an event happens in your merchant account (e.g. a new account registered to watch your content).',
+      path: 'docs/webhooks',
     },
   ],
 ];

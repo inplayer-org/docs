@@ -4,7 +4,7 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
- section {
+section {
   padding: 72px 0;
 }
 
@@ -104,6 +104,16 @@
 
 .indexCtasGitHubButtonWrapper {
   display: flex;
+}
+
+.link {
+  width: 50rem;
+  color: #000;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #000;
 }
 
 @media only screen and (max-width: 768px) {
