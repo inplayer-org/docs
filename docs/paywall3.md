@@ -699,6 +699,7 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-ccm`      | Invokes the  default card management screen |
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen |
 | `inplayer-paywall-purchases`  | Invokes the 'My Purchases' paywall screen where an end-user can see the list of payments they have completed |
+| `inplayer-paywall-donations`	| Invokes the donations flow for the provided asset  |
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
@@ -749,6 +750,17 @@ Here are listed and defined the Paywall 3.0 standalone functions:
 | `paywall.showPaywall` | Invokes the paywall application. |
 
 Table 4
+
+### `donations`
+
+This HTML class can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
+
+```
+<button class="inplayer-paywall-donations" data-asset-id="{asset-id}" />
+```
+
+When clicking on this element, the donations flow for the provided asset is initiated by opening the donation options screen. 
+The donation options screen lists all donation options added to the asset that is being accessed. Upon selecting a donation option, with the user being logged in, the payment screen with the card payment method only available for donation will be shown. Once the payment is complete, a screen with a thank you message is displayed.
 
 ## Custom Asset Preview
 
