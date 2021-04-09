@@ -332,6 +332,8 @@ resource[timestamp]=1559906598
 resource[code]=200
 resource[access_fee_id]=3936
 resource[previewTitle]="ooyala+muse+mp4"
+resource[payment_method]="card"
+resource[next_rebill_date]=1559906598
 type="subscribe.success"
 ```
 
@@ -485,6 +487,8 @@ resource[timestamp]=1559896720
 resource[code]=200
 resource[access_fee_id]=6973
 resource[previewTitle]="Asset+Title"
+resource[payment_method]="card"
+resource[next_rebill_date]=1559906598
 type="external.payment.success"
 ```
 
@@ -584,6 +588,8 @@ resource[timestamp]=1559897761
 resource[code]=200
 resource[access_fee_id]=6967
 resource[previewTitle]="Asset+Title"
+resource[payment_method]="card"
+resource[next_rebill_date]=1559906598
 type="external.subscribe.success"
 ```
 
@@ -678,6 +684,8 @@ resource[formatted_amount]="€10.00"
 resource[status]="success"
 resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+resource[payment_method]="card"
+resource[next_rebill_date]=1559906598
 type=”external.subscribe.update.success”
 ```
 
