@@ -710,7 +710,7 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-ccm`      | Invokes the  default card management screen | 
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen | 
 | `inplayer-paywall-purchases`  | Invokes the 'My Purchases' paywall screen where an end-user can see the list of payments they have completed | 
-| `inplayer-paywall-donations`	| Invokes the donations flow for the provided asset  | 
+| `inplayer-paywall-donations`	| Invokes the donations flow for the provided asset. See below for example of usage  | 
 
 
 The HTML class **inplayer-paywall-donations** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
