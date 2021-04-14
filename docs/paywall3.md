@@ -459,7 +459,7 @@ Example:
 
 ### `showDonationsFlow`
 
-This method initiates the donation flow. 
+This method initiates the donation flow for the provided `assetId`. The donation flow lists all donation options added to the asset that is being accessed. 
 
 Example:
 
