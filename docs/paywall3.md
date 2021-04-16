@@ -711,16 +711,26 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen | 
 | `inplayer-paywall-purchases`  | Invokes the 'My Purchases' paywall screen where an end-user can see the list of payments they have completed | 
 | `inplayer-paywall-donations`	| Invokes the donations flow for the provided asset. See below for example of usage  | 
+| `inplayer-paywall-gifts`	| Invokes the gifts flow for the provided asset. See below for example of usage  |
 
 
-The HTML class **inplayer-paywall-donations** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
+The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
 
 ```
 <button class="inplayer-paywall-donations" data-asset-id="{asset-id}" />
+
 ```
 
 When clicking on this element, the donations flow for the provided asset is initiated by opening the donation options screen. 
 The donation options screen lists all donation options added to the asset that is being accessed. After selecting a donation option the end-user can proceed with the donation payment.
+
+
+```
+
+<button class="inplayer-paywall-gifts" data-asset-id="{asset-id}" />
+```
+
+
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
