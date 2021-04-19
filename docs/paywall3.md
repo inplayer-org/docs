@@ -467,6 +467,15 @@ Example:
     paywall.showDonationsFlow(assetId);
 ```
 
+### `showGiftsFlow`
+
+This method initiates the gifts flow for the provided `assetId`.  
+
+Example:
+
+```js
+    paywall.showGiftsFlow(assetId);
+```
 
 ### Asset Manipulation Methods
 
@@ -714,7 +723,7 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-gifts`	| Invokes the gifts flow for the provided asset. See below for example of usage  |
 
 
-The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
+The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example for donations:
 
 ```
 <button class="inplayer-paywall-donations" data-asset-id="{asset-id}" />
@@ -724,13 +733,14 @@ The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can 
 When clicking on this element, the donations flow for the provided asset is initiated by opening the donation options screen. 
 The donation options screen lists all donation options added to the asset that is being accessed. After selecting a donation option the end-user can proceed with the donation payment.
 
+Usage example for gifts:
 
 ```
 
 <button class="inplayer-paywall-gifts" data-asset-id="{asset-id}" />
 ```
 
-
+When clicking on this element, the gift flow for the provided asset is initiated by opening the receivers email address screen. After entering the receivers email address the end-user can proceed with the gift payment.
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
