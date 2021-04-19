@@ -165,6 +165,20 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
+The main available global option is `userMenuPosition`. The user menu can be set up to be positioned on the `left` or on the `right`:
+
+```
+<div id="inplayer-81562" class="inplayer-paywall"></div>
+<script>
+    var paywall = new InplayerPaywall('50845603-2d99-4734-b96f-69943cd05827', 
+    [{
+        id: 81562
+    }], {
+        userMenuPosition: 'right'
+    });
+</script>
+```
+
 ### Additional Asset Options
 
 Apart from the main asset options, there are additional **CSS/JS scripts** available to be imported to the player being loaded after purchase, along withquery parameters meant for **player customisation.** More precisely, these scripts are given to the player being loaded after a purchase is completed. For this reason, they should be distinguished from the general scripts included in the asset embed process.
@@ -267,6 +281,25 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
+Disabling the `buy as a gift` option on the **Price Options Screen** and disabling it on the **screen after successful purchase** respectively:
+
+```
+<div id="inplayer-81562" class="inplayer-paywall"></div>
+
+<script>
+    var paywall = new InplayerPaywall('50845603-2d99-4734-b96f-69943cd05827', 
+    [{
+        id: 81562,
+        options: {
+            hideBuyGiftOption: true,
+            hideGiftFlowAfterPurchase: true
+        }
+    }], {
+        userMenuPosition: 'right'
+    });
+</script>
+```
+
 ### Additional Global Options
 
 Depending on your preference, there are additional global options to include in your embed code as to customize the assets to your liking. You get to set up the language of your asset(s) via the paywall `language` option (English is the default one), you get to decide whether you want your user menu or the modal header logo displayed or hidden, the former via the `hideUserMenu` and the latter via the `hideLogo` option as in the example below:
@@ -310,6 +343,8 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 );
 </script>
 ```
+
+
 
 ### Authentication Paywall Options
 
