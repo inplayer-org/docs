@@ -760,7 +760,6 @@ The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can 
 
 ```
 <button class="inplayer-paywall-donations" data-asset-id="{asset-id}" />
-
 ```
 
 When clicking on this element, the donations flow for the provided asset is initiated by opening the donation options screen. 
@@ -769,7 +768,6 @@ The donation options screen lists all donation options added to the asset that i
 Usage example for gifts:
 
 ```
-
 <button class="inplayer-paywall-gifts" data-asset-id="{asset-id}" />
 ```
 
