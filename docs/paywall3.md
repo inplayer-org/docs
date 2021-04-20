@@ -344,8 +344,6 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
-
-
 ### Authentication Paywall Options
 
 Optionally, you can authenticate users via `oauthAppKey` (the merchant's UUID is to be used by default) and by providing a valid SSO domain to enable SSO feature:
