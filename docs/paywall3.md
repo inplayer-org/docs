@@ -165,19 +165,6 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
-The main available global option is `userMenuPosition`. The user menu can be set up to be positioned on the `left` or on the `right`:
-
-```
-<div id="inplayer-81562" class="inplayer-paywall"></div>
-<script>
-    var paywall = new InplayerPaywall('50845603-2d99-4734-b96f-69943cd05827', 
-    [{
-        id: 81562
-    }], {
-        userMenuPosition: 'right'
-    });
-</script>
-```
 
 ### Additional Asset Options
 
@@ -281,24 +268,6 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
-Disabling the `buy as a gift` option on the **Price Options Screen** and disabling it on the **screen after successful purchase** respectively:
-
-```
-<div id="inplayer-81562" class="inplayer-paywall"></div>
-
-<script>
-    var paywall = new InplayerPaywall('50845603-2d99-4734-b96f-69943cd05827', 
-    [{
-        id: 81562,
-        options: {
-            hideBuyGiftOption: true,
-            hideGiftFlowAfterPurchase: true
-        }
-    }], {
-        userMenuPosition: 'right'
-    });
-</script>
-```
 
 ### Additional Global Options
 
@@ -394,6 +363,10 @@ To gain a better understanding of all paywall options mentioned above (both per 
 | `brandingId` | Sets a global branding theme for all assets on a page. | Number | Global option |
 | `registerFirst` | If `true`, it sets the 'Register screen' as default, as opposed to the 'Login screen'; optional. | Boolean(set `false` by default) | Global option |
 | `ssoDomain` | By providing a valid `ssoDomain`, the SSO feature will be enabled; optional. | String | Global option |
+| `userMenuPosition` | The user menu can be set up to be positioned on the `left` or on the `right`. By default it is positioned on the right. | String | Global option |
+| `hideBuyGiftOption` | Disabling the `buy as a gift` option on the 'Price Options Screen'. | Boolean(set `false` by default) | Asset option |
+| `hideGiftFlowAfterPurchase` | Disabling the `buy as a gift` option on the screen after successful purchase. | Boolean(set `false` by default) | Asset option |
+
 
 ## Paywall Methods
 
