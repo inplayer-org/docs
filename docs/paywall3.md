@@ -165,6 +165,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
+
 ### Additional Asset Options
 
 Apart from the main asset options, there are additional **CSS/JS scripts** available to be imported to the player being loaded after purchase, along withquery parameters meant for **player customisation.** More precisely, these scripts are given to the player being loaded after a purchase is completed. For this reason, they should be distinguished from the general scripts included in the asset embed process.
@@ -267,6 +268,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
+
 ### Additional Global Options
 
 Depending on your preference, there are additional global options to include in your embed code as to customize the assets to your liking. You get to set up the language of your asset(s) via the paywall `language` option (English is the default one), you get to decide whether you want your user menu or the modal header logo displayed or hidden, the former via the `hideUserMenu` and the latter via the `hideLogo` option as in the example below:
@@ -361,6 +363,10 @@ To gain a better understanding of all paywall options mentioned above (both per 
 | `brandingId` | Sets a global branding theme for all assets on a page. | Number | Global option |
 | `registerFirst` | If `true`, it sets the 'Register screen' as default, as opposed to the 'Login screen'; optional. | Boolean(set `false` by default) | Global option |
 | `ssoDomain` | By providing a valid `ssoDomain`, the SSO feature will be enabled; optional. | String | Global option |
+| `userMenuPosition` | The user menu can be set up to be positioned on the `left` or on the `right`. By default it is positioned on the right. | String | Global option |
+| `hideBuyGiftOption` | Disabling the `buy as a gift` option on the 'Price Options Screen'. | Boolean(set `false` by default) | Asset option |
+| `hideGiftFlowAfterPurchase` | Disabling the `buy as a gift` option on the screen after successful purchase. | Boolean(set `false` by default) | Asset option |
+
 
 ## Paywall Methods
 
@@ -467,6 +473,15 @@ Example:
     paywall.showDonationsFlow(assetId);
 ```
 
+### `showGiftsFlow`
+
+This method initiates the gifts flow for the provided `assetId`.  
+
+Example:
+
+```js
+    paywall.showGiftsFlow(assetId);
+```
 
 ### Asset Manipulation Methods
 
@@ -711,9 +726,10 @@ Here is the list of the HTML classes that can be used for creating each of the s
 | `inplayer-paywall-change-pass`  | Invokes the 'Change Password' screen | 
 | `inplayer-paywall-purchases`  | Invokes the 'My Purchases' paywall screen where an end-user can see the list of payments they have completed | 
 | `inplayer-paywall-donations`	| Invokes the donations flow for the provided asset. See below for example of usage  | 
+| `inplayer-paywall-gifts`	| Invokes the gifts flow for the provided asset. See below for example of usage  |
 
 
-The HTML class **inplayer-paywall-donations** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example:
+The HTML classes **inplayer-paywall-donations**, **inplayer-paywall-gifts** can be added to any HTML element. The `asset-id` represents the ID of a specific InPlayer asset. Usage example for donations:
 
 ```
 <button class="inplayer-paywall-donations" data-asset-id="{asset-id}" />
@@ -721,6 +737,14 @@ The HTML class **inplayer-paywall-donations** can be added to any HTML element. 
 
 When clicking on this element, the donations flow for the provided asset is initiated by opening the donation options screen. 
 The donation options screen lists all donation options added to the asset that is being accessed. After selecting a donation option the end-user can proceed with the donation payment.
+
+Usage example for gifts:
+
+```
+<button class="inplayer-paywall-gifts" data-asset-id="{asset-id}" />
+```
+
+When clicking on this element, the gift flow for the provided asset is initiated by opening the receivers email address screen. After entering the receivers email address the end-user can proceed with the gift payment.
 
 The advantage of using these classes is that they come with a built-in logic for displaying and hiding the elements, depending on whether the user is authenticated or not. For example, the HTML element with the **inplayer-paywall-logout class** will only be shown when the user is authenticated.
 
