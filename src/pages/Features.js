@@ -88,7 +88,7 @@ const featuresConfig = [
       title: 'REST API',
       imageUrl: 'img/rest-api.png',
       description: 'Complete reference documentation to the InPlayer REST API',
-      path: 'api',
+      path: 'https://docs.inplayer.com/api/',
     },
     {
       title: 'Webhooks',
