@@ -17,12 +17,24 @@ The In-App Authentication presents the authentication functionalities that authe
 
 ## IOS In-App Purchases
 
+The InPlayer system integrates with the iOS app on the end-users' mobile devices, as a way to support the in-app payment process. 
 
+[InPlayer IOS In-App Purchases](ios-in-app-purchases.md)
 
 ## Amazon In-App Purchases
 
+The InPlayer system integrates with the Amazon app on the end-users' TV devices, as a way to support the in-app payment process. 
+
+[InPlayer Amazon In-App Purchases](amazon-in-app-purchases.md)
 
 ## Android In-App Purchases
 
+The InPlayer system integrates with the Android app on the end-users' mobile or TV devices, as a way to support the in-app payment process.
+
+[InPlayer Android In-App Purchases](android-in-app-purchases.md)
 
 ## ROKU In-App Purchases
+
+The InPlayer system integrates with the Roku app on the end-users' TV devices, as a way to support the in-app payment process.
+
+[InPlayer ROKU In-App Purchases](roku-in-app-purchases.md)
