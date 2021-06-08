@@ -17,7 +17,7 @@ The InPlayer system integrates with native apps (the iOS app in this case) on th
 
 You can find the dedicated integration page [here.](https://dashboard.inplayer.com/settings/integrations/in-app-integrations/apple-in-app)
 
-For a more detailed and visual representation of the integration set-up, click [here.](https://inplayer.com/docs/in-app-purchases/ios/#ppv)
+For a more detailed and visual representation of the integration set-up, click [here.](https://client.support.inplayer.com/integrations/in-app-integrations/ios/#creating-a-ppv-purchase-4)
 
 Once the integration is set up and you have your merchant offers created, you can then proceed with the implementation of the in-app payment process. 
 
