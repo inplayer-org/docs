@@ -8,10 +8,10 @@ InPlayer offers the solution of linking your Custom Payment service to our Authe
 
 ## Asset Creation
 
-To begin with, first, you must obtain the status of an InPlayer Merchant. It is a simple and easy-to-do procedure, precisely described in [this guide](https://inplayer.com/docs/getting-started/creating-your-account/). 
+To begin with, first, you must obtain the status of an InPlayer Merchant. It is a simple and easy-to-do procedure, precisely described in [this guide](https://client.support.inplayer.com/getting-started/creating-your-inplayer-account/). 
 Once you have gained the status of a merchant, it is time to create your first asset. On our platform, you protect your content by putting it in an 'asset'. So once created, our system recognizes your content as 'asset'. In other words, whenever your end-users try to access your content (after they completed the purchase successfully), the content specified in the asset (e.g. a video) will be displayed to the paying customer.
 
-To create an asset, visit our [asset creation documentation](https://inplayer.com/docs/assets/) for assistance. Depending on the type of your content (video, audio, text, HTML, file etc) choose the suitable step-by-step guide to walk you throughout the procedure. 
+To create an asset, visit our [asset creation documentation](https://client.support.inplayer.com/topics/assets-and-packages/) for assistance. Depending on the type of your content (video, audio, text, HTML, file etc) choose the suitable step-by-step guide to walk you throughout the procedure. 
 
 ## Account Authentication 
 
