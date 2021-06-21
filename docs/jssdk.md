@@ -58,7 +58,7 @@ InPlayer.Account.signUp({
 
 Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type`, and `clientId`  are always **required**.
 
-Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clinetId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clientId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
 The `type` parameter can be either `consumer` or `merchant`. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the `clientId` parameter.
 
