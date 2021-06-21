@@ -51,7 +51,7 @@ InPlayer.Account.signUp({
     type: 'consumer',
     referrer: 'http://localhost:3000/',
     metadata: {
-    city: 'Skopje'
+    country: 'Macedonia'
 }
 }).then(data => console.log(data));
 ```
@@ -75,6 +75,8 @@ InPlayer.Account.authenticate({
     email: 'test32@test.com',
     password: '12345678',
     clientId: 'd20252cb-d057-4ce0-83e0-63da6dbabab1',
+    referrer: 'http://localhost:3000/',
+    refreshToken: '528b1b80-ddd1hj-4abc-gha3j-111111',
 }).then(data => console.log(data));
 ```
 
@@ -127,7 +129,7 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 The InPlayer platform enables you to create digital assets to which afterwards you can attach a **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function below. 
 
 ```js
-InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
+InPlayer.Asset.getAssetAccessFees({ASSET_ID}).then(data => { //do something with data }
 ```
 
 After the end-user has chosen both the price option and the preferred payment method, depending on the access type, you can either invoke the function for creating one-time purchases (pay-per-view) or the one for subscription (recurring card payment). 
@@ -153,7 +155,9 @@ InPlayer.Payment
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
+    voucherCode: 'fgh1982gff-0f2grfds',
+    brandingId: 1234,
+    returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
@@ -171,7 +175,9 @@ InPlayer.Subscription
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
+    voucherCode: 'fgh1982gff-0f2grfds',
+    brandingId: 1234,
+    returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
@@ -185,7 +191,8 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
     origin: window.location.href,
     accessFee: ACCESS_FEE_ID,
     paymentMethod: 2,
-    voucherCode: 'some voucher code here' (not mandatory)
+    voucherCode: 'SomeVoucherCodeHere', /* not mandatory */
+    brandingId: 1234
 }).then(data => { /* handle paypal data here */ }
 ```
 
@@ -210,11 +217,11 @@ To create the 'My Account' menu for a logged in customer, you need the following
 
 ### Fetching Account Details
 
-By passing in the authorisation token, you can fetch all the account details using the `getAccountInfo` method.
+By passing in the authorisation token, you can fetch all the account details using the `getAccount` method.
 
 ```js
 InPlayer.Account
-.getAccountInfo(InPlayer.Account.token())
+.getAccount(InPlayer.Account.token())
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
@@ -223,7 +230,7 @@ InPlayer.Account
 
 ```js
 InPlayer.Account
-.updateAccount({fullName: 'John Doe', metadata: {country: 'Example Country'}},InPlayer.Account.token())
+.updateAccount({fullName: 'John Doe', metadata: {country: 'Example Country'}, dateOfBirth: '1999-03-05'}},InPlayer.Account.token())
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
