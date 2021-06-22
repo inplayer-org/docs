@@ -236,6 +236,18 @@ InPlayer.Account
 ```
 
 
+## Integration checklist
+
+Use the following checklist to make sure you have set up the SDK for JavaScript correctly.
+
+- [Installing the SDK](https://developers.inplayer.com/docs/jssdk#installing-the-sdk)
+- [Setting up the SDK](https://developers.inplayer.com/docs/jssdk#setting-up-the-sdk)
+- [Setting up the registration process](https://developers.inplayer.com/docs/jssdk#how-to-register-an-account)
+- [Handling account authentication](https://developers.inplayer.com/docs/jssdk#how-to-authenticate-an-account)
+- [Activating notifications](https://developers.inplayer.com/docs/jssdk#real-time-notifications)
+- [Creating payments for assets](https://developers.inplayer.com/docs/jssdk#how-to-create-payments)
+- [Validating content access](https://developers.inplayer.com/docs/jssdk#how-to-validate-content-access)
+- [Enabling 'My Account' menu for customer](https://developers.inplayer.com/docs/jssdk#how-to-create-the-my-account-menu)
 
 
 
