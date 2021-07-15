@@ -234,6 +234,7 @@ resource[formatted_amount]="€10.00"
 resource[status]="success"
 resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+resource[referrer]="http://example.com"
 type="payment.card.success"
 ```
 
