@@ -20,7 +20,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'InPlayer Logo',
-        src: 'img/inplayer-logo-1.png',
+        src: 'img/inplayer-logo-new-dark-blue.png',
       },
       items: [
         {
