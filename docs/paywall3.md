@@ -114,7 +114,8 @@ With Paywall 3.0, you can now use a custom element as an asset container as oppo
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
     [{
         id: 40112,
-        containerId: options: {
+        containerId: custom-asset-container,
+        options: {
             noPreview: false,
             brandingId: "597",
         }
