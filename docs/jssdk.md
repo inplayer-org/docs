@@ -71,7 +71,7 @@ Lastly, the `referrer` parameter can be passed in manually for every register re
 Authentication can be achieved using the `InPlayer.Account.authenticate()` method.
 
 ```javascript
-InPlayer.Account.authenticate({
+InPlayer.Account.signIn({
     email: 'test32@test.com',
     password: '12345678',
     clientId: 'd20252cb-d057-4ce0-83e0-63da6dbabab1',
@@ -82,7 +82,7 @@ InPlayer.Account.authenticate({
 
 Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
 
-If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.token()` call. Additionally, you may call `InPlayer.Account.isSignedIn()` to check if someone is logged in or not.
+If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.getToken()` call. Additionally, you may call `InPlayer.Account.isAuthenticated()` to check if someone is logged in or not.
 
 For the account sign out operation use the following call:
 
@@ -146,7 +146,7 @@ InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data)
 
 ```javascript
 InPlayer.Payment
-.create(MERCHANT_UUID, {
+.createPayment(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -155,18 +155,18 @@ InPlayer.Payment
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds',
-    brandingId: 1234,
     returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
+
+The parameters `voucherCode`, `brandingId`, `isGift` and `receiverEmail` are optional parameters that can be added to the method. 
 
 ### Creating Recurring Card Subscriptions
 
 ```javascript
 InPlayer.Subscription
-.create(MERCHANT_UUID, {
+.createSubscription(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -175,12 +175,12 @@ InPlayer.Subscription
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds',
-    brandingId: 1234,
     returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
+
+The parameters `voucherCode`, `brandingId`, `isGift` and `receiverEmail` are optional parameters that can be added to the method.
 
 ### Creating PayPal Payments
 
@@ -204,7 +204,7 @@ In order to check whether a given account can access a certain asset, you should
 
 ```javascript
 InPlayer.Asset
-.checkAccessForAsset(InPlayer.Account.token(),ASSET_ID)
+.checkAccessForAsset(ASSET_ID)
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
@@ -217,11 +217,11 @@ To create the 'My Account' menu for a logged in customer, you need the following
 
 ### Fetching Account Details
 
-By passing in the authorisation token, you can fetch all the account details using the `getAccount` method.
+You can fetch all the account details by using the `getAccountInfo` method.
 
 ```js
 InPlayer.Account
-.getAccount(InPlayer.Account.token())
+.getAccountInfo()
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
