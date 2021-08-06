@@ -114,7 +114,8 @@ With Paywall 3.0, you can now use a custom element as an asset container as oppo
 var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
     [{
         id: 40112,
-        containerId: options: {
+        containerId: custom-asset-container,
+        options: {
             noPreview: false,
             brandingId: "597",
         }
@@ -168,7 +169,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 
 ### Additional Asset Options
 
-Apart from the main asset options, there are additional **CSS/JS scripts** available to be imported to the player being loaded after purchase, along withquery parameters meant for **player customisation.** More precisely, these scripts are given to the player being loaded after a purchase is completed. For this reason, they should be distinguished from the general scripts included in the asset embed process.
+Apart from the main asset options, there are additional **CSS/JS scripts** available to be imported to the player being loaded after purchase, along with query parameters meant for **player customisation.** More precisely, these scripts are given to the player being loaded after a purchase is completed. For this reason, they should be distinguished from the general scripts included in the asset embed process.
 
 Take a look at the examples provided to learn how you can incorporate them in your embed code.
 
@@ -204,7 +205,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
-You can add **custom player** parameters for the OVP (usually a video player) used by the asset such as a language setup or adding any value you would like to include for the `myParam`parameter.
+You can add **custom player** parameters for the OVP (usually a video player) used by the asset such as a language setup or adding any value you would like to include for the `myParam` parameter.
 
 ```
 <div id="inplayer-40112" class="inplayer-paywall" />
@@ -348,14 +349,9 @@ To gain a better understanding of all paywall options mentioned above (both per 
 | `playerParams` | An object containing custom player parameters for the video player used by the asset. | JSON Object | Asset option |
 | `myParam` | A placeholder for any value you want to include. | Number | Asset option |
 | `disableVoucher` | If it is set as `true`, the voucher section will not be displayed. | Boolean (set `false` by default) | Asset option |
-| `codeAccess` | An object consisting of the access code, custom inputs, and code patterns. | JSON Object | Asset option |
-| `inputs` | An object containing the access code and custom inputs. | JSON Object | Asset option |
-| `access_code` | A custom placeholder for the access code input; optional. | Char | Asset option |
-| `customInput1/2` | The placeholder of the custom input/code. | Char | Asset option |
-| `codePattern` | The custom inputs and the access code together make the codePattern. The default value is `{ inputs: { access_code: 'Code' }, codePattern: '{{access_code}}' }`; optional. | Char | Asset option |
 | `language` | Sets the fallback language; English or `en` is the default one. | Language code | Global option |
-| `hideUserMenu` | If it is set as`true`, it hides the user menu dropdown of the registered account. | Boolean(set `false` by default) | Global option |
-| `hideLogo` | If it is set as`true`, it hides the paywall logo (in the modal header). | Boolean(set `false` by default) | Global option |
+| `hideUserMenu` | If it is set as `true`, it hides the user menu dropdown of the registered account. | Boolean(set `false` by default) | Global option |
+| `hideLogo` | If it is set as `true`, it hides the paywall logo (in the modal header). | Boolean(set `false` by default) | Global option |
 | `footerLinks` | Inserts an array of external links in the paywall footer to replace the default ones; optional. | JSON, e.g. { text: "Google", url: "[https://www.google.com/](https://www.google.com/)" } | Global option |
 | `hideFooterLinks` | If it is set as `true`, the footer links will not be displayed. | Boolean(set `false` by default) | Global option |
 | `hideProtectedBy` | If it is set as `true`, the 'Protected by InPlayer' label will not be displayed. | Boolean(set `false` by default) | Global option |
@@ -490,8 +486,8 @@ The Paywall 3.0 increases flexibility by introducing methods that help you easil
 | **Method and Option** | **Description** |
 | --- | --- |
 | `addAssets([...assetArray]): void` | A method that adds an array of assets to a previously created paywall instance. |
-| `removeAssets([...assetArray], keepAssetData?: boolean = false): void` | Removes specified assets from the paywall instance. Note 1: The assets must be specified exactly as they were added - if containerId was specified on adding, it would also have to be specified on removal.Note 2: The method receives an optional boolean argument which is `false` by default. If `true` is sent, it tells the paywall instance to keep all the data of the assets, so they can be reused at some point in the future. To learn more of the asset data preservation refer to the `keepAssetData?: boolean = false` method. |
-| `removeAllAssets(keepAssetData?: boolean = false): void` | Removes all assets from a given paywall instance. Note 1: After the assets removal, the paywall instance remains 'alive' and other assets can be added to it at any later time.Note 2: The method receives an optional boolean argument which is `false` by default. If `true` is sent, it tells the paywall instance to keep all the data of the assets, so they can be reused at some point in the future. To learn more of the asset data preservation refer to the `keepAssetData?: boolean = false` method. |
+| `removeAssets([...assetArray], keepAssetData?: boolean = false): void` | Removes specified assets from the paywall instance. Note 1: The assets must be specified exactly as they were added - if containerId was specified on adding, it would also have to be specified on removal. Note 2: The method receives an optional boolean argument which is `false` by default. If `true` is sent, it tells the paywall instance to keep all the data of the assets, so they can be reused at some point in the future. To learn more of the asset data preservation refer to the `keepAssetData?: boolean = false` method. |
+| `removeAllAssets(keepAssetData?: boolean = false): void` | Removes all assets from a given paywall instance. Note 1: After the assets removal, the paywall instance remains 'alive' and other assets can be added to it at any later time. Note 2: The method receives an optional boolean argument which is `false` by default. If `true` is sent, it tells the paywall instance to keep all the data of the assets, so they can be reused at some point in the future. To learn more of the asset data preservation refer to the `keepAssetData?: boolean = false` method. |
 | `keepAssetData?: boolean = false` | If it is set as `true`, this argument tells the paywall instance to preserve all the data of the asset(s) so it can be reused. In other words, you get to unmount all asset data so that the same assets can be re-added (by using the `.addAssets()` method) at some point in time. The process of asset remounting would progress faster as it skips making some of the backend API calls once again. |
 | `destroy(): void` | Destroys the paywall instance and it can no longer be used in any way. |
 | `isDestroyed():` | A boolean indicating whether the instance has been destroyed. |
