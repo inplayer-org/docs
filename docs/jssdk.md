@@ -136,7 +136,7 @@ After the end-user has chosen both the price option and the preferred payment me
 
 ### Creating Payments
 
-The InPlayer Platform supports two methods of carrying out payments – by **card** and by **PayPal**. In order to create payment, first you must find and fetch the preferred method. 
+The InPlayer Platform supports the following methods of carrying out payments – by **card**,  by **PayPal**, by **DirectDebit**, by **iDEAL**, by **Google**, by **Apple pay**,. In order to create payment, first you must find and fetch the preferred method. 
 
 ```javascript
 InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
