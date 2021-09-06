@@ -80,7 +80,7 @@ InPlayer.Account.signIn({
 }).then(data => console.log(data));
 ```
 
-Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
+Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStorage`.
 
 If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.getToken()` call. Additionally, you may call `InPlayer.Account.isAuthenticated()` to check if someone is logged in or not.
 
