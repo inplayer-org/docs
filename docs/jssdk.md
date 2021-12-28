@@ -51,14 +51,14 @@ InPlayer.Account.signUp({
     type: 'consumer',
     referrer: 'http://localhost:3000/',
     metadata: {
-    city: 'Skopje'
+    country: 'Macedonia'
 }
 }).then(data => console.log(data));
 ```
 
 Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type`, and `clientId`  are always **required**.
 
-Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clinetId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new [**OAUTH application** from our Dashboard](https://client.support.inplayer.com/settings/oauth-sso/#oauth-4) and obtain your `clientId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To [find your UUID](https://client.support.inplayer.com/the-dashboard/account/#basic-details-4) navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
 The `type` parameter can be either `consumer` or `merchant`. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the `clientId` parameter.
 
@@ -71,16 +71,18 @@ Lastly, the `referrer` parameter can be passed in manually for every register re
 Authentication can be achieved using the `InPlayer.Account.authenticate()` method.
 
 ```javascript
-InPlayer.Account.authenticate({
+InPlayer.Account.signIn({
     email: 'test32@test.com',
     password: '12345678',
     clientId: 'd20252cb-d057-4ce0-83e0-63da6dbabab1',
+    referrer: 'http://localhost:3000/',
+    refreshToken: '528b1b80-ddd1hj-4abc-gha3j-111111',
 }).then(data => console.log(data));
 ```
 
-Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
+Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStorage`.
 
-If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.token()` call. Additionally, you may call `InPlayer.Account.isSignedIn()` to check if someone is logged in or not.
+If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.getToken()` call. Additionally, you may call `InPlayer.Account.isAuthenticated()` to check if someone is logged in or not.
 
 For the account sign out operation use the following call:
 
@@ -127,14 +129,14 @@ InPlayer.subscribe(InPlayer.Account.token(), {
 The InPlayer platform enables you to create digital assets to which afterwards you can attach a **price** with **currency** and **access period**, in order to create **access fees**. The `AccessFee` resource holds data of the asset’s price, and the time-frame of the **access duration period**. The access period resource refers to the **access type** which might be of the **pay-per-view** or **subscription** model. This will be elaborated further on in this tutorial. Once you have created the desired asset with price options (conducted in the Dashboard or via the API), you can fetch and present the fees by invoking the function below. 
 
 ```js
-InPlayer.Asset.getAccessFees({ASSET_ID}).then(data => { //do something with data }
+InPlayer.Asset.getAssetAccessFees({ASSET_ID}).then(data => { //do something with data }
 ```
 
 After the end-user has chosen both the price option and the preferred payment method, depending on the access type, you can either invoke the function for creating one-time purchases (pay-per-view) or the one for subscription (recurring card payment). 
 
 ### Creating Payments
 
-The InPlayer Platform supports two methods of carrying out payments – by **card** and by **PayPal**. In order to create payment, first you must find and fetch the preferred method. 
+The InPlayer Platform supports the following methods of carrying out payments – by **card**,  by **PayPal**, by **DirectDebit**, by **iDEAL**, by **Google**, by **Apple pay**,. In order to create payment, first you must find and fetch the preferred method. 
 
 ```javascript
 InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data));
@@ -144,7 +146,7 @@ InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data)
 
 ```javascript
 InPlayer.Payment
-.create(MERCHANT_UUID, {
+.createPayment(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -153,16 +155,18 @@ InPlayer.Payment
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
+    returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
+
+The parameters `voucherCode`, `brandingId`, `isGift` and `receiverEmail` are optional parameters that can be added to the method. 
 
 ### Creating Recurring Card Subscriptions
 
 ```javascript
 InPlayer.Subscription
-.create(MERCHANT_UUID, {
+.createSubscription(MERCHANT_UUID, {
     number: 4111111111111111,
     cardName: 'Example Name',
     expMonth: 10,
@@ -171,10 +175,12 @@ InPlayer.Subscription
     accessFee: 2341,
     paymentMethod: 1,
     referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
+    returnUrl: 'https://event.inplayer.com/staging'
 })
 .then(data => console.log(data));
 ```
+
+The parameters `voucherCode`, `brandingId`, `isGift` and `receiverEmail` are optional parameters that can be added to the method.
 
 ### Creating PayPal Payments
 
@@ -185,7 +191,8 @@ InPlayer.Payment.getPayPalParams(InPlayer.Account.token(), {
     origin: window.location.href,
     accessFee: ACCESS_FEE_ID,
     paymentMethod: 2,
-    voucherCode: 'some voucher code here' (not mandatory)
+    voucherCode: 'SomeVoucherCodeHere', /* not mandatory */
+    brandingId: 1234
 }).then(data => { /* handle paypal data here */ }
 ```
 
@@ -197,7 +204,7 @@ In order to check whether a given account can access a certain asset, you should
 
 ```javascript
 InPlayer.Asset
-.checkAccessForAsset(InPlayer.Account.token(),ASSET_ID)
+.checkAccessForAsset(ASSET_ID)
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
@@ -210,11 +217,11 @@ To create the 'My Account' menu for a logged in customer, you need the following
 
 ### Fetching Account Details
 
-By passing in the authorisation token, you can fetch all the account details using the `getAccountInfo` method.
+You can fetch all the account details by using the `getAccountInfo` method.
 
 ```js
 InPlayer.Account
-.getAccountInfo(InPlayer.Account.token())
+.getAccountInfo()
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
@@ -223,12 +230,24 @@ InPlayer.Account
 
 ```js
 InPlayer.Account
-.updateAccount({fullName: 'John Doe', metadata: {country: 'Example Country'}},InPlayer.Account.token())
+.updateAccount({fullName: 'John Doe', metadata: {country: 'Example Country'}, dateOfBirth: '1999-03-05'}},InPlayer.Account.token())
 .then(data => console.log(data))
 .catch(error => error.response.json().then(data => console.log("Error", data)));
 ```
 
 
+## Integration checklist
+
+Use the following checklist to make sure you have set up the SDK for JavaScript correctly.
+
+- [Installing the SDK](https://developers.inplayer.com/docs/jssdk#installing-the-sdk)
+- [Setting up the SDK](https://developers.inplayer.com/docs/jssdk#setting-up-the-sdk)
+- [Setting up the registration process](https://developers.inplayer.com/docs/jssdk#how-to-register-an-account)
+- [Handling account authentication](https://developers.inplayer.com/docs/jssdk#how-to-authenticate-an-account)
+- [Activating notifications](https://developers.inplayer.com/docs/jssdk#real-time-notifications)
+- [Creating payments for assets](https://developers.inplayer.com/docs/jssdk#how-to-create-payments)
+- [Validating content access](https://developers.inplayer.com/docs/jssdk#how-to-validate-content-access)
+- [Enabling 'My Account' menu for customer](https://developers.inplayer.com/docs/jssdk#how-to-create-the-my-account-menu)
 
 
 
