@@ -292,7 +292,27 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
 </script>
 ```
 
-You can also decide between hiding or customising the footer links by setting up the following options: `footerLinks`, `hideFooterLinks`, and `hideProtectedBy`.
+You can also decide between hiding or customising the footer links by setting up the following options: `footerLinks`, `hideFooterLinks`.
+
+For example, you can hide the footer links from the paywall screens by using the `hideFooterLinks` embed code options as follows:
+
+```
+<div id="inplayer-40112" class="inplayer-paywall" />
+
+<script>
+// InplayerPaywall(merchant UUID, [Object{id, ...opts}], {...opts})
+var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
+    [{
+        id: 40112
+    }, ], {
+        hideFooterLinks: true,
+    }
+);
+</script>
+```
+
+Additionally if you want to change where the footer links redirect, or add new ones, you can use the `footerLinks` embed code option as follows:
+
 
 ```
 <div id="inplayer-40112" class="inplayer-paywall" />
@@ -306,9 +326,7 @@ var paywall = new InplayerPaywall('c6f4002f-7415-4eb6-ab03-72b0f7aff0e8',
         footerLinks: [{
             text: 'Custom text',
             url: '//some.custom.link'
-        }],
-        hideFooterLinks: true,
-        hideProtectedBy: true,
+        }]
     }
 );
 </script>
