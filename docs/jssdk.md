@@ -29,8 +29,8 @@ Once the SDK is installed, you will find available all the methods in the **InPl
 Currently, there are two different environments for the SDK - **development** and **production**. You can switch between these environments using the `setConfig` method:
 
 ```js
-InPlayer.setConfig('develop'); // the default one
-InPlayer.setConfig('prod'); // the production
+InPlayer.setConfig('development'); // the default one
+InPlayer.setConfig('production'); // the production
 ```
 
 ## 'How to' Examples
@@ -80,7 +80,30 @@ InPlayer.Account.authenticate({
 
 Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
 
-If you need to make additional calls, in the name of the authenticated account, you can fetch the token with the `InPlayer.Account.token()` call. Additionally, you may call `InPlayer.Account.isSignedIn()` to check if someone is logged in or not.
+If you need to make additional calls, in the name of the authenticated account, you can use the account details provided by the `InPlayer.Account.getAccountInfo()` method.
+
+This method returns a `Promise` which containst the following information:
+
+```javascript
+{
+   id: number;
+   email: string;
+   full_name: string;
+   referrer: string;
+   metadata: Record<string, unknown>;
+   social_apps_metadata: Record<string, unknown>[];
+   roles: string[];
+   completed: boolean;
+   created_at: number;
+   updated_at: number;
+   date_of_birth: number;
+   uuid: string;
+   merchant_uuid: string;
+}
+```
+You can find more information about the usage of this method on the following [link.](https://inplayer-js.netlify.app/classes/account___authentication.account#getAccountInfo)
+
+Additionally, you may call `InPlayer.Account.isSignedIn()` to check if someone is logged in or not.
 
 For the account sign out operation use the following call:
 
@@ -96,7 +119,7 @@ Once the customer is authenticated in our system, our SDK enables you to subscri
 In addition, consider the following sample code that enables you to subscribe and listen for messages:
 
 ```javascript
-InPlayer.subscribe(InPlayer.Account.token(),{
+InPlayer.subscribe(uuid,{
     onMessage: function(message) { /* do something with the message result */ },
     onOpen: function(e) { /* do something on connection open */ },
     onClose: function(e) { /* do something on connection close */ }
@@ -110,7 +133,7 @@ Our basic use-case here is to have a **'redirect to premium section'** handler a
 For example:
 
 ```javascript
-InPlayer.subscribe(InPlayer.Account.token(), {
+InPlayer.subscribe(uuid, {
     onMessage: function(message) {
         if(message.type==='payment.success') {
             window.location.href='http://mywebsite.com/premium-section' 
@@ -118,6 +141,8 @@ InPlayer.subscribe(InPlayer.Account.token(), {
     }
 });
 ```
+
+The `uuid` value should be fetched from the [`InPlayer.Account.getAccountInfo()`](https://inplayer-js.netlify.app/classes/account___authentication.account#getAccountInfo) method.
 
 
 ## How to Create Payments
