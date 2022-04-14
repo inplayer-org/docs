@@ -139,7 +139,7 @@ The token and the expires params are passed in from the back-end to the callback
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="https://unpkg.com/@inplayer-org/inplayer.js/dist/inplayer.umd.js"></script>
+    <script src="https://unpkg.com/@inplayer-org/inplayer.js@v3/dist/inplayer.min.js"></script>
     <title>Callback page</title>
 </head>
 
@@ -147,7 +147,7 @@ The token and the expires params are passed in from the back-end to the callback
     <script>
         var urlParams = new URLSearchParams(window.location.search);
         InPlayer.Account.setToken(urlParams.get("token"), "", urlParams.get("expires")); 
-        // hanlde redirect to the premium pages after setting the token
+        // handle redirect to the premium pages after setting the token
     </script>
 </body>
 
