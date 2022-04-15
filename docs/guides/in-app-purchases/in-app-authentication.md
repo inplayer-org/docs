@@ -65,7 +65,7 @@ There is also the possibility of having your end-users authenticated via impleme
 
 To enable (or disable) the social logins of your choice, you need to click on their 'Setup' toggle buttons. Once they are enabled, you will find the social login buttons displayed on the Paywall. 
 
-For further clarification regarding the Social Auth, please refer to the following article: https://inplayer.com/docs/settings/auth/#social-auth .
+For further clarification regarding the Social Auth, please refer to the following article: https://client.support.inplayer.com/settings/social-login/.
 
 ## SDK Methods for iOS
 
