@@ -9,7 +9,7 @@ As a merchant, you intend your valuable content to reach, engage, and retain an 
 
 ## Creating a Merchant Account
 
-In order to protect your monetization page, first, we need you to create your merchant account. For step-by-step instructions, please refer to the following [guide](https://inplayer.com/docs/getting-started/creating-your-account/).
+In order to protect your monetization page, first, we need you to create your merchant account. For step-by-step instructions, please refer to the following [guide](https://client.support.inplayer.com/getting-started/creating-your-inplayer-account/).
 Once you are successfully logged in, you would be registered in the InPlayer system as a merchant.
 
 ## Creating Your Asset
@@ -19,7 +19,7 @@ To begin with, you need to log into the [InPlayer dashboard](https://dashboard.i
 The following steps include naming your asset, setting the pricing type (choosing between login/register type or code/password as a means to gaining access), as well as setting the rest of the asset properties. 
 
 You get to customize the look of your asset preview by adding an image, title, description, and personalized 'Buy' button; then choose between a pay-per-view or subscription as a payment option; set any geographic, domain and/or age restrictions you have considered; add your HTML code of the content in the 'Asset content' section and embed the asset on your website, simply by clicking the 'Get Asset Embed Code' button at the top right.
-For a more picturesque guide on asset creation, please refer to the following [guide:](https://inplayer.com/docs/assets/html-asset/).
+For a more picturesque guide on asset creation, please refer to the following [guide:](https://client.support.inplayer.com/topics/assets-and-packages/).
 
 ## Finding Your Asset ID
 
@@ -31,7 +31,7 @@ In order to establish maximum protection to your website, we introduce a use cas
 
 ## Landing Page
 
-Your Landing Page and our paywall thrive in a codependent relationship. More precisely, the core usage of the paywall is providing you, our merchant, with an embed code for your premium content so that you can embed it into your website. For each asset you create, a corresponding embed code is subsequently generated. To find and embed the code of interest, please refer to the following [guide](https://inplayer.com/docs/assets/html-asset/#embedding-the-asset). 
+Your Landing Page and our paywall thrive in a codependent relationship. More precisely, the core usage of the paywall is providing you, our merchant, with an embed code for your premium content so that you can embed it into your website. For each asset you create, a corresponding embed code is subsequently generated. To find and embed the code of interest, please refer to the following [guide](https://client.support.inplayer.com/assets-and-packages/registration-required/paid-assets/#embedding-the-asset-4). 
 
 
 In order to implement the logic of having two pages coexisting, one for validating users' authentication and purchases and another where your content lays sheltered, you need to set your asset embed code options so that:
