@@ -133,9 +133,9 @@ Our basic use-case here is to have a **'redirect to premium section'** handler a
 For example:
 
 ```javascript
-InPlayer.subscribe(uuid, {
+InPlayer.subscribe(InPlayer.Account.getAccountInfo(), {
     onMessage: function(message) {
-        if(message.type==='payment.success') {
+        if(message.type==='payment.card.success') {
             window.location.href='http://mywebsite.com/premium-section' 
         }
     }
