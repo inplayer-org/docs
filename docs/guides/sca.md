@@ -32,6 +32,7 @@ curl -X POST  https://services.inplayer.com/payments \
     -d exp_year=18 \
     -d card_name='John Doe' \
     -d return_url='http://example.com' \
+    -d referrer='http://google.com' \
     -d voucher_code=F00B4R!@
 ```
 
