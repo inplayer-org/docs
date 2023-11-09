@@ -58,7 +58,7 @@ InPlayer.Account.signUp({
 
 Among the parameters, `fullName`, `email`, `password`, `passwordConfirmation`, `type`, and `clientId`  are always **required**.
 
-Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clinetId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
+Before you start using the Inplayer SDK, we suggest that you create a new **OAUTH application** from our Dashboard and obtain your `clientId`. In case you haven’t got an OAUTH application yet, you can use your account **UUID** as `clientId`. To find your UUID navigate to InPlayer Dashboard's 'Account' section, in the top right-hand corner menu.
 
 The `type` parameter can be either `consumer` or `merchant`. In case you want to create merchant accounts via the API, you will have to use InPlayer's public UUID for the `clientId` parameter.
 
@@ -68,17 +68,18 @@ Lastly, the `referrer` parameter can be passed in manually for every register re
 
 ## How to Authenticate an Account
 
-Authentication can be achieved using the `InPlayer.Account.authenticate()` method.
+Authentication can be achieved using the `InPlayer.Account.signIn()` method.
 
 ```javascript
-InPlayer.Account.authenticate({
-    email: 'test32@test.com',
+InPlayer.Account.signIn({
+    email: 'test@test.com',
     password: '12345678',
-    clientId: 'd20252cb-d057-4ce0-83e0-63da6dbabab1',
+    cliendId: 'b0899d7f-66da-40fc-8eeb-36cad735589c',
+    referrer: 'http://localhost:3000/'
 }).then(data => console.log(data));
 ```
 
-Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStogare`.
+Having the account logged in, you should be able to see an object containing the **InPlayer auth token** in `localStorage`.
 
 If you need to make additional calls, in the name of the authenticated account, you can use the account details provided by the `InPlayer.Account.getAccountInfo()` method.
 
@@ -169,17 +170,21 @@ InPlayer.Payment.getPaymentMethods(MERCHANT_UUID).then(data => console.log(data)
 
 ```javascript
 InPlayer.Payment
-.create(MERCHANT_UUID, {
-    number: 4111111111111111,
-    cardName: 'Example Name',
-    expMonth: 10,
-    expYear: 2030,
-    cvv: 656,
-    accessFee: 2341,
-    paymentMethod: 1,
-    referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
-})
+.createPayment({
+  number: 4111111111111111,
+  cardName: 'PayPal',
+  expMonth: '10',
+  expYear: '2030',
+  cvv: 656,
+  accessFee: 2341,
+  paymentMethod: 1,
+  referrer: 'http://google.com',
+  voucherCode: 'fgh1982gff-0f2grfds'
+  brandingId: 1234,
+  returnUrl: 'https://event.inplayer.com/staging',
+  isGift,
+  receiverEmail: 'mail@gmail.com'
+ })
 .then(data => console.log(data));
 ```
 
@@ -187,17 +192,20 @@ InPlayer.Payment
 
 ```javascript
 InPlayer.Subscription
-.create(MERCHANT_UUID, {
-    number: 4111111111111111,
-    cardName: 'Example Name',
-    expMonth: 10,
-    expYear: 2030,
-    cvv: 656,
-    accessFee: 2341,
-    paymentMethod: 1,
-    referrer: 'http://example-website.com',
-    voucherCode: 'fgh1982gff-0f2grfds'
-})
+.createSubscription({
+     number: 1,
+     cardName: 'Payoneer',
+     expMonth: 11,
+     expYear: 12,
+     cvv: 546,
+     accessFee: 13.4,
+     paymentMethod: 1,
+     referrer: 'http://localhost:3000',
+     voucherCode: '123123125914i2erjfg',
+     brandingId?: 1234,
+     returnUrl?: 'https://event.inplayer.com/staging',
+   }
+)
 .then(data => console.log(data));
 ```
 
