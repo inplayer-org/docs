@@ -48,7 +48,7 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
                 <ul>
                     <li><strong>Asset ID</strong>: Subscription asset that must be purchased to watch content on the app</li>
                     <li><strong>Client ID</strong>: Authentication realm where user account is created
-                <br /><br />
+                </ul>
                 <em>Contact your JWP representative for more information.</em>
             </td>
         </tr>
@@ -149,7 +149,9 @@ This web payment solution only supports single packages.
 
 Follow these steps to enable web payments with Stripe for a new user:
 
-1. Create a new user account by calling <a href="https://inplayer-js.netlify.app/classes/account___authentication.account#signUp" target="_blank">`InPlayer.Account.signUp()`</a>.<br /><br />When the request succeeds, JWP creates a new user object and returns a unique user authentication token. When the request fails, JWP returns a failure response.
+1. Create a new user account by calling <a href="https://inplayer-js.netlify.app/classes/account___authentication.account#signUp" target="_blank">`InPlayer.Account.signUp()`</a>.
+
+When the request **succeeds**, JWP creates a new user object and returns a unique user authentication token. When the request **fails**, JWP returns a failure response.
     ```javascript
     InPlayer.Account.signUp({
         fullName: 'test',
@@ -172,13 +174,13 @@ Follow these steps to enable web payments with Stripe for a new user:
     ```
 3. Create a recurring payment card subscription by calling <a href="https://inplayer-js.netlify.app/classes/subscription.subscription-1#createSubscription" target="_blank">`InPlayer.Subscription()`</a>.
 
-    If the request succeeds, the following actions occur:
+    If the request **succeeds**, the following actions occur:
     - JWP sends a subscription record to Stripe.
     - Stripe creates a subscription and sends it to JWP.
     - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.success`</a> WebSocket [notification](#configure-websocket-notifications).
     - Your app displays the notification to the user.
 
-    If the request fails, the following actions occurs:
+    If the request **fails**, the following actions occurs:
     - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.failed`</a> WebSocket [notification](#configure-websocket-notifications).
     - Your app displays a failure or error message to the user.
 
@@ -243,13 +245,13 @@ Follow these steps to enable web payments with Stripe for an existing user:
     ```
 3. Create a recurring payment card subscription by calling <a href="https://inplayer-js.netlify.app/classes/subscription.subscription-1#createSubscription" target="_blank">`InPlayer.Subscription()`</a>.
 
-    If the request succeeds, the following actions occur:
+    If the request **succeeds**, the following actions occur:
     - JWP sends a subscription record to Stripe.
     - Stripe creates a subscription and sends it to JWP.
     - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.success`</a> WebSocket [notification](#configure-websocket-notifications).
     - Your app displays the notification to the user.
 
-    If the request fails, the following actions occurs:
+    If the request **fails**, the following actions occurs:
     - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.failed`</a> WebSocket [notification](#configure-websocket-notifications).
     - Your app displays a failure or error message to the user.
 
@@ -294,3 +296,129 @@ You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-a
 
 #### New User
 
+Follow these steps to enable web payments with Stripe for a new user:
+
+1. Create a new user account by calling <a href="https://docs.inplayer.com/api/accounts/#tag/V1/operation/createAccount" target="_blank">`POST /accounts`</a>.
+
+    When the request **succeeds**, JWP creates a new user object and returns a unique user authentication token that is valid for **30 days**. When the request **fails**, JWP returns a failure response.
+
+    ```cURL
+    curl -L -X POST 'https://services.inplayer.com/accounts' \
+         -H 'Content-Type: application/x-www-form-urlencoded' \
+         --data-urlencode 'full_name=John Doe' \
+         --data-urlencode 'username=john@example.com' \
+         --data-urlencode 'password=foobar123' \
+         --data-urlencode 'password_confirmation=foobar123' \
+         --data-urlencode 'type=consumer' \
+         --data-urlencode 'grant_type=password' \
+         --data-urlencode 'client_id=12345678-90ab-1c23-4567-89d0e123f45' \
+         --data-urlencode 'metadata%5Bphone%5D=bar'
+    ```
+2. Retrieve the subscription price by calling <a href="https://docs.inplayer.com/api/assets/#tag/V2/operation/v2GetAccessFees" target="_blank">`GET /v2/items/{id}/access-fees`</a>. The API will return the `currency` and `amount` in the response that can be used to display the subscription price in your app.
+    ```cURL
+    curl --location 'https://services.inplayer.com/v2/items/{id}/access-fees' \
+         --header 'Authorization: Bearer <token>' \
+    ```
+3. Create a recurring payment card subscription by calling <a href="https://docs.inplayer.com/api/payments/#tag/V1/operation/createSubscription" target="_blank">`POST /subscriptions`</a>.
+
+    If the request **succeeds**, the following actions occur:
+    - JWP sends a subscription record to Stripe.
+    - Stripe creates a subscription and sends it to JWP.
+    - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.success`</a> WebSocket [notification](#configure-websocket-notifications).
+    - Your app displays the notification to the user.
+
+    If the request **fails**, the following actions occurs:
+    - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.failed`</a> WebSocket [notification](#configure-websocket-notifications).
+    - Your app displays a failure or error message to the user.
+
+    ```cURL
+    curl --location 'https://services.inplayer.com/subscriptions' \
+         --header 'Content-Type: application/x-www-form-urlencoded' \
+         --header 'Authorization: Bearer <token>' \
+         --data-urlencode 'number=4242424242424242' \
+         --data-urlencode 'card_name=John Doe' \
+         --data-urlencode 'exp_month=02' \
+         --data-urlencode 'exp_year=2043' \
+         --data-urlencode 'cvv=444' \
+         --data-urlencode 'access_fee=7916' \
+         --data-urlencode 'payment_method=1' \
+         --data-urlencode 'referrer=https://event.inplayer.com/v3/sandbox?asset=43222'
+    ```
+4. Validate the user's access by calling <a href="https://docs.inplayer.com/api/assets/#tag/V1/operation/getAccess" target="_blank">`GET /items/{asset-ID}/access`</a>.
+
+    If access to the asset **is verified**, the method returns the content in the response that you can display in your app. If access to the asset **cannot be verified**, your app should redirect the user to your payment page to re-enter payment details.
+
+    ```cURL
+    curl https://services.inplayer.com/items/{id}/access \
+         -H "Authorization:Bearer <token>"
+    ```
+
+After you have validated the user's access, you can fetch the content by media ID and begin playback.
+
+If you use an app config to manage your content, you can obtain the media ID from the `contentId` parameter of the app config URL.
+
+:::tip
+You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#url-signing-for-apps" target="_blank">URL signing</a> or <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#drm" target="_blank">digital rights management (DRM)</a> for extra layers of content protection.
+:::
+
+#### Existing User
+
+Follow these steps to enable web payments with Stripe for an existing user:
+
+1. Create a new user account by calling <a href=https://docs.inplayer.com/api/accounts/#tag/V2/operation/v2createAccount" target="_blank">`POST /v2/accounts/authenticate`</a>.
+
+    When the request **succeeds**, JWP creates a new user object and returns a unique user authentication token that is valid for **30 days**. When the request **fails**, JWP returns a failure response.
+
+    ```cURL
+    curl -L -X POST 'https://services.inplayer.com/v2/accounts/authenticate' \
+         -H 'Content-Type: application/x-www-form-urlencoded' \
+         --data-urlencode 'client_secret=foobar123' \
+         --data-urlencode 'grant_type=password' \
+         --data-urlencode 'client_id=12345678-90ab-1c23-4567-89d0e123f45' \
+    ```
+2. Retrieve the subscription price by calling <a href="https://docs.inplayer.com/api/assets/#tag/V2/operation/v2GetAccessFees" target="_blank">`GET /v2/items/{id}/access-fees`</a>. The API will return the `currency` and `amount` in the response that can be used to display the subscription price in your app.
+    ```cURL
+    curl --location 'https://services.inplayer.com/v2/items/{id}/access-fees' \
+         --header 'Authorization: Bearer <token>' \
+    ```
+3. Create a recurring payment card subscription by calling <a href="https://docs.inplayer.com/api/payments/#tag/V1/operation/createSubscription" target="_blank">`POST /subscriptions`</a>.
+
+    If the request **succeeds**, the following actions occur:
+    - JWP sends a subscription record to Stripe.
+    - Stripe creates a subscription and sends it to JWP.
+    - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.success`</a> WebSocket [notification](#configure-websocket-notifications).
+    - Your app displays the notification to the user.
+
+    If the request **fails**, the following actions occurs:
+    - JWP sends your app a <a href="https://developers.inplayer.com/docs/notifications/#subscriptions" target="_blank">`subscribe.failed`</a> WebSocket [notification](#configure-websocket-notifications).
+    - Your app displays a failure or error message to the user.
+
+    ```cURL
+    curl --location 'https://services.inplayer.com/subscriptions' \
+         --header 'Content-Type: application/x-www-form-urlencoded' \
+         --header 'Authorization: Bearer <token>' \
+         --data-urlencode 'number=4242424242424242' \
+         --data-urlencode 'card_name=John Doe' \
+         --data-urlencode 'exp_month=02' \
+         --data-urlencode 'exp_year=2043' \
+         --data-urlencode 'cvv=444' \
+         --data-urlencode 'access_fee=7916' \
+         --data-urlencode 'payment_method=1' \
+         --data-urlencode 'referrer=https://event.inplayer.com/v3/sandbox?asset=43222'
+    ```
+4. Validate the user's access by calling <a href="https://docs.inplayer.com/api/assets/#tag/V1/operation/getAccess" target="_blank">`GET /items/{asset-ID}/access`</a>.
+
+    If access to the asset **is verified**, the method returns the content in the response that you can display in your app. If access to the asset **cannot be verified**, your app should redirect the user to your payment page to re-enter payment details.
+
+    ```cURL
+    curl https://services.inplayer.com/items/{id}/access \
+         -H "Authorization:Bearer <token>"
+    ```
+
+After you have validated the user's access, you can fetch the content by media ID and begin playback.
+
+If you use an app config to manage your content, you can obtain the media ID from the `contentId` parameter of the app config URL.
+
+:::tip
+You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#url-signing-for-apps" target="_blank">URL signing</a> or <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#drm" target="_blank">digital rights management (DRM)</a> for extra layers of content protection.
+:::
