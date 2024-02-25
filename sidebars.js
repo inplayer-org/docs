@@ -42,6 +42,7 @@ module.exports = {
         'guides/syndication',
         'guides/sca',
         'guides/page-protection',
+        'guides/web-payments',
         {
           type: 'category',
           label: 'Standalone Services',
