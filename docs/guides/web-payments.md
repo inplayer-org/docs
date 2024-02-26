@@ -47,7 +47,7 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
             <td>IDs that enable access to content when combined:
                 <ul>
                     <li><strong>Asset ID</strong>: Subscription asset that must be purchased to watch content on the app</li>
-                    <li><strong>Client ID</strong>: Authentication realm where user account is created
+                    <li><strong>Client ID</strong>: Authentication realm where user account is created</li>
                 </ul>
                 <em>Contact your JWP representative for more information.</em>
             </td>
