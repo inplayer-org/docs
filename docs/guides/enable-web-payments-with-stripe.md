@@ -14,6 +14,8 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
 - jwplayer.com
 :::
 
+<br />
+
 ## Prerequisites
 
 <table>
@@ -25,7 +27,7 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
     </thead>
     <tbody>
         <tr>
-            <td><strong>New or existing app</strong></td>
+            <td><strong>New&nbsp;or&nbsp;existing app</strong></td>
             <td>Web-based app that displays content to users</td>
         </tr>
         <tr>
@@ -61,6 +63,8 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
         </tr>
     </tbody>
 </table>
+
+<br />
 
 ## Configure WebSocket notifications
 
@@ -130,7 +134,7 @@ Follow these steps to listen for a subscription notification and display a messa
 3. Configure the appearance of the popup in the `.popup` CSS settings.
 4. Define how long the popup displays by adjusting the `setTimeout` values.
 
-You can now set up web payments through the JavaScript API or REST API.
+You can now set up web payments through the [JavaScript API](#javascript-sdk) or [REST API](#rest-api).
 
 ## Set up web payments
 
@@ -142,6 +146,8 @@ JWP enables you to set up web payments using either a JavaScript SDK or REST API
 :::info
 This web payment solution only supports single packages.
 :::
+
+<br />
 
 ### JavaScript SDK
 
@@ -213,6 +219,8 @@ Follow these steps to enable web payments with Stripe for a new user:
     .catch(error => error.response.json().then(data => console.log("Error", data)));
     ```
 
+<br />
+
 After you have validated the user's access, you can fetch the content by media ID and begin playback.
 
 If you use an app config to manage your content, you can obtain the media ID from the `contentId` parameter of the app config URL.
@@ -220,6 +228,8 @@ If you use an app config to manage your content, you can obtain the media ID fro
 :::tip
 You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#url-signing-for-apps" target="_blank">URL signing</a> or <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#drm" target="_blank">digital rights management (DRM)</a> for extra layers of content protection.
 :::
+
+<br /><br />
 
 #### Existing User
 
@@ -283,6 +293,8 @@ Follow these steps to enable web payments with Stripe for an existing user:
     .then(data => console.log(data))
     .catch(error => error.response.json().then(data => console.log("Error", data)));
     ```
+    
+<br/>
 
 After you have validated the user's access, you can fetch the content by media ID and begin playback.
 
@@ -291,6 +303,8 @@ If you use an app config to manage your content, you can obtain the media ID fro
 :::tip
 You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#url-signing-for-apps" target="_blank">URL signing</a> or <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#drm" target="_blank">digital rights management (DRM)</a> for extra layers of content protection.
 :::
+
+<br />
 
 ### REST API
 
@@ -353,6 +367,8 @@ Follow these steps to enable web payments with Stripe for a new user:
          -H "Authorization:Bearer <token>"
     ```
 
+<br />
+
 After you have validated the user's access, you can fetch the content by media ID and begin playback.
 
 If you use an app config to manage your content, you can obtain the media ID from the `contentId` parameter of the app config URL.
@@ -360,6 +376,8 @@ If you use an app config to manage your content, you can obtain the media ID fro
 :::tip
 You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#url-signing-for-apps" target="_blank">URL signing</a> or <a href="https://docs.jwplayer.com/platform/docs/enable-protection-apps#drm" target="_blank">digital rights management (DRM)</a> for extra layers of content protection.
 :::
+
+<br /><br />
 
 #### Existing User
 
@@ -414,6 +432,8 @@ Follow these steps to enable web payments with Stripe for an existing user:
     curl https://services.inplayer.com/items/{id}/access \
          -H "Authorization:Bearer <token>"
     ```
+
+<br />
 
 After you have validated the user's access, you can fetch the content by media ID and begin playback.
 
