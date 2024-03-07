@@ -42,6 +42,7 @@ module.exports = {
         'guides/syndication',
         'guides/sca',
         'guides/page-protection',
+        'guides/enable-web-payments-with-stripe',
         {
           type: 'category',
           label: 'Standalone Services',
