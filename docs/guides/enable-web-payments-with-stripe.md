@@ -235,9 +235,9 @@ You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-a
 
 Follow these steps to enable web payments with Stripe for an existing user:
 
-1. Create a new user account by calling <a href="https://inplayer-js.netlify.app/classes/account___authentication.account#signInV2" target="_blank">`InPlayer.Account.signIn()`</a>.
+1. Log in an existing user account by calling <a href="https://inplayer-js.netlify.app/classes/account___authentication.account#signInV2" target="_blank">`InPlayer.Account.signIn()`</a>.
 
-    When the request **succeeds**, JWP creates a new user object and returns a unique user authentication token. When the request **fails**, JWP returns a failure response.
+    When the request **succeeds**, JWP returns a promise conntaining a unique user authentication token. When the request **fails**, JWP returns a failure response.
     ```javascript
     InPlayer.Account.signInV2({
         email: 'test@test.com',
@@ -383,9 +383,9 @@ You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-a
 
 Follow these steps to enable web payments with Stripe for an existing user:
 
-1. Create a new user account by calling <a href="https://docs.inplayer.com/api/accounts/#tag/V2/operation/v2createAccount" target="_blank">`POST /v2/accounts/authenticate`</a>.
+1. Log in an existing user account by calling <a href="https://docs.inplayer.com/api/accounts/#tag/V2/operation/v2authenticate" target="_blank">`POST /v2/accounts/authenticate`</a>.
 
-    When the request **succeeds**, JWP creates a new user object and returns a unique user authentication token that is valid for **30 days**. When the request **fails**, JWP returns a failure response.
+    When the request **succeeds**, JWP returns a unique user authentication token that is valid for **30 days**. When the request **fails**, JWP returns a failure response.
 
     ```cURL
     curl -L -X POST 'https://services.inplayer.com/v2/accounts/authenticate' \
