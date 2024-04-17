@@ -43,6 +43,7 @@ module.exports = {
         'guides/sca',
         'guides/page-protection',
         'guides/enable-web-payments-with-stripe',
+        'guides/authenticate-and-authorize-users',
         {
           type: 'category',
           label: 'Standalone Services',
