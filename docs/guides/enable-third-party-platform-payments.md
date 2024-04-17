@@ -61,17 +61,13 @@ Since this implementation uses both JWP and <a href="https://jwplayer.com/press-
 
 <br />
 
-## Set up web payments
-
-:::info
-This web payment solution only supports single packages.
-:::
+## Set up third-party payments
 
 <br />
 
 ### New User
 
-Follow these steps to enable in-app payments for a new user:
+Follow these steps to enable third-party payments for a new user:
 
 1. Create a new user account by calling <a href="https://docs.inplayer.com/api/accounts/#tag/V1/operation/createAccount" target="_blank">`POST /accounts`</a>.
 
@@ -150,7 +146,7 @@ You can add <a href="https://docs.jwplayer.com/platform/docs/enable-protection-a
 
 #### Existing User
 
-Follow these steps to enable in-app payments for an existing user:
+Follow these steps to enable third-party payments for an existing user:
 
 1. Log in an existing user account by calling <a href="https://docs.inplayer.com/api/accounts/#tag/V2/operation/v2authenticate" target="_blank">`POST /v2/accounts/authenticate`</a>.
 
