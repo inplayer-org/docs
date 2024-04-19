@@ -44,6 +44,7 @@ module.exports = {
         'guides/page-protection',
         'guides/enable-third-party-platform-payments',
         'guides/enable-web-payments-with-stripe',
+        'guides/authenticate-and-authorize-users',
         {
           type: 'category',
           label: 'Standalone Services',
