@@ -149,6 +149,7 @@ Example Payload Data:
 ```javascript
 created=1547556321
 id="cdcbec0c-06b7-40ed-aefb-9da08c43ba92"
+resource[ItemType]=""
 resource[access_fee_id]=5146
 resource[consumer_email]="customer@inplayer.com"
 resource[consumer_id]=29238
@@ -189,19 +190,32 @@ Example Payload Data:
 id="WHE-tyW8QjyCAYeQDOG0"
 created=1559913102
 version=2.4.2
-resource[type]="revoked"
+resource[access_fee_id]=5146
+resource[consumer_email]="customer@inplayer.com"
+resource[consumer_id]=29238
+resource[created_at]=1547556321
+resource[date]="2019-01-15T12:45:21Z"
+resource[expires_at]=1547642721
+resource[extended]=0
+resource[is_trial]=false
+resource[item_access_id]=47487
+resource[item_id]=43861
+resource[item_title]="Sample Title"
 resource[merchant_id]=68
-resource[consumer_id]=73
-resource[consumer_email]="example@email.com"
-resource[item_id]=49306
-resource[item_title]="For+Paywall+03"
-resource[item_access_id]=85950
+resource[original_expires_at]=1547642721
+resource[parent_resource_id]="C-m8StiUz3XBZnDRPORWwqIkTfF-ST"
+resource[payment_method]="Card"
+resource[payment_tool]="Visa+1111"
+resource[purchased_access_fee_description]="sample price description"
+resource[purchased_access_fee_id]=5146
+resource[purchased_access_fee_type]="ppv"
+resource[purchased_amount]=3
+resource[purchased_currency_iso]="EUR"
 resource[voucher_code]="F00B4R!@"
-resource[created_at]=1559913101
-resource[date]="2019-06-07T13:11:41+0000"
-resource[starts_at]=1559896473
-resource[expires_at]=1559913101
-resource[revoked]=1
+resource[revoked]=false
+resource[starts_at]=1545231639
+resource[type]="purchased"
+resource[revoked]=true
 type="asset.access.revoked"
 ```
 
@@ -223,18 +237,23 @@ created=1551455676
 id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
 resource[access_fee_id]=6113
 resource[amount]=10.00
+resource[consumer_id]=0
 resource[code]=200
 resource[currency_iso]="EUR"
 resource[customer_id]=29894
-resource[item_id]=4122
-resource[description]="PPV"
-resource[previewTitle]="Example title"
+resource[description]="One Day Pass"
+resource[discount_percent]=0
 resource[email]="filiptestettas@inplayer.com"
 resource[formatted_amount]="€10.00"
+resource[full_amount]="10.00"
+resource[item_id]=4122
+resource[payment_method]=card
+resource[previewTitle]="Example title"
+resource[referrer]="http://example.com"
 resource[status]="success"
 resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
-resource[referrer]="http://example.com"
+resource[voucher_code]="Discount1"
 type="payment.card.success"
 ```
 
@@ -251,9 +270,10 @@ created=1547545322
 id="6c9fb170-e0b8-4559-b442-0c986f6354c6"
 resource[account_id]=68
 resource[code]=422
-resource[explain]="error": "Failed to get access fee."
-resource[extras]="access_fee": "AccessFee is nil"
-resource[message]="Charge parameters error."
+resource[consumer_id]="67651"
+resource[explain]="error:Unable to set customer stripe default card."
+resource[extras]="stripe_card:{\"code\":\"card_declined\",\"decline_code\":\"generic_decline\",\"doc_url\":\"https://stripe.com/docs/error-codes/card-declined\",\"status\":402,\"message\":\"Your card was declined.\",\"request_id\":\"req_k3ZRnqIqa19ty5\",\"type\":\"card_error\""
+resource[message]="Customer stripe default card Error."
 type="payment.card.failed"
 ```
 
@@ -319,22 +339,22 @@ Example Payload Data:
 id="WHE-jAlBR7bGKGIV2mSr"
 created=1559906599
 version=2.4.2
-resource[transaction]="S-S8CqAw18ihqbgYsxCjIly3MwQ-ST"
-resource[description]="sub"
-resource[email]="example@email.com"
-resource[customer_id]=27288
-resource[item_id]=4122
-resource[previewTitle]="Example title"
-resource[formatted_amount]="€10.00"
+resource[access_fee_id]=3936
 resource[amount]=10.00
-resource[currency_iso]="EUR"
+resource[code]=200
+resource[consumer_id]=67651
+resource[description]="Full Access"
+resource[discount_percent]=0
+resource[email]="example@email.com"
+resource[formatted_amount]="€10.00"
+resource[full_amount]=10.00
+resource[item_id]=4122
+resource[payment_method]="card"
+resource[previewTitle]="Example title"
 resource[status]="success"
 resource[timestamp]=1559906598
-resource[code]=200
-resource[access_fee_id]=3936
-resource[previewTitle]="ooyala+muse+mp4"
-resource[payment_method]="card"
-resource[next_rebill_date]=1559906598
+resource[transaction]="S-S8CqAw18ihqbgYsxCjIly3MwQ-ST"
+resource[voucher_code]=0
 type="subscribe.success"
 ```
 
@@ -351,9 +371,10 @@ created=1547543325
 id="6c9fb170-e0b8-4559-b442-1b486f6354c6"
 resource[account_id]=68
 resource[code]=422
-resource[explain]="error": "Failed to get access fee."
-resource[extras]="access_fee": "AccessFee is nil"
-resource[message]="Charge parameters error."
+resource[consumer_id]=67651
+resource[explain]="error: Unable to set customer stripe default card."
+resource[extras]="stripe_card:Failed to get or create stripe card"
+resource[message]="Your card was declined."
 type=”subscribe.failed”
 ```
 
@@ -371,16 +392,22 @@ id="6437c6bb-eb1a-46b8-aaf3-88cca8869a0e"
 resource[access_fee_id]=6113
 resource[amount]=10.00
 resource[code]=200
+resource[consumer_id]=67651
 resource[currency_iso]="EUR"
-resource[customer_id]=29894
-resource[item_id]=4122
-resource[description]="PPV"
-resource[previewTitle]="Example title"
+resource[customer_id]=67651
+resource[description]="Full Access"
+resource[discount_percent]=0
 resource[email]="filiptestettas@inplayer.com"
-resource[formatted_amount]="€10.00"
-resource[status]="success"
+resource[formatted_amount]="US$ 10.00"
+resource[full_amount]=10.00
+resource[item_id]=4122
+resource[next_rebill_date]=1672316807
+resource[payment_method]=card
+resource[previewTitle]="Example title"
+resource[status]="canceled"
 resource[timestamp]=1551455675
 resource[transaction]="C-MP3obSF5w81JsveRg4LiPV3iS-SC"
+resource[voucher_code]=""
 type=”subscribe.cancelled.success”
 ```
 
@@ -707,6 +734,31 @@ resource[explain]="error": "Failed to get access fee."
 resource[extras]="access_fee": "AccessFee is nil"
 resource[message]="Charge parameters error."
 type=”external.subscribe.update.failed”
+```
+
+### `subscription.rebill.failed`
+
+| Type        | Description           |
+| ------------- |-------------|
+| `subscription.rebill.failed`| Fired to notify you that a subscription rebill failed via PayPal |
+
+Example Payload Data:
+
+```javascript
+created=1547543325
+id="6c9fb170-e0b8-4559-b442-0c986f6354b8"
+resource[attempted_charge_amount]=1.00
+resource[code]=402
+resource[consumer_id]=123456
+resource[currency_iso]=EUR
+resource[full_amount]=1.00
+resource[item_id]=73859
+resource[merchant_id]=26764
+resource[message]="Subscription rebill failed"
+resource[payment_method]="paypal"
+resource[subscription_token]=S-o3Z7yNZzqdj9KlJ0Y7OGntC1Z-PP
+resource[timestamp]=1669043475000
+type=”subscription.rebill.failed”
 ```
 
 ## Securing Webhooks
