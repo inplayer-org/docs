@@ -338,6 +338,37 @@ resource[next_rebill_date]=1559906598
 type="subscribe.success"
 ```
 
+### `subscribe.pending`
+
+| Type        | Description           |
+| ------------- |-------------|
+| ``subscribe.pending``| Fired to notify you that a customer has initiated the payment for subscribtion to your asset |
+
+Example Payload Data:
+
+```javascript
+id="WHE-jAlBR7bGKGIV2mSr"
+created=1559906599
+version=2.4.2
+resource[transaction]="S-S8CqAw18ihqbgYsxCjIly3MwQ-ST"
+resource[description]="sub"
+resource[email]="example@email.com"
+resource[customer_id]=27288
+resource[item_id]=4122
+resource[previewTitle]="Example title"
+resource[formatted_amount]="€10.00"
+resource[amount]=10.00
+resource[currency_iso]="EUR"
+resource[status]="pending"
+resource[timestamp]=1559906598
+resource[code]=200
+resource[access_fee_id]=3936
+resource[previewTitle]="ooyala+muse+mp4"
+resource[payment_method]="card"
+type="subscribe.pending"
+```
+
+
 ### `subscribe.failed`
 
 | Type        | Description           |
