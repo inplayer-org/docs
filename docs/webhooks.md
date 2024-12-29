@@ -18,7 +18,7 @@ Each event type has a specific payload format. The InPlayer webhooks’ payload 
 
 ### Payload headers
 
-The HTTP POST requests sent to your webhook URL have several **headers**, including the **custom InPlayer signature header**. You will use this signature to validate the event concerned, as described in the validating events section.
+The HTTP POST requests sent to your webhook URL have several **headers**, including the **custom InPlayer signature header**. You will use this signature to validate the event concerned, as described in the [Validating Events](#validating-events) section.
 
 | Header        | Value           |
 | ------------- |-------------|
