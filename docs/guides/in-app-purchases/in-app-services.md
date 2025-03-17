@@ -8,3 +8,33 @@ The InPlayer platform facilitates the payment process by providing in-app purcha
 In-app purchasing allows you, as a merchant, to supply your customers with special offers (extra features or premium content behind a paywall) within an application as a way of providing a cross-platform monetization flow directly on their TV or on their iOS or Android device.  
 
 In addition you can find discussed in detail the steps our platform undertakes in order to enable in-app purchases.
+
+## In-App Authentication
+
+The In-App Authentication presents the authentication functionalities that authenticate a user in the InPlayer system. This can be implemented easily by using our register and login methods, provided in the native SDKs. 
+
+[InPlayer In-App Authentication](in-app-authentication.md)
+
+## IOS In-App Purchases
+
+The InPlayer system integrates with the iOS app on the end-users' mobile devices, as a way to support the in-app payment process. 
+
+[InPlayer IOS In-App Purchases](ios-in-app-purchases.md)
+
+## Amazon In-App Purchases
+
+The InPlayer system integrates with the Amazon app on the end-users' TV devices, as a way to support the in-app payment process. 
+
+[InPlayer Amazon In-App Purchases](amazon-in-app-purchases.md)
+
+## Android In-App Purchases
+
+The InPlayer system integrates with the Android app on the end-users' mobile or TV devices, as a way to support the in-app payment process.
+
+[InPlayer Android In-App Purchases](android-in-app-purchases.md)
+
+## ROKU In-App Purchases
+
+The InPlayer system integrates with the Roku app on the end-users' TV devices, as a way to support the in-app payment process.
+
+[InPlayer ROKU In-App Purchases](roku-in-app-purchases.md)
