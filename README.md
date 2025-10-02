@@ -1,3 +1,5 @@
+**THIS REPOSITORY IS MOVED TO GITLAB**
+
 <h1 align="center">
   <a target="_blank" href="https://developers.inplayer.com/">
     <img src="https://assets.inplayer.com/images/inplayer-256.png" alt="inplayer-ui" title="InPlayer UI" width="300">
